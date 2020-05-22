@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Topic extends Model
 {
-    /*
-     * 属于这个主题的所有文章
+    use SoftDeletes;
+
+    /**
+     * 获取专题的所有文章
+     *
+     * @return mixed
      */
     public function posts()
     {

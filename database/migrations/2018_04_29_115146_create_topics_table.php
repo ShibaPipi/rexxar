@@ -17,9 +17,10 @@ class CreateTopicsTable extends Migration
             $table->id();
             $table->string('name', 100); // 主题的姓名
             $table->timestamps();
+            $table->softDeletes();
         });
 
-        Schema::create('post_topics', function (Blueprint $table) {
+        Schema::create('post_topic', function (Blueprint $table) {
             $table->id();
             $table->integer('post_id'); // 主题的文章的id
             $table->integer('topic_id'); // 主题的id
@@ -35,6 +36,6 @@ class CreateTopicsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('topics');
-        Schema::dropIfExists('post_topics');
+        Schema::dropIfExists('post_topic');
     }
 }

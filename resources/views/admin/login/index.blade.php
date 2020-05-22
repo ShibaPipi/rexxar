@@ -32,7 +32,7 @@
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">登陆</p>
+        <p class="login-box-msg">登录</p>
 
         <form action="/admin/login" method="post">
             {{ csrf_field() }}
@@ -48,7 +48,7 @@
                 <!-- /.col -->
                 @include('admin.layout.error')
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">登陆</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
                 </div>
                 <!-- /.col -->
             </div>

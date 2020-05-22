@@ -81,14 +81,9 @@ class PostController extends Controller
     {
         $this->authorize('delete', $post);
 
-        // 不直接删除文章，而是将它的 status 改为 -1
-        $post->status = -1;
-        $post->save();
+        $post->delete();
 
-        // 将该文章移除专题表
-        $post->postTopics()->delete();
-
-        return redirect('posts');
+        return redirect()->route('posts.index');
     }
 
     public function imageUpload(Request $request)

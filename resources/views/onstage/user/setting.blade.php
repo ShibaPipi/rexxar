@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-sm-8 blog-main">
-        <form class="form-horizontal" action="/user/5/setting" method="POST" enctype="multipart/form-data">
+        <form class="form-horizontal" action="/users/5/setting" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="RuzO8giZVe3C2PalHpxGydYXKvwqNxMwcxscznAb">
             <div class="form-group">
                 <label class="col-sm-2 control-label">用户名</label>

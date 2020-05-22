@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../public/images/favicon.ico">
 
-    <title>登陆</title>
+    <title>登录</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
             </label>
         </div>
         @include('onstage.layout.error')
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
         <a href="/register" class="btn btn-lg btn-primary btn-block" type="submit">去注册>></a>
     </form>
 

@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
     //use Searchable;
+    use SoftDeletes;
 
     /**
      * 追加到模型数组表单的访问器。

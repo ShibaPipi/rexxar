@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Comment extends Model
 {
+    use SoftDeletes;
+
     //  评论所属文章
     public function post()
     {
