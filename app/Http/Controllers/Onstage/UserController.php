@@ -25,20 +25,20 @@ class UserController extends Controller
     public function show(User $user)
     {
         // 这个人的关注／粉丝／文章
-        $user = User::query()->withCount(['stars', 'fans', 'posts'])->find($user->id);
+        $user = User::query()->withCount(['stars', 'followers', 'posts'])->find($user->id);
 
         // 这个人的文章列表 10条
         $posts = $user->posts()->latest()->take(10)->get();
 
         // 这个人粉了的人的关注／粉丝／文章
         $stars = $user->stars;
-        $susers = User::query()->whereIn('id', $stars->pluck('star_id'))->withCount(['stars', 'fans', 'posts'])->get();
+        $starUsers = User::query()->whereIn('id', $stars->pluck('followed_id'))->withCount(['stars', 'followers', 'posts'])->get();
 
         // 这个人的粉丝的关注／粉丝／文章
-        $fans = $user->fans;
-        $fusers = User::query()->whereIn('id', $fans->pluck('fan_id'))->withCount(['stars', 'fans', 'posts'])->get();
+        $followers = $user->fans;
+        $followedUsers = User::query()->whereIn('id', $followers->pluck('follower_id'))->withCount(['stars', 'followers', 'posts'])->get();
 
-        return view('onstage.user.show', compact('user', 'posts', 'fusers', 'susers'));
+        return view('onstage.user.show', compact('user', 'posts', 'followedUsers', 'starUsers'));
     }
 
     public function fan(User $user)

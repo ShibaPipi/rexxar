@@ -4,8 +4,6 @@ namespace App\Models;
 
 class AdminPermission extends Model
 {
-    protected $table = "admin_permissions";
-
     /*
      * 权限属于哪些角色
      */

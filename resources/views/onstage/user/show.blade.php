@@ -32,7 +32,7 @@
                 </div>
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_2">
-                    @foreach($susers as $user)
+                    @foreach($starUsers as $user)
                         <div class="blog-post" style="margin-top: 30px">
                             <p class="">{{ $user->name }}</p>
                             <p class="">关注：{{ $user->stars_count }}｜粉丝：{{ $user->fans_count }}
@@ -43,7 +43,7 @@
                 </div>
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_3">
-                    @foreach($fusers as $user)
+                    @foreach($followedUsers as $user)
                         <div class="blog-post" style="margin-top: 30px">
                             <p class="">{{ $user->name }}</p>
                             <p class="">关注：{{ $user->stars_count }}｜粉丝：{{ $user->fans_count }}

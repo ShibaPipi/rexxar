@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFansTable extends Migration
+class CreateZansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateFansTable extends Migration
      */
     public function up()
     {
-        Schema::create('fans', function (Blueprint $table) {
+        Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            // 粉丝id
-            $table->integer('fan_id')->default(0);
-            // 关注id
-            $table->integer('star_id')->default(0);
+            $table->integer('user_id')->default(0);
+            $table->integer('post_id')->default(0);
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateFansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fans');
+        Schema::dropIfExists('likes');
     }
 }

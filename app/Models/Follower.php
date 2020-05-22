@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-class Fan extends Model
+class Follower extends Model
 {
     /*
      * 粉丝用户
      */
-    public function fuser()
+    public function followedUser()
     {
         return $this->hasOne(User::class, 'id', 'fan_id');
     }
@@ -15,7 +15,7 @@ class Fan extends Model
     /*
      * 明星用户
      */
-    public function suser()
+    public function starUser()
     {
         return $this->hasOne(User::class, 'id', 'star_id');
     }

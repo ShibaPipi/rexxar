@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Onstage;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Post;
-use App\Models\Zan;
+use App\Models\Like;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -113,7 +113,7 @@ class PostController extends Controller
 
     public function zan(Post $post)
     {
-        Zan::query()->firstOrCreate([
+        Like::query()->firstOrCreate([
             'user_id' => auth()->id(),
             'post_id' => $post->id,
         ]);

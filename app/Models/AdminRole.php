@@ -4,8 +4,6 @@ namespace App\Models;
 
 class AdminRole extends Model
 {
-    protected $table = 'admin_roles';
-
     /*
      * 当前角色的所有权限
      */

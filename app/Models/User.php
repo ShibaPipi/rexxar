@@ -54,9 +54,9 @@ class User extends Authenticatable
     /*
      * 我的粉丝
      */
-    public function fans()
+    public function followers()
     {
-        return $this->hasMany(Fan::class, 'star_id', 'id');
+        return $this->hasMany(Follower::class, 'star_id', 'id');
     }
 
     /*
@@ -64,25 +64,25 @@ class User extends Authenticatable
      */
     public function stars()
     {
-        return $this->hasMany(Fan::class, 'fan_id', 'id');
+        return $this->hasMany(Follower::class, 'follower_id', 'id');
     }
 
     // 关注某人
-    public function doFan($uid)
+    public function follow($uid)
     {
-        $fan = new Fan();
-        $fan->star_id = $uid;
+        $follower = new Follower();
+        $follower->star_id = $uid;
 
-        return $this->stars()->save($fan);
+        return $this->stars()->save($follower);
     }
 
     // 取消关注
-    public function doUnFan($uid)
+    public function cancelFollow($uid)
     {
-        $fan = new Fan();
-        $fan->star_id = $uid;
+        $follower = new Follower();
+        $follower->star_id = $uid;
 
-        return $this->stars()->delete($fan);
+        return $this->stars()->delete($follower);
     }
 
     /*
@@ -90,7 +90,7 @@ class User extends Authenticatable
      */
     public function hasFan($uid)
     {
-        return $this->fans()->where('fan_id', $uid)->count();
+        return $this->followers()->where('follower_id', $uid)->count();
     }
 
     /*

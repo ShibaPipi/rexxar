@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Zan extends Model
+class Like extends Model
 {
     //
 }
