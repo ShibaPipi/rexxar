@@ -19,7 +19,6 @@ class TopicController extends Controller
 
         // 专题的文章列表，按照创建时间倒序排列，前10个
         $posts = $topic->posts()->orderBy('created_at', 'desc')->take(10)->get();
-//        $me = \Auth::user();
 
         //  是与我的文章，但是为投稿
         $myposts = Post::query()->authorBy(auth()->id())->topicNotBy($topic->id)->get();
