@@ -41,6 +41,7 @@
                     <div id="navbar" class="navbar-collapse collapse navbar-right">
                         <ul class="nav navbar-nav">
                             <li><a href="#"><span data-hover="主页">主页</span></a></li>
+                            <li><a href="{{ route('posts.index') }}"><span data-hover="博客">博客</span></a></li>
                             <li><a href="#events"><span data-hover="在想">在想</span></a></li>
                             <li><a href="#footer"><span data-hover="感谢">感谢</span></a></li>
                         </ul>

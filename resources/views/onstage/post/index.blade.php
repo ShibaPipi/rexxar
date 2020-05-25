@@ -12,16 +12,22 @@
                 </ol><!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="images/44287191gw1excbq6tb3rj21400migrz.jpg" alt="..." />
-                        <div class="carousel-caption">男人永远不会长大，只会变老</div>
+                        <a href="{{ route('posts.show', ['post' => 41]) }}">
+                            <img src="images/44287191gw1excbq6tb3rj21400migrz.jpg" alt="..." />
+                            <div class="carousel-caption">男人永远不会长大，只会变老</div>
+                        </a>
                     </div>
                     <div class="item">
-                        <img src="images/44287191gw1excbq5iwm6j21400min3o.jpg" alt="..." />
-                        <div class="carousel-caption">欢迎来到简书</div>
+                        <a href="{{ route('index') }}">
+                            <img src="images/44287191gw1excbq5iwm6j21400min3o.jpg" alt="..." />
+                            <div class="carousel-caption">欢迎来到我的博客</div>
+                        </a>
                     </div>
                     <div class="item">
-                        <img src="images/44287191gw1excbq4kx57j21400migs4.jpg" alt="..." />
-                        <div class="carousel-caption">早上好！</div>
+                        <a href="{{ route('notices.index') }}">
+                            <img src="images/44287191gw1excbq4kx57j21400migs4.jpg" alt="..." />
+                            <div class="carousel-caption">早上好！</div>
+                        </a>
                     </div>
                 </div>
                 <!-- Controls -->
@@ -41,7 +47,7 @@
                     <p class="blog-post-meta">{{ $post->created_at->toFormattedDateString() }} by <a
                                 href="/users/{{ $post->user->id }}">{{ $post->user->name }}</a></p>
                     {!! Illuminate\Support\Str::limit($post->content, 100, '...') !!}
-                    <p class="blog-post-meta">赞 {{ $post->zans_count }} | 评论 {{ $post->comments_count }}</p>
+                    <p class="blog-post-meta">赞 {{ $post->likes_count }} | 评论 {{ $post->comments_count }}</p>
                 </div>
             @endforeach
 

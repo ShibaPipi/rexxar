@@ -50,13 +50,13 @@ class Post extends Model
     }
 
     //  赞和用户进行关联
-    public function zan($user_id)
+    public function like($user_id)
     {
         return $this->hasOne(Like::class)->where('user_id', $user_id);
     }
 
     //  文章的所有赞
-    public function zans()
+    public function likes()
     {
         return $this->hasMany(Like::class);
     }
@@ -67,9 +67,9 @@ class Post extends Model
         return $query->where('user_id', $user_id);
     }
 
-    public function postTopics()
+    public function topics()
     {
-        return $this->hasMany(PostTopic::class, 'post_id');
+        return $this->belongsToMany(Topic::class);
     }
 
     public function getContentLimitAttribute($value)
@@ -80,7 +80,7 @@ class Post extends Model
     // 不属于某个专题的文章
     public function scopeTopicNotBy(Builder $query, $topic_id)
     {
-        return $query->doesntHave('postTopics', 'and', function ($q) use ($topic_id) {
+        return $query->doesntHave('topics', 'and', function ($q) use ($topic_id) {
             $q->where('topic_id', $topic_id);
         });
     }

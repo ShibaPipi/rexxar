@@ -16,7 +16,7 @@ class IndexController extends Controller
     public function index()
     {
         $posts = Post::query()
-            ->withCount(['comments', 'zans'])
+            ->withCount(['comments', 'likes'])
             ->latest()
             ->limit(3)
             ->get();

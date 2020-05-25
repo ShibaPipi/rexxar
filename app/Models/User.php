@@ -52,7 +52,7 @@ class User extends Authenticatable
     }
 
     /*
-     * 我的粉丝
+     * 关注我的人
      */
     public function followers()
     {
@@ -60,14 +60,19 @@ class User extends Authenticatable
     }
 
     /*
-     * 我粉的人
+     * 我关注的人
      */
     public function stars()
     {
         return $this->hasMany(Follower::class, 'follower_id', 'id');
     }
 
-    // 关注某人
+    /**
+     * 关注某人
+     *
+     * @param $uid
+     * @return mixed
+     */
     public function follow($uid)
     {
         $follower = new Follower();
@@ -76,7 +81,12 @@ class User extends Authenticatable
         return $this->stars()->save($follower);
     }
 
-    // 取消关注
+    /**
+     * 取消关注
+     *
+     * @param $uid
+     * @return mixed
+     */
     public function cancelFollow($uid)
     {
         $follower = new Follower();
@@ -88,7 +98,7 @@ class User extends Authenticatable
     /*
      * 当前这个人是否被uid粉了
      */
-    public function hasFan($uid)
+    public function hasFollower($uid)
     {
         return $this->followers()->where('follower_id', $uid)->count();
     }

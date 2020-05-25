@@ -1,6 +1,6 @@
-@if($target_user->id != Auth::id())
+@if($target_user->id != auth()->id())
     <div>
-        @if($target_user->hasFan(Auth::id()))
+        @if($target_user->hasFollower(auth()->id()))
             <button class="btn btn-default like-button" like-value="1" like-user="{{ $target_user->id }}"
                     _token="{{csrf_token()}}" type="button">取消关注
             </button>

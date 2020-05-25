@@ -64,8 +64,8 @@ Route::namespace('Onstage')->group(function () {
             // 提交评论
             Route::post('{post}/comment', 'PostController@comment')->name('comment');
             // 赞
-            Route::get('{post}/zan', 'PostController@zan')->name('zan');
-            Route::get('{post}/unzan', 'PostController@unzan')->name('unzan');
+            Route::get('{post}/like', 'PostController@like')->name('zan');
+            Route::get('{post}/cancelLike', 'PostController@cancelLike')->name('unzan');
             // 搜索
             Route::get('search', 'PostController@search')->name('search');
         });

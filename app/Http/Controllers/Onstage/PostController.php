@@ -15,7 +15,7 @@ class PostController extends Controller
     {
         $posts = Post::query()
             ->with('user')
-            ->withCount(['comments', 'zans'])
+            ->withCount(['comments', 'likes'])
             ->latest()
             ->paginate(6);
 
@@ -44,7 +44,7 @@ class PostController extends Controller
             'content' => 'required|min:10',
         ]);
 
-        $params = array_merge(request(['title', 'content']), ['user_id' => Auth::id()]);
+        $params = array_merge(request(['title', 'content']), ['user_id' => auth()->id()]);
 
         Post::query()->create($params);
 
@@ -99,7 +99,7 @@ class PostController extends Controller
     public function comment(Post $post)
     {
         $this->validate(request(), [
-//            'post_id' => 'required|exists:posts,id',
+            'post_id' => 'required|exists:posts,id',
             'content' => 'required|min:2',
         ]);
 
@@ -111,7 +111,7 @@ class PostController extends Controller
         return back();
     }
 
-    public function zan(Post $post)
+    public function like(Post $post)
     {
         Like::query()->firstOrCreate([
             'user_id' => auth()->id(),
@@ -121,9 +121,9 @@ class PostController extends Controller
         return back();
     }
 
-    public function unzan(Post $post)
+    public function cancelLike(Post $post)
     {
-        $post->zan(auth()->id())->delete();
+        $post->like(auth()->id())->delete();
 
         return back();
     }

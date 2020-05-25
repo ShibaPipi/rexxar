@@ -32,10 +32,10 @@ class UserController extends Controller
 
         // 这个人粉了的人的关注／粉丝／文章
         $stars = $user->stars;
-        $starUsers = User::query()->whereIn('id', $stars->pluck('followed_id'))->withCount(['stars', 'followers', 'posts'])->get();
+        $starUsers = User::query()->whereIn('id', $stars->pluck('star_id'))->withCount(['stars', 'followers', 'posts'])->get();
 
         // 这个人的粉丝的关注／粉丝／文章
-        $followers = $user->fans;
+        $followers = $user->followers;
         $followedUsers = User::query()->whereIn('id', $followers->pluck('follower_id'))->withCount(['stars', 'followers', 'posts'])->get();
 
         return view('onstage.user.show', compact('user', 'posts', 'followedUsers', 'starUsers'));
