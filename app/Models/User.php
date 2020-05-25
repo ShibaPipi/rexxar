@@ -52,45 +52,55 @@ class User extends Authenticatable
     }
 
     /*
-     * 我的粉丝
+     * 关注我的人
      */
-    public function fans()
+    public function followers()
     {
-        return $this->hasMany(Fan::class, 'star_id', 'id');
+        return $this->hasMany(Follower::class, 'star_id', 'id');
     }
 
     /*
-     * 我粉的人
+     * 我关注的人
      */
     public function stars()
     {
-        return $this->hasMany(Fan::class, 'fan_id', 'id');
+        return $this->hasMany(Follower::class, 'follower_id', 'id');
     }
 
-    // 关注某人
-    public function doFan($uid)
+    /**
+     * 关注某人
+     *
+     * @param $uid
+     * @return mixed
+     */
+    public function follow($uid)
     {
-        $fan = new Fan();
-        $fan->star_id = $uid;
+        $follower = new Follower();
+        $follower->star_id = $uid;
 
-        return $this->stars()->save($fan);
+        return $this->stars()->save($follower);
     }
 
-    // 取消关注
-    public function doUnFan($uid)
+    /**
+     * 取消关注
+     *
+     * @param $uid
+     * @return mixed
+     */
+    public function cancelFollow($uid)
     {
-        $fan = new Fan();
-        $fan->star_id = $uid;
+        $follower = new Follower();
+        $follower->star_id = $uid;
 
-        return $this->stars()->delete($fan);
+        return $this->stars()->delete($follower);
     }
 
     /*
      * 当前这个人是否被uid粉了
      */
-    public function hasFan($uid)
+    public function hasFollower($uid)
     {
-        return $this->fans()->where('fan_id', $uid)->count();
+        return $this->followers()->where('follower_id', $uid)->count();
     }
 
     /*

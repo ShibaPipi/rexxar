@@ -15,15 +15,15 @@ class TopicController extends Controller
     public function show(Topic $topic)
     {
         // 带文章数的专题
-        $topic = Topic::query()->withCount('postTopics')->find($topic->id);
+        $topic = Topic::query()->withCount('posts')->find($topic->id);
 
         // 专题的文章列表，按照创建时间倒序排列，前10个
-        $posts = $topic->posts()->orderBy('created_at', 'desc')->take(10)->get();
+        $posts = $topic->posts()->latest()->take(10)->get();
 
         //  是与我的文章，但是为投稿
-        $myposts = Post::query()->authorBy(auth()->id())->topicNotBy($topic->id)->get();
+        $myPosts = Post::query()->authorBy(auth()->id())->topicNotBy($topic->id)->get();
 
-        return view('onstage.topic.show', compact('topic', 'posts', 'myposts'));
+        return view('onstage.topic.show', compact('topic', 'posts', 'myPosts'));
     }
 
     /*
@@ -38,7 +38,7 @@ class TopicController extends Controller
         // 确认这些post都是属于当前用户的
 //        $posts = Post::find(request(['post_ids']));
 //        foreach ($posts as $post) {
-//            if ($post->user_id != \Auth::id()) {
+//            if ($post->user_id != auth()->id()) {
 //                return back()->withErrors(array('message' => '没有权限'));
 //            }
 //        }
