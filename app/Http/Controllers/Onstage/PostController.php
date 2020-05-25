@@ -14,6 +14,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::query()
+            ->where('status', 1)
             ->with('user')
             ->withCount(['comments', 'likes'])
             ->latest()

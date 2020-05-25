@@ -50,9 +50,9 @@ class Post extends Model
     }
 
     //  赞和用户进行关联
-    public function like($user_id)
+    public function like($userId)
     {
-        return $this->hasOne(Like::class)->where('user_id', $user_id);
+        return $this->hasOne(Like::class)->where('user_id', $userId);
     }
 
     //  文章的所有赞
@@ -62,9 +62,9 @@ class Post extends Model
     }
 
     // 属于某个作者的文章
-    public function scopeAuthorBy(Builder $query, $user_id)
+    public function scopeAuthorBy(Builder $query, $userId)
     {
-        return $query->where('user_id', $user_id);
+        return $query->where('user_id', $userId);
     }
 
     public function topics()
@@ -78,10 +78,10 @@ class Post extends Model
     }
 
     // 不属于某个专题的文章
-    public function scopeTopicNotBy(Builder $query, $topic_id)
+    public function scopeTopicNotBy(Builder $query, $topicId)
     {
-        return $query->doesntHave('topics', 'and', function ($q) use ($topic_id) {
-            $q->where('topic_id', $topic_id);
+        return $query->doesntHave('topics', 'and', function ($q) use ($topicId) {
+            $q->where('topic_id', $topicId);
         });
     }
 

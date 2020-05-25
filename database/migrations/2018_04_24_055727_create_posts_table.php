@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('title', 100)->default("");
             $table->text('content');
             $table->integer('user_id')->default(0);
+            $table->tinyInteger('status')->default(0)->comment('审核状态');
             $table->timestamps();
             $table->softDeletes();
         });

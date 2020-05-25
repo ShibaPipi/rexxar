@@ -41,10 +41,9 @@ class UserController extends Controller
         return view('onstage.user.show', compact('user', 'posts', 'followedUsers', 'starUsers'));
     }
 
-    public function fan(User $user)
+    public function follow(User $user)
     {
-        $me = auth()->user();
-        $me->doFan($user->id);
+        $user->follow($user->id);
 
         return [
             'error' => 0,
@@ -52,10 +51,9 @@ class UserController extends Controller
         ];
     }
 
-    public function unfan(User $user)
+    public function cancelFollow(User $user)
     {
-        $me = auth()->user();
-        $me->doUnFan($user->id);
+        $user->cancelFollow($user->id);
 
         return [
             'error' => 0,

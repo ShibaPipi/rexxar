@@ -76,8 +76,8 @@ Route::namespace('Onstage')->group(function () {
         Route::prefix('users/{user}')->name('users.')->group(function () {
             // 个人主页
             Route::get('', 'UserController@show')->name('show');
-            Route::post('fan', 'UserController@fan')->name('fan');
-            Route::post('unfan', 'UserController@unfan')->name('unfan');
+            Route::post('follow', 'UserController@follow')->name('follow');
+            Route::post('cancelFollow', 'UserController@cancelFollow')->name('cancelFollow');
             // 个人设置
             Route::get('setting', 'UserController@setting')->name('setting');
             Route::post('setting', 'UserController@settingStore')->name('settingStore');

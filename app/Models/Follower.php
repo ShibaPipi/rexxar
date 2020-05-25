@@ -9,7 +9,7 @@ class Follower extends Model
      */
     public function followedUser()
     {
-        return $this->hasOne(User::class, 'id', 'fan_id');
+        return $this->hasOne(User::class, 'id', 'follower_id');
     }
 
     /*

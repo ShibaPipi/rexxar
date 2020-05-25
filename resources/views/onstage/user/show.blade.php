@@ -7,7 +7,7 @@
                 <img src="{{ $user->avatar }}" alt="" class="img-rounded"
                      style="border-radius:500px; height: 40px"> {{ $user->name }}
             </p>
-            <footer>关注：{{ $user->stars_count }}｜粉丝：{{ $user->fans_count }}｜文章：{{ $user->posts_count }}</footer>
+            <footer>关注：{{ $user->stars_count }}｜粉丝：{{ $user->followers_count }}｜文章：{{ $user->posts_count }}</footer>
             @include('onstage.user.badges.like', ['target_user' => $user])
         </blockquote>
     </div>
@@ -35,7 +35,7 @@
                     @foreach($starUsers as $user)
                         <div class="blog-post" style="margin-top: 30px">
                             <p class="">{{ $user->name }}</p>
-                            <p class="">关注：{{ $user->stars_count }}｜粉丝：{{ $user->fans_count }}
+                            <p class="">关注：{{ $user->stars_count }}｜粉丝：{{ $user->followers_count }}
                                 ｜文章：{{ $user->posts_count }}</p>
                             @include('onstage.user.badges.like', ['target_user' => $user])
                         </div>
@@ -46,7 +46,7 @@
                     @foreach($followedUsers as $user)
                         <div class="blog-post" style="margin-top: 30px">
                             <p class="">{{ $user->name }}</p>
-                            <p class="">关注：{{ $user->stars_count }}｜粉丝：{{ $user->fans_count }}
+                            <p class="">关注：{{ $user->stars_count }}｜粉丝：{{ $user->followers_count }}
                                 ｜文章：{{ $user->posts_count }}</p>
                             @include('onstage.user.badges.like', ['target_user' => $user])
                         </div>

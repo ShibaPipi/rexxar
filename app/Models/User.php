@@ -48,7 +48,7 @@ class User extends Authenticatable
     // 文章列表
     public function posts()
     {
-        return $this->hasMany(Post::class, 'user_id', 'id');
+        return $this->hasMany(Post::class);
     }
 
     /*
@@ -56,7 +56,7 @@ class User extends Authenticatable
      */
     public function followers()
     {
-        return $this->hasMany(Follower::class, 'star_id', 'id');
+        return $this->hasMany(Follower::class, 'star_id');
     }
 
     /*
@@ -64,19 +64,19 @@ class User extends Authenticatable
      */
     public function stars()
     {
-        return $this->hasMany(Follower::class, 'follower_id', 'id');
+        return $this->hasMany(Follower::class, 'follower_id');
     }
 
     /**
      * 关注某人
      *
-     * @param $uid
+     * @param $userId
      * @return mixed
      */
-    public function follow($uid)
+    public function follow($userId)
     {
         $follower = new Follower();
-        $follower->star_id = $uid;
+        $follower->star_id = $userId;
 
         return $this->stars()->save($follower);
     }
@@ -84,13 +84,13 @@ class User extends Authenticatable
     /**
      * 取消关注
      *
-     * @param $uid
+     * @param $userId
      * @return mixed
      */
-    public function cancelFollow($uid)
+    public function cancelFollow($userId)
     {
         $follower = new Follower();
-        $follower->star_id = $uid;
+        $follower->star_id = $userId;
 
         return $this->stars()->delete($follower);
     }
@@ -98,17 +98,17 @@ class User extends Authenticatable
     /*
      * 当前这个人是否被uid粉了
      */
-    public function hasFollower($uid)
+    public function hasFollower($userId)
     {
-        return $this->followers()->where('follower_id', $uid)->count();
+        return $this->followers()->where('follower_id', $userId)->count();
     }
 
     /*
      * 当前这个人是否关注uid了
      */
-    public function hasStar($uid)
+    public function hasStar($userId)
     {
-        return $this->stars()->where('star_id', $uid)->count();
+        return $this->stars()->where('star_id', $userId)->count();
     }
 
     /*
