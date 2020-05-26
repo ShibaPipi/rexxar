@@ -26,7 +26,7 @@
                                     <td>{{ $user->id }}.</td>
                                     <td>{{ $user->name }}</td>
                                     <td>
-                                        <a type="button" class="btn" href="/admin/users/{{ $user->id }}/role" >角色管理</a>
+                                        <a type="button" class="btn" href="/admin/users/{{ $user->id }}/roles" >角色管理</a>
                                     </td>
                                 </tr>
                                 </tbody>

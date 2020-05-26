@@ -1,4 +1,4 @@
-@extends('onstage.layout.main')
+@extends('onstage.layouts.app')
 
 @section('content')
         <div class="col-sm-8 blog-main">
@@ -13,7 +13,7 @@
                     <textarea id="content"  style="height:400px;max-height:500px;" name="content" class="form-control" placeholder="这里是内容"></textarea>
                 </div>
                 <button type="submit" class="btn btn-default">提交</button>
-                @include('onstage.layout.error')
+                @include('onstage.layouts.error')
             </form>
             <br>
 

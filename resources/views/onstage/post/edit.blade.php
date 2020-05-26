@@ -17,6 +17,6 @@
             <button type="submit" class="btn btn-default">提交</button>
         </form>
         <br>
-        @include('onstage.layout.error')
+        @include('onstage.layouts.error')
     </div><!-- /.blog-main -->
 @endsection

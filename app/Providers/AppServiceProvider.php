@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        view()->composer('onstage.layout.sidebar', function ($view) {
+        view()->composer('onstage.layouts.sidebar', function ($view) {
             $topics = Topic::all();
             $view->with('topics', $topics);
         });

@@ -4,14 +4,16 @@
 use Illuminate\Support\Facades\Route;
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('aaa', 'IndexController@index');
+
     Route::prefix('login')->name('login.')->group(function () {
-        Route::get('', 'LoginController@index')->name('index');
+        Route::get('', 'LoginController@showLoginForm')->name('index');
         Route::post('', 'LoginController@login')->name('login');
     });
 
     Route::get('/logout', 'LoginController@logout')->name('logout');
 
-    Route::middleware('auth:admin')->group(function () {
+    Route::middleware(['auth.admin:admin', 'auth:admin'])->group(function () {
         Route::redirect('/', '/admin/home');
         Route::get('/home', 'HomeController@index')->name('home');
 

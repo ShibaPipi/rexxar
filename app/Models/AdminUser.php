@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class AdminUser extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    use Notifiable;
 
     protected $rememberTokenName = '';
 

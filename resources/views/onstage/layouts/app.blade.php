@@ -30,16 +30,16 @@
 </head>
 
 <body>
-@include('onstage.layout.nav')
+@includeWhen('login' != request()->route()->getName(), 'onstage.layouts.nav')
 <div class="container">
     <div class="row">
         @yield('content')
 
-        @include('onstage.layout.sidebar')
+        @includeWhen('login' != request()->route()->getName(), 'onstage.layouts.sidebar')
     </div><!-- /.row -->
 </div><!-- /.container -->
 
-@include('onstage.layout.footer')
+@include('onstage.layouts.footer')
 <!-- Bootstrap core JavaScript ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
