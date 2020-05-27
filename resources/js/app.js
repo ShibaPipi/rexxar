@@ -1,15 +1,28 @@
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import 'babel-polyfill'
+import Antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.css'
+import store from './store'
+
+Vue.use(Antd);
+
 /**
- * First we will load all of this project's JavaScript dependencies which
- * includes React and other helpers. It's a great starting point while
- * building robust, powerful web applications using React + Laravel.
+ * 不显示生产模式的消息
+ * 开发环境下，Vue 会提供很多警告来帮你对付常见的错误与陷阱。
+ * 而在生产环境下，这些警告语句却没有用，反而会增加应用的体积。
+ * 此外，有些警告检查还有一些小的运行时开销，这在生产环境模式下是可以避免的。
  */
+Vue.config.productionTip = false;
 
-require('./bootstrap');
-
-/**
- * Next, we will create a fresh React component instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-require('./components/App');
+/* eslint-disable no-new */
+new Vue({
+  el: '#root',
+  router,
+  store,
+  components: {App},
+  template: '<App />'
+});
