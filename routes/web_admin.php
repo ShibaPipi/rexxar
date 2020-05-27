@@ -18,7 +18,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/home', 'HomeController@index')->name('home');
 
         Route::middleware('can:system')->group(function () {
-            // 管理人员模块
+            /**
+             * 用户管理
+             */
             Route::prefix('users')->name('users.')->group(function () {
                 Route::get('', 'UserController@index')->name('index');
                 Route::get('create', 'UserController@create')->name('create');
@@ -30,7 +32,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
                 });
             });
 
-            // 角色管理
+            /**
+             * 角色管理
+             */
             Route::prefix('/roles')->name('roles.')->group(function () {
                 Route::get('', 'RoleController@index')->name('index');
                 Route::get('create', 'RoleController@create')->name('create');
@@ -42,7 +46,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
                 });
             });
 
-            // 权限管理
+            /**
+             * 权限管理
+             */
             Route::resource('permissions', 'PermissionController', [
                 'only' => ['index', 'create', 'store'],
             ]);
