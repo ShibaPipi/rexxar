@@ -32,6 +32,6 @@ class PostController extends Controller
         $post->status = request('status');
         $post->save();
 
-        return api()->success();
+        return api()->updated('updated');
     }
 }

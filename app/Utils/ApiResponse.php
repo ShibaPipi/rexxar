@@ -125,11 +125,20 @@ class ApiResponse
     }
 
     /**
+     * @param string $message
+     * @return mixed
+     */
+    public function updated($message = 'updated')
+    {
+        return $this->created($message);
+    }
+
+    /**
      * @param $data
      * @param string $status
      * @return mixed
      */
-    public function success($data = [], $status = 'success')
+    public function success($data, $status = 'success')
     {
         return $this->status($status, compact('data'));
     }

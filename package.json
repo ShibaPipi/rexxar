@@ -1,4 +1,10 @@
 {
+    "name": "rexxar",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/ShibaPipi/rexxar.git",
+    "author": "sun.yaopeng <906262260@qq.com>",
+    "license": "MIT",
     "private": false,
     "scripts": {
         "dev": "npm run development",
@@ -55,10 +61,14 @@
         "vue-style-loader": "^4.1.2",
         "vuex": "^3.4.0"
     },
-    "name": "rexxar",
-    "version": "1.0.0",
-    "main": "index.js",
-    "repository": "https://github.com/ShibaPipi/rexxar.git",
-    "author": "sun.yaopeng <906262260@qq.com>",
-    "license": "MIT"
+    "plugins": [
+        [
+            "import",
+            {
+                "libraryName": "ant-design-vue",
+                "libraryDirectory": "es",
+                "style": "css"
+            }
+        ]
+    ]
 }
