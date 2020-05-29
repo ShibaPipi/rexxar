@@ -3,7 +3,7 @@
     <Sidebar />
     <a-layout>
       <Nav />
-      <Content />
+      <layout-content />
       <Footer />
     </a-layout>
   </a-layout>
@@ -12,7 +12,7 @@
 <script>
   import Sidebar from './components/Sidebar'
   import Nav from './components/Nav'
-  import Content from './components/Content'
+  import LayoutContent from './components/Content'
   import Footer from './components/Footer'
 
   export default {
@@ -20,7 +20,7 @@
     components: {
       Sidebar,
       Nav,
-      Content,
+      LayoutContent,
       Footer
     }
   }

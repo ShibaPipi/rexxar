@@ -8,7 +8,9 @@ use App\Models\AdminRole;
 
 class RoleController extends Controller
 {
-    // 角色列表
+    /**
+     * 角色列表
+     */
     public function index()
     {
         $roles = AdminRole::query()->paginate(10);
@@ -16,7 +18,9 @@ class RoleController extends Controller
         return view('admin.role.index', compact('roles'));
     }
 
-    // 角色创建
+    /**
+     * 角色创建
+     */
     public function create()
     {
         return view('admin.role.add');
