@@ -6,6 +6,28 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * App\Models\AdminUser
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $password
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\AdminRole[] $roles
+ * @property-read int|null $roles_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminUser newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminUser newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminUser query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminUser whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminUser whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminUser whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminUser wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminUser whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class AdminUser extends Authenticatable
 {
     use Notifiable;
