@@ -117,7 +117,7 @@
         <h4 class="text-center">多谢捧场，多谢关注~~~</h4>
         <div class="copyright">
             <p> &copy; 2018 - By Shiba Inu Pipi</p>
-            <p>备案号：津ICP备19011078号</p>
+            <p>备案号：<a href="http://www.beian.miit.gov.cn">津ICP备19011078号</a></p>
         </div>
     </section>
     <!-- /Footer Section -->
