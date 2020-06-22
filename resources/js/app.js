@@ -1,14 +1,16 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import ElementUI from 'element-ui'
+import less from 'less'
+import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 import router from './router'
 import 'babel-polyfill'
-import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
 import store from './store'
 
-Vue.use(Antd);
+Vue.use(ElementUI);
+Vue.use(less);
 
 /**
  * 不显示生产模式的消息
@@ -23,6 +25,6 @@ new Vue({
   el: '#root',
   router,
   store,
-  components: {App},
+  components: { App },
   template: '<App />'
 });

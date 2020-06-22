@@ -1,7 +1,7 @@
 <template>
-  <a-layout-footer :style="{ textAlign: 'center' }">
+  <div>
     Laravel 7 Blog ©2020 Created by 皮神
-  </a-layout-footer>
+  </div>
 </template>
 
 <script>
