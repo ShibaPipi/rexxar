@@ -4,7 +4,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
-    Route::get('aaa', 'IndexController@index');
+    Route::get('vue', 'IndexController@index');
 
     Route::prefix('login')->name('login.')->group(function () {
         Route::get('', 'LoginController@showLoginForm')->name('index');

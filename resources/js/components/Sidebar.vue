@@ -1,66 +1,35 @@
 <template>
   <el-menu
       default-active="2"
-      class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
+      :collapse="isCollapse"
       background-color="#545c64"
       text-color="#fff"
-      active-text-color="#ffd04b">
+      active-text-color="#ffd04b"
+  >
     <el-submenu index="1">
       <template slot="title">
-        <i class="el-icon-location"></i>
+        <i class="el-icon-setting"></i>
         <span>系统管理</span>
       </template>
-      <el-menu-item index="1-1">选项1</el-menu-item>
-      <el-menu-item index="1-2">选项2</el-menu-item>
-      <el-menu-item index="1-3">选项3</el-menu-item>
+      <el-menu-item index="1-1"><i class="el-icon-s-custom"></i>用户管理</el-menu-item>
+      <el-menu-item index="1-2"><i class="el-icon-magic-stick"></i>角色管理</el-menu-item>
+      <el-menu-item index="1-3"><i class="el-icon-view"></i>权限管理</el-menu-item>
     </el-submenu>
+    <el-menu-item index="2">
+      <i class="el-icon-edit"></i>
+      <span slot="title">文章管理</span>
+    </el-menu-item>
+    <el-menu-item index="3">
+      <i class="el-icon-paperclip"></i>
+      <span slot="title">专题管理</span>
+    </el-menu-item>
+    <el-menu-item index="4">
+      <i class="el-icon-close-notification"></i>
+      <span slot="title">通知管理</span>
+    </el-menu-item>
   </el-menu>
-<!--  <a-layout-sider-->
-<!--      style="min-width: 256px"-->
-<!--      breakpoint="lg"-->
-<!--      collapsed-width="0"-->
-<!--      @collapse="onCollapse"-->
-<!--      @breakpoint="onBreakpoint"-->
-<!--  >-->
-<!--    <div class="logo"></div>-->
-<!--    <a-menu-->
-<!--        mode="inline"-->
-<!--        theme="dark"-->
-<!--        :open-keys="openKeys"-->
-<!--        style="width: 256px"-->
-<!--        @openChange="onOpenChange"-->
-<!--    >-->
-<!--      <a-sub-menu key="sub1">-->
-<!--        <span slot="title"><a-icon type="setting" /><span>系统管理</span></span>-->
-<!--        <a-menu-item key="1">-->
-<!--          <router-link to="/users">-->
-<!--            用户管理-->
-<!--          </router-link>-->
-<!--        </a-menu-item>-->
-<!--        <a-menu-item key="2">-->
-<!--          <router-link to="/roles">-->
-<!--            角色管理-->
-<!--          </router-link>-->
-<!--        </a-menu-item>-->
-<!--        <a-menu-item key="3">-->
-<!--          <router-link to="/permissions">-->
-<!--            权限管理-->
-<!--          </router-link>-->
-<!--        </a-menu-item>-->
-<!--      </a-sub-menu>-->
-<!--      <a-menu-item key="5">-->
-<!--        <router-link to="/posts"><span><a-icon type="setting" />文章管理</span></router-link>-->
-<!--      </a-menu-item>-->
-<!--      <a-menu-item key="6">-->
-<!--        <router-link to="/topics"><span><a-icon type="setting" />专题管理</span></router-link>-->
-<!--      </a-menu-item>-->
-<!--      <a-menu-item key="7">-->
-<!--        <router-link to="/notices"><span><a-icon type="setting" />通知管理</span></router-link>-->
-<!--      </a-menu-item>-->
-<!--    </a-menu>-->
-<!--  </a-layout-sider>-->
 </template>
 
 <script>
@@ -77,5 +46,12 @@
   }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  .el-submenu {
+    .el-menu-item {
+      i {
+        margin-right: 10px;
+      }
+    }
+  }
 </style>

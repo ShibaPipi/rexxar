@@ -6,7 +6,6 @@ import less from 'less'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 import router from './router'
-import 'babel-polyfill'
 import store from './store'
 
 Vue.use(ElementUI);

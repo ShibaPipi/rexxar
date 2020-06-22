@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <el-container>
     Laravel 7 Blog ©2020 Created by 皮神
-  </div>
+  </el-container>
 </template>
 
 <script>
@@ -10,6 +10,4 @@
   }
 </script>
 
-<style scoped>
-
-</style>
+<style lang="less" scoped></style>

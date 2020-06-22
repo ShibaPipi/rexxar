@@ -1,29 +1,24 @@
 <template>
   <keep-alive>
     <el-container>
-      <el-header>
-        <Nav />
-      </el-header>
-      <el-container class="layout-container">
-        <el-aside>
+      <el-container>
+        <el-aside :style="{width: '230px', textAlign: 'left'}">
+          <el-header :style="headerStyle">Rexxar 后台</el-header>
           <Sidebar />
         </el-aside>
         <el-container>
-          <el-main>Main</el-main>
-          <el-footer>
+          <el-header :style="headerStyle">
+            <Nav />
+          </el-header>
+          <el-main>
+            <LayoutContent />
+          </el-main>
+          <el-footer :style="headerStyle">
             <Footer />
           </el-footer>
         </el-container>
       </el-container>
     </el-container>
-    <!--    <el-container>-->
-    <!--      <Sidebar />-->
-    <!--      <a-layout>-->
-    <!--        <Nav />-->
-    <!--        <layout-content />-->
-    <!--        <Footer />-->
-    <!--      </a-layout>-->
-    <!--    </el-container>-->
   </keep-alive>
 </template>
 
@@ -41,6 +36,11 @@
       LayoutContent,
       Footer
     },
+    data() {
+      return {
+        headerStyle: {height: '50px'}
+      };
+    },
     methods: {
       handleOpen(key, keyPath) {
         console.log(key, keyPath);
@@ -57,7 +57,7 @@
     background-color: #000;
     color: #fff;
     text-align: center;
-    line-height: 60px;
+    line-height: 50px;
   }
 
   .el-aside {
@@ -71,23 +71,5 @@
     background-color: #E9EEF3;
     color: #333;
     text-align: center;
-    line-height: 160px;
-  }
-
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-
-  .el-container:nth-child(5) .el-aside,
-  .el-container:nth-child(6) .el-aside {
-    line-height: 260px;
-  }
-
-  .el-container:nth-child(7) .el-aside {
-    line-height: 320px;
-  }
-
-  .layout-container {
-    height: 100%;
   }
 </style>

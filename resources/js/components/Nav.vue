@@ -24,13 +24,6 @@
 </script>
 
 <style lang="less" scoped>
-  .el-header {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    line-height: 60px;
-  }
-
   .el-dropdown-link {
     cursor: pointer;
     color: #fff;
