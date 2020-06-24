@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use DateTimeInterface;
 
 /**
  * App\Models\AdminUser
@@ -28,7 +29,7 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminUser whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class AdminUser extends Authenticatable
+class AdminUser extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
@@ -36,12 +37,27 @@ class AdminUser extends Authenticatable
 
     protected $guarded = [];
 
+    protected $hidden = [
+        'password'
+    ];
+
     /*
      * 将密码进行加密
      */
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    /**
+     * 为数组 / JSON 序列化准备日期。
+     *
+     * @param DateTimeInterface $date
+     * @return string
+     */
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format($this->dateFormat ?: 'Y-m-d H:i:s');
     }
 
     // 用户有哪一些角色
@@ -73,5 +89,15 @@ class AdminUser extends Authenticatable
     public function hasPermission($permission)
     {
         return $this->isInRoles($permission->roles);
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

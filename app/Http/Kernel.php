@@ -2,7 +2,6 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\AdminAuthMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -65,6 +64,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'cors' => \Medz\Cors\Laravel\Middleware\ShouldGroup::class,
+        'api.guard' => \App\Http\Middleware\Api\GuardMiddleware::class,
+        'api_admin.guard' => \App\Http\Middleware\Api\AdminGuardMiddleware::class,
+        'api.refresh' => \App\Http\Middleware\Api\RefreshTokenMiddleware::class,
     ];
 
     /**
@@ -77,7 +80,7 @@ class Kernel extends HttpKernel
     protected $middlewarePriority = [
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        AdminAuthMiddleware::class,
+        \App\Http\Middleware\AdminAuthMiddleware::class,
         \Illuminate\Contracts\Auth\Middleware\AuthenticatesRequests::class,
         \Illuminate\Routing\Middleware\ThrottleRequests::class,
         \Illuminate\Session\Middleware\AuthenticateSession::class,

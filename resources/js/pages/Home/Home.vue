@@ -1,13 +1,91 @@
 <template>
- <div>欢迎</div>
+  <el-container>
+    <el-aside :style="{width: '230px', textAlign: 'left'}">
+      <router-link :to="{name: 'home'}">
+        <el-header :style="headerStyle">Rexxar 后台</el-header>
+      </router-link>
+      <Sidebar />
+    </el-aside>
+    <el-container>
+      <el-header :style="headerStyle">
+        <Nav />
+      </el-header>
+      <el-main>
+        <LayoutContent />
+      </el-main>
+      <el-footer :style="headerStyle">
+        <Footer />
+      </el-footer>
+    </el-container>
+  </el-container>
 </template>
 
 <script>
+  import Sidebar from '../../components/Layout/Sidebar'
+  import Nav from '../../components/Layout/Nav'
+  import LayoutContent from '../../components/Layout/Content'
+  import Footer from '../../components/Layout/Footer'
+
+  import { mapGetters } from 'vuex'
+
   export default {
-    name: 'Home'
+    name: 'Home',
+    components: {
+      Sidebar,
+      Nav,
+      LayoutContent,
+      Footer
+    },
+    data() {
+      return {
+        headerStyle: { height: '50px' }
+      };
+    },
+    computed: {
+      ...mapGetters(['isLoggedIn'])
+    },
+    methods: {
+      checkLogin() {
+        !this.isLoggedIn && this.redirectToLoginPage()
+      },
+      redirectToLoginPage() {
+        this.$router.push({ name: 'login' })
+      }
+    },
+    beforeMount() {
+      this.checkLogin()
+    },
+    activated() {
+      this.checkLogin()
+    }
   }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  .el-header {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+  }
 
+  .el-footer {
+    background-color: #E9EEF3;
+    color: #000;
+    text-align: center;
+    line-height: 50px;
+  }
+
+  .el-aside {
+    background-color: #909399;
+    color: #fff;
+    text-align: center;
+    line-height: 200px;
+  }
+
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+  }
 </style>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Post\StatusEnum;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;

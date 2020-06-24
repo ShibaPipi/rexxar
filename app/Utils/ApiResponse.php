@@ -26,8 +26,7 @@ class ApiResponse
      */
     public function setStatusCode($statusCode, $httpCode = null)
     {
-        $httpCode = $httpCode ?? $statusCode;
-        $this->statusCode = $statusCode;
+        $this->statusCode = $httpCode ?? $statusCode;
 
         return $this;
     }

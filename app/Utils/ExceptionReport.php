@@ -13,6 +13,7 @@ use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use Throwable;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
 class ExceptionReport
@@ -34,9 +35,9 @@ class ExceptionReport
     /**
      * ExceptionReport constructor.
      * @param Request $request
-     * @param Exception $exception
+     * @param Throwable $exception
      */
-    function __construct(Request $request, Exception $exception)
+    function __construct(Request $request, Throwable $exception)
     {
         $this->request = $request;
         $this->exception = $exception;
@@ -87,10 +88,10 @@ class ExceptionReport
     }
 
     /**
-     * @param Exception $e
+     * @param Throwable $e
      * @return static
      */
-    public static function make(Exception $e)
+    public static function make(Throwable $e)
     {
 
         return new static(request(), $e);

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../pages/Home/Home'
+import Login from '../pages/Login/Login'
 import User from '../pages/User/User'
 import Role from '../pages/Role/Role'
 import Permission from '../pages/Permission/Permission'
@@ -8,37 +9,48 @@ import Post from '../pages/Post/Post'
 import Topic from '../pages/Topic/Topic'
 import Notice from '../pages/Notice/Notice'
 
+// 解决两次访问相同路由地址报错
+const originalPush = Router.prototype.push;
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+};
+
 Vue.use(Router);
 
 export default new Router({
   routes: [{
     path: '/',
-    name: 'Home',
-    component: Home
-  },{
-    path: '/users',
-    name: 'User',
-    component: User
-  },{
-    path: '/roles',
-    name: 'Role',
-    component: Role
-  },{
-    path: '/permissions',
-    name: 'Permission',
-    component: Permission
-  },{
-    path: '/posts',
-    name: 'Post',
-    component: Post
-  },{
-    path: '/topics',
-    name: 'Topic',
-    component: Topic
-  },{
-    path: '/notices',
-    name: 'Notice',
-    component: Notice
+    name: 'home',
+    component: Home,
+    children: [{
+      path: '/users',
+      name: 'users',
+      component: User
+    }, {
+      path: '/roles',
+      name: 'roles',
+      component: Role
+    }, {
+      path: '/permissions',
+      name: 'permissions',
+      component: Permission
+    }, {
+      path: '/posts',
+      name: 'posts',
+      component: Post
+    }, {
+      path: '/topics',
+      name: 'topics',
+      component: Topic
+    }, {
+      path: '/notices',
+      name: 'notices',
+      component: Notice
+    }]
+  }, {
+    path: '/login',
+    name: 'login',
+    component: Login
   }],
   scrollBehavior(to, from, savedPosition) {
     return { x: 0, y: 0 }

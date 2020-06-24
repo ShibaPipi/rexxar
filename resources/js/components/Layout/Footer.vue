@@ -1,7 +1,7 @@
 <template>
-  <el-container>
+  <div>
     Laravel 7 Blog ©2020 Created by 皮神
-  </el-container>
+  </div>
 </template>
 
 <script>

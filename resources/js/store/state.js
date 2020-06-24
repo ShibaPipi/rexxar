@@ -1,16 +1,12 @@
-let defaultId = '0001'
-let defaultCity = '天津'
+let defaultToken = '';
 
 try {
-  if (localStorage.id) {
-    defaultId = localStorage.id
+  if (localStorage.token) {
+    defaultToken = localStorage.token
   }
-  if (localStorage.city) {
-    defaultCity = localStorage.city
-  }
-} catch (e) {}
+} catch (e) {
+}
 
 export default {
-  id: defaultId,
-  city: defaultCity
+  token: defaultToken
 }

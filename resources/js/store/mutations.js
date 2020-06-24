@@ -1,8 +1,18 @@
 export default {
-  changeCity (state, city) {
-    state.city = city
+  setToken(state, token) {
+    state.token = token;
+
     try {
-      localStorage.city = city
-    } catch (e) {}
+      localStorage.token = token
+    } catch (e) {
+    }
+  },
+  unsetToken(state) {
+    state.token = '';
+
+    try {
+      localStorage.token = ''
+    } catch (e) {
+    }
   }
 }

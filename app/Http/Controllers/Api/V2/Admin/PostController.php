@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\Api\V2\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\V2\Admin\PostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -11,13 +12,12 @@ class PostController extends Controller
     // 首页
     public function index()
     {
-        $posts = Post::query()
+        return api()->success(Post::query()
+            ->select('id', 'title', 'status', 'created_at')
             ->withoutGlobalScope('available')
-            ->where('status', 0)
             ->latest()
-            ->paginate(10);
-
-        api()->success($posts);
+            ->paginate(10)
+        );
     }
 
     /*
@@ -32,6 +32,6 @@ class PostController extends Controller
         $post->status = request('status');
         $post->save();
 
-        return api()->updated('updated');
+        return api()->updated();
     }
 }

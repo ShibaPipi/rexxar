@@ -1,25 +1,36 @@
 <template>
-  <el-dropdown class="user-menu">
+  <el-dropdown
+      class="user-menu"
+      :hide-on-click="false"
+      trigger="click"
+      @command="handleCommand"
+  >
       <span class="el-dropdown-link">
         <i class="el-icon-user"></i>Admin<i class="el-icon-arrow-down el-icon--right"></i>
       </span>
     <el-dropdown-menu slot="dropdown">
-      <el-dropdown-item icon="el-icon-circle-check">登出</el-dropdown-item>
+      <el-dropdown-item icon="el-icon-circle-check" command="logout">登出</el-dropdown-item>
     </el-dropdown-menu>
   </el-dropdown>
 </template>
 
 <script>
+  import { mapMutations } from 'vuex'
+
   export default {
     name: 'Nav',
     methods: {
-      handleButtonClick(e) {
-        console.log('click left button', e);
+      handleCommand(command) {
+        this[command]()
       },
-      handleMenuClick(e) {
-        console.log('click', e);
+      logout() {
+        this.unsetToken();
+        this.$router.push({ name: 'login' })
       },
+      ...mapMutations(['unsetToken'])
     },
+    mounted() {
+    }
   }
 </script>
 

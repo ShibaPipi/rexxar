@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::namespace('Api\V2\Onstage')->prefix('v2')->middleware('api.guard')->group(function () {
+    Route::prefix('users')->middleware('api.refresh:api')->name('users.')->group(function () {
+        Route::get('info', 'UserController@info')->name('info');
+    });
 });
+
+include_once 'api_admin.php';
