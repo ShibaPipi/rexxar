@@ -8,6 +8,10 @@
       style="width: 100%"
     >
       <el-table-column
+        type="index"
+        width="50"
+      />
+      <el-table-column
         prop="name"
         label="用户角色名"
       />
@@ -23,7 +27,7 @@
           <el-button
             type="text"
             size="small">
-            管理权限
+            管理角色权限
           </el-button>
         </template>
       </el-table-column>
@@ -67,7 +71,5 @@
 </script>
 
 <style lang="less" scoped>
-  .el-card {
-    width: 100%;
-  }
+  @import "../../assets/styles/layout-content";
 </style>

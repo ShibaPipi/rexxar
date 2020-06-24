@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AdminRole;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class AdminRoleController extends Controller
 {
     public function index()
     {

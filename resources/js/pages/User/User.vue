@@ -3,10 +3,15 @@
     <div slot="header">
       <span>用户列表</span>
     </div>
+    <el-button type="primary" size="mini">新用户</el-button>
     <el-table
       :data="adminUsers"
       style="width: 100%"
     >
+      <el-table-column
+        type="index"
+        width="50"
+      />
       <el-table-column
         prop="name"
         label="用户名"
@@ -68,7 +73,5 @@
 </script>
 
 <style lang="less" scoped>
-  .el-card {
-    width: 100%;
-  }
+  @import "../../assets/styles/layout-content";
 </style>

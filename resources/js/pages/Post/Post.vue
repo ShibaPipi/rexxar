@@ -8,6 +8,10 @@
       style="width: 100%"
     >
       <el-table-column
+        type="index"
+        width="50"
+      />
+      <el-table-column
         prop="title"
         label="文章标题"
       />
@@ -61,9 +65,7 @@
 </script>
 
 <style lang="less" scoped>
-  .el-card {
-    width: 100%;
-  }
+  @import "../../assets/styles/layout-content";
 
   .el-table {
 

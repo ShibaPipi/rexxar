@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Api\V2\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Notice;
+use App\Models\AdminPermission;
 use Illuminate\Http\Request;
 
-class NoticeController extends Controller
+class AdminPermissionController extends Controller
 {
     public function index()
     {
         return api()->success(
-            Notice::query()
-                ->select('id', 'title')
+            AdminPermission::query()
+                ->select('id', 'name', 'description')
                 ->latest()
                 ->paginate()
         );

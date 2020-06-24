@@ -1,12 +1,13 @@
 let defaultToken = '';
+let defaultName = '';
 
 try {
-  if (localStorage.token) {
-    defaultToken = localStorage.token
-  }
+  localStorage.token && (defaultToken = localStorage.token);
+  localStorage.name && (defaultName = localStorage.name)
 } catch (e) {
 }
 
 export default {
-  token: defaultToken
+  token: defaultToken,
+  name: defaultName
 }

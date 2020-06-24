@@ -24,7 +24,10 @@ class AdminUserController extends Controller
         $currentGuard = Auth::getDefaultDriver();
 
         if ($token = Auth::claims(['guard' => $currentGuard])->attempt(['name' => $request->name, 'password' => $request->password])) {
-            return api()->setStatusCode(201)->success(['token' => 'bearer ' . $token]);
+            return api()->setStatusCode(201)->success([
+                'token' => 'bearer ' . $token,
+                'name' => auth()->user()->username
+            ]);
         }
 
         return api()->failed('账号密码错误', 400);

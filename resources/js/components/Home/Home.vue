@@ -21,10 +21,10 @@
 </template>
 
 <script>
-  import Sidebar from '../../components/Layout/Sidebar'
-  import Nav from '../../components/Layout/Nav'
-  import LayoutContent from '../../components/Layout/Content'
-  import Footer from '../../components/Layout/Footer'
+  import Sidebar from '../Layout/Sidebar'
+  import Nav from '../Layout/Nav'
+  import LayoutContent from '../Layout/Content'
+  import Footer from '../Layout/Footer'
 
   import { mapGetters } from 'vuex'
 

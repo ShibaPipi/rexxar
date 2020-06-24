@@ -31,12 +31,23 @@ Route::namespace('Api\V2\Admin')->prefix('v2/admin')->middleware('api_admin.guar
         });
 
         Route::prefix('admin_roles')->name('admin_roles.')->group(function () {
-            Route::get('', 'RoleController@index')->name('index');
+            Route::get('', 'AdminRoleController@index')->name('index');
+        });
+
+        Route::prefix('admin_permissions')->name('admin_permissions.')->group(function () {
+            Route::get('', 'AdminPermissionController@index')->name('index');
         });
 
         Route::prefix('posts')->name('posts.')->group(function () {
             Route::get('', 'PostController@index')->name('index');
         });
-    });
 
+        Route::prefix('topics')->name('topics.')->group(function () {
+            Route::get('', 'TopicController@index')->name('index');
+        });
+
+        Route::prefix('notices')->name('notices.')->group(function () {
+            Route::get('', 'NoticeController@index')->name('index');
+        });
+    });
 });
