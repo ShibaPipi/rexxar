@@ -5,7 +5,7 @@
     </div>
     <el-button type="primary" size="mini">新专题</el-button>
     <el-table
-      :data="topics"
+      :data="topicList"
       style="width: 100%"
     >
       <el-table-column
@@ -40,19 +40,19 @@
     name: 'Topic',
     data() {
       return {
-        topics: []
+        topicList: []
       }
     },
     methods: {
-      async getTopics() {
-        this.topics = (await getTopics()).data
+      async topics() {
+        this.topicList = (await getTopics()).data
       },
       deleteRow(index, rows) {
         rows.splice(index, 1);
       }
     },
     mounted() {
-      this.getTopics()
+      this.topics()
     }
   }
 </script>

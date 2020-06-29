@@ -1,5 +1,4 @@
 import fetch from '../config/fetch'
-import { getStore } from '../config/utils'
 
 export const login = (name, password) => fetch('login', {
   name,
@@ -7,6 +6,7 @@ export const login = (name, password) => fetch('login', {
 }, 'POST');
 
 export const logout = () => fetch('logout');
+export const getAllAdminPermissionNames = () => fetch('admin_permissions/all');
 export const getAdminInfo = () => fetch('admin_users/info');
 export const getAdminUsers = () => fetch('admin_users');
 export const getAdminRoles = () => fetch('admin_roles');

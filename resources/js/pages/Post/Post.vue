@@ -4,7 +4,7 @@
       <span>文章列表</span>
     </div>
     <el-table
-      :data="posts"
+      :data="postList"
       style="width: 100%"
     >
       <el-table-column
@@ -36,16 +36,16 @@
     name: 'Post',
     data() {
       return {
-        posts: []
+        postList: []
       }
     },
     methods: {
-      async getPosts() {
-        this.posts = (await getPosts()).data
+      async posts() {
+        this.postList = (await getPosts()).data
       },
     },
     mounted() {
-      this.getPosts()
+      this.posts()
     }
   }
 </script>

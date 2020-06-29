@@ -4,7 +4,7 @@
       <span>用户权限列表</span>
     </div>
     <el-table
-      :data="adminPermissions"
+      :data="adminPermissionList"
       style="width: 100%"
     >
       <el-table-column
@@ -42,16 +42,16 @@
     name: 'Permission',
     data() {
       return {
-        adminPermissions: []
+        adminPermissionList: []
       }
     },
     methods: {
-      async getAdminPermissions() {
-        this.adminPermissions = (await getAdminPermissions()).data
+      async adminPermissions() {
+        this.adminPermissionList = (await getAdminPermissions()).data
       }
     },
     mounted() {
-      this.getAdminPermissions()
+      this.adminPermissions()
     }
   }
 </script>

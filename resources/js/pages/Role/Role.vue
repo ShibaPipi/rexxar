@@ -4,7 +4,7 @@
       <span>用户角色列表</span>
     </div>
     <el-table
-      :data="adminRoles"
+      :data="adminRoleList"
       style="width: 100%"
     >
       <el-table-column
@@ -42,16 +42,16 @@
     name: 'Role',
     data() {
       return {
-        adminRoles: []
+        adminRoleList: []
       }
     },
     methods: {
-      async getAdminRoles() {
-        this.adminRoles = (await getAdminRoles()).data
+      async adminRoles() {
+        this.adminRoleList = (await getAdminRoles()).data
       },
     },
     mounted() {
-      this.getAdminRoles()
+      this.adminRoles()
     }
   };
 </script>

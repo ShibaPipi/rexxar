@@ -37,6 +37,7 @@ Route::namespace('Api\V2\Admin')->prefix('v2/admin')->middleware('api_admin.guar
 
         Route::prefix('admin_permissions')->name('admin_permissions.')->group(function () {
             Route::get('', 'AdminPermissionController@index')->name('index');
+            Route::get('all', 'AdminPermissionController@getAllNames')->name('all');
         });
 
         Route::prefix('posts')->name('posts.')->group(function () {

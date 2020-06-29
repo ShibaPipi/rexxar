@@ -9,6 +9,7 @@ import Permission from '../pages/Permission/Permission'
 import Post from '../pages/Post/Post'
 import Topic from '../pages/Topic/Topic'
 import Notice from '../pages/Notice/Notice'
+import Unauthorized from '../pages/Unauthorized/Unauthorized'
 
 // 解决两次访问相同路由地址报错
 const originalPush = Router.prototype.push;
@@ -26,7 +27,7 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Index
-    },{
+    }, {
       path: '/users',
       name: 'users',
       component: User
@@ -50,6 +51,10 @@ export default new Router({
       path: '/notices',
       name: 'notices',
       component: Notice
+    }, {
+      path: '/403',
+      name: 'unauthorized',
+      component: Unauthorized
     }]
   }, {
     path: '/login',

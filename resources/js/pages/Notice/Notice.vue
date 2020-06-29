@@ -5,7 +5,7 @@
     </div>
     <el-button type="primary" size="mini">新增通知</el-button>
     <el-table
-      :data="notices"
+      :data="noticeList"
       style="width: 100%"
     >
       <el-table-column
@@ -40,19 +40,19 @@
     name: 'Notice',
     data() {
       return {
-        notices: []
+        noticeList: []
       }
     },
     methods: {
-      async getNotices() {
-        this.notices = (await getNotices()).data
+      async notices() {
+        this.noticeList = (await getNotices()).data
       },
       deleteRow(index, rows) {
         rows.splice(index, 1);
       }
     },
     mounted() {
-      this.getNotices()
+      this.notices()
     }
   }
 </script>

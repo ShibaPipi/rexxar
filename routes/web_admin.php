@@ -17,44 +17,42 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::redirect('/', '/admin/home');
         Route::get('/home', 'HomeController@index')->name('home');
 
-        Route::middleware('can:system')->group(function () {
-            /**
-             * 用户管理
-             */
-            Route::prefix('users')->name('users.')->group(function () {
-                Route::get('', 'UserController@index')->name('index');
-                Route::get('create', 'UserController@create')->name('create');
-                Route::post('store', 'UserController@store')->name('store');
+        /**
+         * 用户管理
+         */
+        Route::prefix('users')->middleware('can:users')->name('users.')->group(function () {
+            Route::get('', 'UserController@index')->name('index');
+            Route::get('create', 'UserController@create')->name('create');
+            Route::post('store', 'UserController@store')->name('store');
 
-                Route::prefix('{user}/roles')->name('roles.')->group(function () {
-                    Route::get('', 'UserController@role')->name('index');
-                    Route::post('', 'UserController@storeRole')->name('store');
-                });
+            Route::prefix('{user}/roles')->name('roles.')->group(function () {
+                Route::get('', 'UserController@role')->name('index');
+                Route::post('', 'UserController@storeRole')->name('store');
             });
-
-            /**
-             * 角色管理
-             */
-            Route::prefix('/roles')->name('roles.')->group(function () {
-                Route::get('', 'RoleController@index')->name('index');
-                Route::get('create', 'RoleController@create')->name('create');
-                Route::post('store', 'RoleController@store')->name('store');
-
-                Route::prefix('{role}/permission')->name('permissions.')->group(function () {
-                    Route::get('', 'RoleController@permission')->name('index');
-                    Route::post('', 'RoleController@storePermission')->name('store');
-                });
-            });
-
-            /**
-             * 权限管理
-             */
-            Route::resource('permissions', 'PermissionController', [
-                'only' => ['index', 'create', 'store'],
-            ]);
         });
 
-        Route::middleware('can:post')->group(function () {
+        /**
+         * 角色管理
+         */
+        Route::prefix('/roles')->middleware('can:roles')->name('roles.')->group(function () {
+            Route::get('', 'RoleController@index')->name('index');
+            Route::get('create', 'RoleController@create')->name('create');
+            Route::post('store', 'RoleController@store')->name('store');
+
+            Route::prefix('{role}/permission')->name('permissions.')->group(function () {
+                Route::get('', 'RoleController@permission')->name('index');
+                Route::post('', 'RoleController@storePermission')->name('store');
+            });
+        });
+
+        /**
+         * 权限管理
+         */
+        Route::middleware('can:permissions')->resource('permissions', 'PermissionController', [
+            'only' => ['index', 'create', 'store'],
+        ]);
+
+        Route::middleware('can:posts')->group(function () {
             // 文章审核模块
             Route::prefix('posts')->name('posts.')->group(function () {
                 Route::get('', 'PostController@index')->name('index');
@@ -63,14 +61,14 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         });
 
         // 专题模块
-        Route::middleware('can:topic')->group(function () {
+        Route::middleware('can:topics')->group(function () {
             Route::resource('topics', 'TopicController', [
                 'only' => ['index', 'create', 'store', 'destroy']
             ]);
         });
 
         // 通知模块
-        Route::middleware('can:notice')->group(function () {
+        Route::middleware('can:notices')->group(function () {
             Route::resource('notices', 'NoticeController', [
                 'only' => ['index', 'create', 'store']
             ]);
