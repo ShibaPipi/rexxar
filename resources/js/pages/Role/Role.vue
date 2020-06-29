@@ -36,9 +36,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  import { mapState } from 'vuex'
-  import { BASE_URL_PREFIX } from '../../utils/constants'
+  import { getAdminRoles } from '../../service/getData';
 
   export default {
     name: 'Role',
@@ -47,29 +45,17 @@
         adminRoles: []
       }
     },
-    computed: {
-      ...mapState(['token'])
-    },
     methods: {
-      getAdminRoles() {
-        axios.get(BASE_URL_PREFIX + 'admin_roles', {
-          headers: { Authorization: this.token }
-        }).then((res) => {
-          if ('success' === res.data.status) {
-            this.adminRoles = res.data.data.data
-          }
-        })
+      async getAdminRoles() {
+        this.adminRoles = (await getAdminRoles()).data
       },
     },
     mounted() {
       this.getAdminRoles()
-    },
-    activated() {
-      [] === this.adminUsers && this.getAdminRoles()
     }
   };
 </script>
 
 <style lang="less" scoped>
-  @import "../../assets/styles/layout-content";
+  @import "../../styles/layout-content";
 </style>

@@ -25,8 +25,7 @@ class AdminUserController extends Controller
 
         if ($token = Auth::claims(['guard' => $currentGuard])->attempt(['name' => $request->name, 'password' => $request->password])) {
             return api()->setStatusCode(201)->success([
-                'token' => 'bearer ' . $token,
-                'name' => auth()->user()->username
+                'token' => 'bearer ' . $token
             ]);
         }
 

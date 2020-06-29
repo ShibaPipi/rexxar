@@ -1,6 +1,8 @@
 <template>
   <el-container class="layout-content">
-    <router-view />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
   </el-container>
 </template>
 

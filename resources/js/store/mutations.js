@@ -1,18 +1,21 @@
+import { LOGOUT, RECORD_ADMIN, SET_ADMIN_INFO } from './mutation-types';
+import { removeStore, setStore } from '../config/utils';
+
 export default {
-  setToken(state, token) {
-    state.token = token;
-
-    try {
-      localStorage.token = token
-    } catch (e) {
-    }
+  [RECORD_ADMIN](state, token) {
+    state.isLoggedIn = true;
+    setStore('token', token);
+    setStore('isLoggedIn', true)
   },
-  unsetToken(state) {
-    state.token = '';
 
-    try {
-      localStorage.token = ''
-    } catch (e) {
-    }
-  }
+  [LOGOUT](state) {
+    state.isLoggedIn = false;
+    removeStore('token');
+    removeStore('isLoggedIn')
+  },
+
+  [SET_ADMIN_INFO](state, adminInfo) {
+    state.adminInfo = adminInfo
+  },
+
 }

@@ -1,12 +1,14 @@
 <template>
   <el-dropdown
-      class="user-menu"
-      :hide-on-click="false"
-      trigger="click"
-      @command="handleCommand"
+    class="user-menu"
+    :hide-on-click="false"
+    trigger="click"
+    @command="handleCommand"
   >
       <span class="el-dropdown-link">
-        <i class="el-icon-user"></i>Admin<i class="el-icon-arrow-down el-icon--right"></i>
+        <i class="el-icon-user"></i>
+        {{ adminInfo ? adminInfo.name : '' }}
+        <i class="el-icon-arrow-down el-icon--right"></i>
       </span>
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item icon="el-icon-circle-check" command="logout">登出</el-dropdown-item>
@@ -15,21 +17,31 @@
 </template>
 
 <script>
-  import { mapMutations } from 'vuex'
+  import { mapState, mapMutations, mapActions } from 'vuex'
+  import { logout } from '../../../service/getData';
 
   export default {
     name: 'Nav',
+    data() {
+      return {}
+    },
+    computed: {
+      ...mapState(['adminInfo'])
+    },
     methods: {
+      ...mapMutations(['LOGOUT']),
+      ...mapActions(['GET_ADMIN_INFO']),
       handleCommand(command) {
         this[command]()
       },
-      logout() {
-        this.unsetToken();
+      async logout() {
+        await logout();
+        this.LOGOUT();
         this.$router.push({ name: 'login' })
-      },
-      ...mapMutations(['unsetToken'])
+      }
     },
     mounted() {
+      this.GET_ADMIN_INFO();
     }
   }
 </script>

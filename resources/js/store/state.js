@@ -1,13 +1,16 @@
-let defaultToken = '';
+let defaultIsLoggedIn = '';
 let defaultName = '';
 
 try {
-  localStorage.token && (defaultToken = localStorage.token);
+  localStorage.isLoggedIn && (defaultIsLoggedIn = localStorage.isLoggedIn);
   localStorage.name && (defaultName = localStorage.name)
 } catch (e) {
 }
 
 export default {
-  token: defaultToken,
-  name: defaultName
+  name: defaultName,
+  // 管理员信息
+  adminInfo: null,
+  // 是否登录
+  isLoggedIn: defaultIsLoggedIn
 }

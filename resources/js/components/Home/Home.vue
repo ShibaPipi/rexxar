@@ -21,12 +21,12 @@
 </template>
 
 <script>
-  import Sidebar from '../Layout/Sidebar'
-  import Nav from '../Layout/Nav'
-  import LayoutContent from '../Layout/Content'
-  import Footer from '../Layout/Footer'
+  import Sidebar from './components/Sidebar'
+  import Nav from './components/Nav'
+  import LayoutContent from './components/Content'
+  import Footer from './components/Footer'
 
-  import { mapGetters } from 'vuex'
+  import { mapState } from 'vuex'
 
   export default {
     name: 'Home',
@@ -42,7 +42,7 @@
       };
     },
     computed: {
-      ...mapGetters(['isLoggedIn'])
+      ...mapState(['isLoggedIn'])
     },
     methods: {
       checkLogin() {

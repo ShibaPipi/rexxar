@@ -27,14 +27,14 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  import { mapGetters, mapMutations } from 'vuex'
-  import { BASE_URL_PREFIX } from '../../utils/constants'
+  import { mapState, mapMutations } from 'vuex'
+  import { login } from '../../service/getData'
 
   export default {
     name: 'Login',
     data() {
       return {
+        token: '',
         ruleForm: {
           name: '',
           password: '',
@@ -50,27 +50,28 @@
       };
     },
     computed: {
-      ...mapGetters(['isLoggedIn'])
+      ...mapState(['isLoggedIn'])
     },
     methods: {
+      ...mapMutations(['RECORD_ADMIN']),
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.login(this.ruleForm)
+            this.handleLogin()
           } else {
-            console.log('error submit!!');
+            console.log('提交失败！！');
             return false;
           }
         });
       },
-      login({ name, password }) {
-        axios.post(BASE_URL_PREFIX + 'login?XDEBUG_SESSION_START=18130', {
-          name, password
-        }).then(this.handleLogin)
-      },
-      handleLogin(res) {
-        if ('success' === res.data.status) {
-          this.setToken(res.data.data.token);
+      async handleLogin() {
+        const { name } = this.ruleForm;
+        const { password } = this.ruleForm;
+
+        this.token = (await login(name, password)).token;
+
+        if (this.token) {
+          this.RECORD_ADMIN(this.token);
           this.redirectToHomePage()
         }
       },
@@ -79,8 +80,7 @@
       },
       redirectToHomePage() {
         this.$router.push({ name: 'home' })
-      },
-      ...mapMutations(['setToken'])
+      }
     },
     beforeMount() {
       this.checkLogin()

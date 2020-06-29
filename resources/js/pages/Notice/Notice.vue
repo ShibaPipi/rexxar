@@ -34,9 +34,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  import { mapState } from 'vuex'
-  import { BASE_URL_PREFIX } from '../../utils/constants'
+  import { getNotices } from '../../service/getData';
 
   export default {
     name: 'Notice',
@@ -45,18 +43,9 @@
         notices: []
       }
     },
-    computed: {
-      ...mapState(['token'])
-    },
     methods: {
-      getNotices() {
-        axios.get(BASE_URL_PREFIX + 'notices', {
-          headers: { Authorization: this.token }
-        }).then((res) => {
-          if ('success' === res.data.status) {
-            this.notices = res.data.data.data
-          }
-        })
+      async getNotices() {
+        this.notices = (await getNotices()).data
       },
       deleteRow(index, rows) {
         rows.splice(index, 1);
@@ -64,13 +53,10 @@
     },
     mounted() {
       this.getNotices()
-    },
-    activated() {
-      [] === this.notices && this.getNotices()
     }
   }
 </script>
 
 <style lang="less" scoped>
-  @import "../../assets/styles/layout-content";
+  @import "../../styles/layout-content";
 </style>

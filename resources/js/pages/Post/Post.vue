@@ -30,9 +30,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  import { mapState } from 'vuex'
-  import { BASE_URL_PREFIX } from '../../utils/constants'
+  import { getPosts } from '../../service/getData';
 
   export default {
     name: 'Post',
@@ -41,31 +39,19 @@
         posts: []
       }
     },
-    computed: {
-      ...mapState(['token'])
-    },
     methods: {
-      getPosts() {
-        axios.get(BASE_URL_PREFIX + 'posts', {
-          headers: { Authorization: this.token }
-        }).then((res) => {
-          if ('success' === res.data.status) {
-            this.posts = res.data.data.data
-          }
-        })
+      async getPosts() {
+        this.posts = (await getPosts()).data
       },
     },
     mounted() {
       this.getPosts()
-    },
-    activated() {
-      [] === this.post && this.getPosts()
     }
   }
 </script>
 
 <style lang="less" scoped>
-  @import "../../assets/styles/layout-content";
+  @import "../../styles/layout-content";
 
   .el-table {
 

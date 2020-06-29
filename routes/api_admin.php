@@ -24,10 +24,11 @@ Route::namespace('Api\V2\Admin')->prefix('v2/admin')->middleware('api_admin.guar
     Route::post('login', 'AdminUserController@login')->name('login');
 
     Route::middleware('api.refresh:api_admin')->group(function () {
+        Route::get('logout', 'AdminUserController@logout')->name('logout');
+
         Route::prefix('admin_users')->name('admin_users.')->group(function () {
             Route::get('', 'AdminUserController@index')->name('index');
             Route::get('info', 'AdminUserController@info')->name('info');
-            Route::get('logout', 'AdminUserController@logout')->name('logout');
         });
 
         Route::prefix('admin_roles')->name('admin_roles.')->group(function () {

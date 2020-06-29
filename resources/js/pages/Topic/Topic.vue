@@ -34,9 +34,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  import { mapState } from 'vuex'
-  import { BASE_URL_PREFIX } from '../../utils/constants'
+  import { getTopics } from '../../service/getData';
 
   export default {
     name: 'Topic',
@@ -45,18 +43,9 @@
         topics: []
       }
     },
-    computed: {
-      ...mapState(['token'])
-    },
     methods: {
-      getTopics() {
-        axios.get(BASE_URL_PREFIX + 'topics', {
-          headers: { Authorization: this.token }
-        }).then((res) => {
-          if ('success' === res.data.status) {
-            this.topics = res.data.data.data
-          }
-        })
+      async getTopics() {
+        this.topics = (await getTopics()).data
       },
       deleteRow(index, rows) {
         rows.splice(index, 1);
@@ -64,13 +53,10 @@
     },
     mounted() {
       this.getTopics()
-    },
-    activated() {
-      [] === this.topics && this.getTopics()
     }
   }
 </script>
 
 <style lang="less" scoped>
-  @import "../../assets/styles/layout-content";
+  @import "../../styles/layout-content";
 </style>
