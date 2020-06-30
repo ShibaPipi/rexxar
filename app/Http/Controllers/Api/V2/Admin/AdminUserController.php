@@ -38,4 +38,35 @@ class AdminUserController extends Controller
 
         return api()->success('退出成功。。。');
     }
+
+    public function permissions()
+    {
+        $adminPermissions = auth()
+            ->user()
+            ->load('roles.permissions')
+            ->roles
+            ->pluck('permissions')
+            ->collapse()
+            ->pluck('name')
+            ->toArray();
+
+        $sidebar = config('rexxar.sidebar');
+
+        foreach ($sidebar as $key => $menu) {
+
+            if ($menu['children']) {
+
+                foreach ($menu['children'] as $subKey => $submenu) {
+
+                    if (!in_array($submenu['index'], $adminPermissions)) {
+                        $sidebar[$key]['children'][$subKey]['disabled'] = true;
+                    }
+                }
+            } elseif (!in_array($menu['index'], $adminPermissions)) {
+                $sidebar[$key]['disabled'] = true;
+            }
+        }
+
+        return api()->success($sidebar);
+    }
 }

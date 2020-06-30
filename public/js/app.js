@@ -1761,6 +1761,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Content */ "./resources/js/components/Home/components/Content.vue");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Footer */ "./resources/js/components/Home/components/Footer.vue");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _service_getData__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../service/getData */ "./resources/js/service/getData.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -1789,6 +1790,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+
 
 
 
@@ -2014,12 +2016,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Sidebar',
   data: function data() {
     return {
-      permissionList: []
+      sidebarList: []
     };
   },
   methods: {
@@ -2032,10 +2037,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["getAllAdminPermissionNames"])(true);
+                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["getSideBarList"])();
 
               case 2:
-                _this.permissionList = _context.sent;
+                _this.sidebarList = _context.sent;
 
               case 3:
               case "end":
@@ -2044,13 +2049,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
-    },
-    handleSelect: function handleSelect(index, indexPath) {
-      if (!this.permissionList.indexOf(index)) {
-        this.$router.push('/403');
-      }
-
-      console.log(index, indexPath);
     }
   },
   mounted: function mounted() {
@@ -79277,70 +79275,54 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "el-menu",
-    {
-      attrs: {
-        router: "",
-        "default-active": _vm.$route.name,
-        "background-color": "#545c64",
-        "text-color": "#fff",
-        "active-text-color": "#ffd04b"
-      },
-      on: { select: _vm.handleSelect }
-    },
-    [
-      _c(
-        "el-submenu",
-        { attrs: { index: "1" } },
-        [
-          _c("template", { slot: "title" }, [
-            _c("i", { staticClass: "el-icon-setting" }),
-            _vm._v(" "),
-            _c("span", [_vm._v("系统管理")])
-          ]),
-          _vm._v(" "),
-          _c("el-menu-item", { attrs: { index: "users" } }, [
-            _c("i", { staticClass: "el-icon-s-custom" }),
-            _vm._v("用户管理")
-          ]),
-          _vm._v(" "),
-          _c("el-menu-item", { attrs: { index: "roles" } }, [
-            _c("i", { staticClass: "el-icon-magic-stick" }),
-            _vm._v("角色管理")
-          ]),
-          _vm._v(" "),
-          _c("el-menu-item", { attrs: { index: "permissions" } }, [
-            _c("i", { staticClass: "el-icon-view" }),
-            _vm._v("权限管理")
-          ])
-        ],
-        2
-      ),
-      _vm._v(" "),
-      _c("el-menu-item", { attrs: { index: "posts" } }, [
-        _c("i", { staticClass: "el-icon-edit" }),
-        _vm._v(" "),
-        _c("span", { attrs: { slot: "title" }, slot: "title" }, [
-          _vm._v("文章管理")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("el-menu-item", { attrs: { index: "topics" } }, [
-        _c("i", { staticClass: "el-icon-paperclip" }),
-        _vm._v(" "),
-        _c("span", { attrs: { slot: "title" }, slot: "title" }, [
-          _vm._v("专题管理")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("el-menu-item", { attrs: { index: "notices" } }, [
-        _c("i", { staticClass: "el-icon-close-notification" }),
-        _vm._v(" "),
-        _c("span", { attrs: { slot: "title" }, slot: "title" }, [
-          _vm._v("通知管理")
-        ])
-      ])
-    ],
+    "div",
+    _vm._l(_vm.sidebarList, function(menu, key) {
+      return _c(
+        "el-menu",
+        {
+          key: key,
+          attrs: {
+            router: "",
+            "default-active": _vm.$route.name,
+            "background-color": "#545c64",
+            "text-color": "#fff",
+            "active-text-color": "#ffd04b"
+          }
+        },
+        _vm._l(menu, function(submenu, subKey) {
+          return menu.children
+            ? _c(
+                "el-submenu",
+                { key: subKey, attrs: { index: menu.index } },
+                [
+                  _c("template", { slot: "title" }, [
+                    _c("i", { class: menu.icon }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v(_vm._s(menu.name))])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "el-menu-item",
+                    { attrs: { index: [] !== submenu.index } },
+                    [
+                      _c("i", { class: submenu.icon }),
+                      _vm._v(_vm._s(submenu.name))
+                    ]
+                  )
+                ],
+                2
+              )
+            : _c("el-menu-item", { attrs: { index: menu.index } }, [
+                _c("i", { class: menu.icon }),
+                _vm._v(" "),
+                _c("span", { attrs: { slot: "title" }, slot: "title" }, [
+                  _vm._v(_vm._s(menu.name))
+                ])
+              ])
+        }),
+        1
+      )
+    }),
     1
   )
 }
@@ -96755,8 +96737,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               'Content-Type': 'application/json',
               'Authorization': Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getStore"])('token')
             },
-            mode: 'cors',
-            cache: 'force-cache'
+            mode: 'cors' // cache: 'force-cache'
+
           };
 
           if ('POST' === type) {
@@ -97680,7 +97662,10 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     path: '/',
     component: _components_Home_Home__WEBPACK_IMPORTED_MODULE_2__["default"],
     children: [{
-      path: '/',
+      path: '',
+      redirect: '/home'
+    }, {
+      path: '/home',
       name: 'home',
       component: _pages_Index_Index__WEBPACK_IMPORTED_MODULE_4__["default"]
     }, {
@@ -97731,14 +97716,14 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*!*****************************************!*\
   !*** ./resources/js/service/getData.js ***!
   \*****************************************/
-/*! exports provided: login, logout, getAllAdminPermissionNames, getAdminInfo, getAdminUsers, getAdminRoles, getAdminPermissions, getPosts, getTopics, getNotices */
+/*! exports provided: login, logout, getSideBarList, getAdminInfo, getAdminUsers, getAdminRoles, getAdminPermissions, getPosts, getTopics, getNotices */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAllAdminPermissionNames", function() { return getAllAdminPermissionNames; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSideBarList", function() { return getSideBarList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminInfo", function() { return getAdminInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminUsers", function() { return getAdminUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminRoles", function() { return getAdminRoles; });
@@ -97757,8 +97742,8 @@ var login = function login(name, password) {
 var logout = function logout() {
   return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('logout');
 };
-var getAllAdminPermissionNames = function getAllAdminPermissionNames() {
-  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_permissions/all');
+var getSideBarList = function getSideBarList() {
+  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_users/permissions');
 };
 var getAdminInfo = function getAdminInfo() {
   return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_users/info');

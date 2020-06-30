@@ -28,7 +28,7 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch') => {
         'Authorization': getStore('token')
       },
       mode: 'cors',
-      cache: 'force-cache'
+      // cache: 'force-cache'
     };
 
     if ('POST' === type) {

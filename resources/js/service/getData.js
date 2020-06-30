@@ -6,7 +6,7 @@ export const login = (name, password) => fetch('login', {
 }, 'POST');
 
 export const logout = () => fetch('logout');
-export const getAllAdminPermissionNames = () => fetch('admin_permissions/all');
+export const getSideBarList = () => fetch('admin_users/permissions');
 export const getAdminInfo = () => fetch('admin_users/info');
 export const getAdminUsers = () => fetch('admin_users');
 export const getAdminRoles = () => fetch('admin_roles');

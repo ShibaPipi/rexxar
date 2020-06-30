@@ -29,6 +29,7 @@ Route::namespace('Api\V2\Admin')->prefix('v2/admin')->middleware('api_admin.guar
         Route::prefix('admin_users')->name('admin_users.')->group(function () {
             Route::get('', 'AdminUserController@index')->name('index');
             Route::get('info', 'AdminUserController@info')->name('info');
+            Route::get('permissions', 'AdminUserController@permissions')->name('permissions');
         });
 
         Route::prefix('admin_roles')->name('admin_roles.')->group(function () {
@@ -37,7 +38,6 @@ Route::namespace('Api\V2\Admin')->prefix('v2/admin')->middleware('api_admin.guar
 
         Route::prefix('admin_permissions')->name('admin_permissions.')->group(function () {
             Route::get('', 'AdminPermissionController@index')->name('index');
-            Route::get('all', 'AdminPermissionController@getAllNames')->name('all');
         });
 
         Route::prefix('posts')->name('posts.')->group(function () {

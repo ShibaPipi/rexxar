@@ -17,9 +17,4 @@ class AdminPermissionController extends Controller
                 ->paginate()
         );
     }
-
-    public function getAllNames()
-    {
-        return api()->success(AdminPermission::query()->pluck('name')->all());
-    }
 }
