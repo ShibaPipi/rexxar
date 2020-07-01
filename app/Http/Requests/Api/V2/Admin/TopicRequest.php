@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api\V2\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NoticeRequest extends FormRequest
+class TopicRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +26,10 @@ class NoticeRequest extends FormRequest
         switch ($this->method()) {
             case 'POST':
                 return [
-                    'title' => 'required|min:2',
-                    'content' => 'required|min:3'
+                    'name' => 'required|min:2'
                 ];
+            case 'DELETE':
+                return ['id' => 'required'];
             default:
                 return [];
         }

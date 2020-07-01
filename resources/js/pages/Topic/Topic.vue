@@ -3,7 +3,18 @@
     <div slot="header">
       <span>专题列表</span>
     </div>
-    <el-button type="primary" size="mini">新专题</el-button>
+    <el-button type="primary" size="mini" @click="dialogFormVisible = true">新专题</el-button>
+    <el-dialog title="新专题" :visible.sync="dialogFormVisible">
+      <el-form :model="form" :rules="rules" ref="form">
+        <el-form-item label="名称" prop="title" :label-width="formLabelWidth">
+          <el-input v-model="form.name" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="submitForm('form')">确 定</el-button>
+      </div>
+    </el-dialog>
     <el-table
       :data="topicList"
       style="width: 100%"
@@ -19,7 +30,8 @@
       <el-table-column
         fixed="right"
         label="操作"
-        width="120">
+        width="120"
+      >
         <template slot-scope="scope">
           <el-button
             @click.native.prevent="deleteRow(scope.$index, topicList)"
@@ -34,22 +46,51 @@
 </template>
 
 <script>
-  import { getTopics } from '../../service/getData';
+  import { deleteTopic, getTopics, storeTopic } from '../../service/getData';
 
   export default {
     name: 'Topic',
     data() {
       return {
-        topicList: []
+        topicList: [],
+        dialogFormVisible: false,
+        form: {
+          name: ''
+        },
+        rules: {
+          name: [
+            { required: true, message: '请输入标题', trigger: 'blur' }
+          ]
+        },
+        formLabelWidth: '120px'
       }
     },
     methods: {
       async topics() {
         this.topicList = (await getTopics()).data
       },
+      async handleStoreTopic() {
+        await storeTopic(this.form);
+        await this.topics();
+      },
+      async handleDeleteTopic(id) {
+        await deleteTopic(id);
+        await this.topics();
+      },
       deleteRow(index, rows) {
-        rows.splice(index, 1);
-      }
+        this.handleDeleteTopic(rows[index].id);
+      },
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            this.handleStoreTopic();
+            this.dialogFormVisible = false;
+          } else {
+            console.log('提交失败！！');
+            return false;
+          }
+        });
+      },
     },
     mounted() {
       this.topics()

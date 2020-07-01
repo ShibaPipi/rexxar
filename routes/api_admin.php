@@ -46,6 +46,7 @@ Route::namespace('Api\V2\Admin')->prefix('v2/admin')->middleware('api_admin.guar
 
         Route::prefix('topics')->name('topics.')->group(function () {
             Route::get('', 'TopicController@index')->name('index');
+            Route::post('', 'TopicController@store')->name('store');
             Route::delete('{id}', 'TopicController@destroy')->name('destroy');
         });
 

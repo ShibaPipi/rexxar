@@ -4,7 +4,7 @@
       通知列表
     </div>
     <el-button type="primary" size="mini" @click="dialogFormVisible = true">新增通知</el-button>
-    <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+    <el-dialog title="新增通知" :visible.sync="dialogFormVisible">
       <el-form :model="form" :rules="rules" ref="form">
         <el-form-item label="标题" prop="title" :label-width="formLabelWidth">
           <el-input v-model="form.title" autocomplete="off"></el-input>
@@ -34,7 +34,8 @@
         prop="id"
         fixed="right"
         label="操作"
-        width="120">
+        width="120"
+      >
         <template slot-scope="scope">
           <el-button
             @click.native.prevent="deleteRow(scope.$index, noticeList)"
@@ -77,16 +78,20 @@
       async notices() {
         this.noticeList = (await getNotices()).data
       },
-      async handleStoreNotice() {
-        await storeNotice(this.form);
-        await this.notices();
-      },
       async handleDeleteNotice(id) {
         await deleteNotice(id);
         await this.notices();
       },
       deleteRow(index, rows) {
-        this.handleDeleteNotice(rows[index].id);
+        this.$alert('暂未开放该功能', '通知', {
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+          }
+        });
       },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {

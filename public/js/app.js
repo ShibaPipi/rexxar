@@ -2292,6 +2292,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Notice',
@@ -2341,7 +2342,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    handleStoreNotice: function handleStoreNotice() {
+    handleDeleteNotice: function handleDeleteNotice(id) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
@@ -2350,7 +2351,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["storeNotice"])(_this2.form);
+                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["deleteNotice"])(id);
 
               case 2:
                 _context2.next = 4;
@@ -2364,31 +2365,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    handleDeleteNotice: function handleDeleteNotice(id) {
+    deleteRow: function deleteRow(index, rows) {
       var _this3 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.next = 2;
-                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["deleteNotice"])(id);
-
-              case 2:
-                _context3.next = 4;
-                return _this3.notices();
-
-              case 4:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3);
-      }))();
-    },
-    deleteRow: function deleteRow(index, rows) {
-      this.handleDeleteNotice(rows[index].id);
+      this.$alert('暂未开放该功能', '通知', {
+        confirmButtonText: '确定',
+        callback: function callback(action) {
+          _this3.$message({
+            type: 'info',
+            message: "action: ".concat(action)
+          });
+        }
+      });
     },
     submitForm: function submitForm(formName) {
       var _this4 = this;
@@ -2741,12 +2729,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Topic',
   data: function data() {
     return {
-      topicList: []
+      topicList: [],
+      dialogFormVisible: false,
+      form: {
+        name: ''
+      },
+      rules: {
+        name: [{
+          required: true,
+          message: '请输入标题',
+          trigger: 'blur'
+        }]
+      },
+      formLabelWidth: '120px'
     };
   },
   methods: {
@@ -2772,8 +2784,68 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
+    handleStoreTopic: function handleStoreTopic() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["storeTopic"])(_this2.form);
+
+              case 2:
+                _context2.next = 4;
+                return _this2.topics();
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    handleDeleteTopic: function handleDeleteTopic(id) {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["deleteTopic"])(id);
+
+              case 2:
+                _context3.next = 4;
+                return _this3.topics();
+
+              case 4:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
     deleteRow: function deleteRow(index, rows) {
-      rows.splice(index, 1);
+      this.handleDeleteTopic(rows[index].id);
+    },
+    submitForm: function submitForm(formName) {
+      var _this4 = this;
+
+      this.$refs[formName].validate(function (valid) {
+        if (valid) {
+          _this4.handleStoreTopic();
+
+          _this4.dialogFormVisible = false;
+        } else {
+          console.log('提交失败！！');
+          return false;
+        }
+      });
     }
   },
   mounted: function mounted() {
@@ -79639,7 +79711,7 @@ var render = function() {
       _c(
         "el-dialog",
         {
-          attrs: { title: "收货地址", visible: _vm.dialogFormVisible },
+          attrs: { title: "新增通知", visible: _vm.dialogFormVisible },
           on: {
             "update:visible": function($event) {
               _vm.dialogFormVisible = $event
@@ -80002,9 +80074,99 @@ var render = function() {
         _c("span", [_vm._v("专题列表")])
       ]),
       _vm._v(" "),
-      _c("el-button", { attrs: { type: "primary", size: "mini" } }, [
-        _vm._v("新专题")
-      ]),
+      _c(
+        "el-button",
+        {
+          attrs: { type: "primary", size: "mini" },
+          on: {
+            click: function($event) {
+              _vm.dialogFormVisible = true
+            }
+          }
+        },
+        [_vm._v("新专题")]
+      ),
+      _vm._v(" "),
+      _c(
+        "el-dialog",
+        {
+          attrs: { title: "新专题", visible: _vm.dialogFormVisible },
+          on: {
+            "update:visible": function($event) {
+              _vm.dialogFormVisible = $event
+            }
+          }
+        },
+        [
+          _c(
+            "el-form",
+            { ref: "form", attrs: { model: _vm.form, rules: _vm.rules } },
+            [
+              _c(
+                "el-form-item",
+                {
+                  attrs: {
+                    label: "名称",
+                    prop: "title",
+                    "label-width": _vm.formLabelWidth
+                  }
+                },
+                [
+                  _c("el-input", {
+                    attrs: { autocomplete: "off" },
+                    model: {
+                      value: _vm.form.name,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "name", $$v)
+                      },
+                      expression: "form.name"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "dialog-footer",
+              attrs: { slot: "footer" },
+              slot: "footer"
+            },
+            [
+              _c(
+                "el-button",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.dialogFormVisible = false
+                    }
+                  }
+                },
+                [_vm._v("取 消")]
+              ),
+              _vm._v(" "),
+              _c(
+                "el-button",
+                {
+                  attrs: { type: "primary" },
+                  on: {
+                    click: function($event) {
+                      return _vm.submitForm("form")
+                    }
+                  }
+                },
+                [_vm._v("确 定")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "el-table",
@@ -97943,7 +98105,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*!*****************************************!*\
   !*** ./resources/js/service/getData.js ***!
   \*****************************************/
-/*! exports provided: login, logout, getSideBarList, getAdminInfo, getAdminUsers, getAdminRoles, getAdminPermissions, getPosts, getTopics, getNotices, storeNotice, deleteNotice */
+/*! exports provided: login, logout, getSideBarList, getAdminInfo, getAdminUsers, getAdminRoles, getAdminPermissions, getPosts, getNotices, storeNotice, getTopics, storeTopic, deleteTopic */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -97956,10 +98118,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminRoles", function() { return getAdminRoles; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminPermissions", function() { return getAdminPermissions; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPosts", function() { return getPosts; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTopics", function() { return getTopics; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNotices", function() { return getNotices; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeNotice", function() { return storeNotice; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteNotice", function() { return deleteNotice; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTopics", function() { return getTopics; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeTopic", function() { return storeTopic; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteTopic", function() { return deleteTopic; });
 /* harmony import */ var _config_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/fetch */ "./resources/js/config/fetch.js");
 
 var login = function login(_ref) {
@@ -97991,9 +98154,6 @@ var getAdminPermissions = function getAdminPermissions() {
 var getPosts = function getPosts() {
   return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('posts');
 };
-var getTopics = function getTopics() {
-  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('topics');
-};
 var getNotices = function getNotices() {
   return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('notices');
 };
@@ -98005,9 +98165,20 @@ var storeNotice = function storeNotice(_ref2) {
     content: content
   }, 'POST');
 };
-var deleteNotice = function deleteNotice(id) {
-  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('notices/destroy?XDEBUG_SESSION_START=18130&id=' + id, {}, 'DELETE');
+var getTopics = function getTopics() {
+  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('topics');
 };
+var storeTopic = function storeTopic(_ref3) {
+  var name = _ref3.name;
+  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('topics', {
+    name: name
+  }, 'POST');
+};
+var deleteTopic = function deleteTopic(id) {
+  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('topics/destroy', {
+    id: id
+  }, 'DELETE');
+}; // ?XDEBUG_SESSION_START=18130
 
 /***/ }),
 
