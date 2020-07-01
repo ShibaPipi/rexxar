@@ -7,7 +7,7 @@
 return [
     'sidebar' => [
         [
-            'index' => '',
+            'index' => 'system',
             'name' => '系统管理',
             'icon' => 'el-icon-setting',
             'disabled' => false,

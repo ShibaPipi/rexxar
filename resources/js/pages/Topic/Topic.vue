@@ -22,7 +22,7 @@
         width="120">
         <template slot-scope="scope">
           <el-button
-            @click.native.prevent="deleteRow(scope.$index, topics)"
+            @click.native.prevent="deleteRow(scope.$index, topicList)"
             type="text"
             size="small">
             移除

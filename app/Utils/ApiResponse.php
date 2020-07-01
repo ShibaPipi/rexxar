@@ -127,9 +127,10 @@ class ApiResponse
      * @param string $message
      * @return mixed
      */
-    public function updated($message = 'updated')
+    public function deleted($message = 'deleted')
     {
-        return $this->created($message);
+        return $this->setStatusCode(FoundationResponse::HTTP_NO_CONTENT)
+            ->message($message);
     }
 
     /**

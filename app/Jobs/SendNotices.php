@@ -10,7 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class SendMessage implements ShouldQueue
+class SendNotices implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -27,16 +27,13 @@ class SendMessage implements ShouldQueue
     }
 
     /**
-     * Execute the job.
+     * 通知每个用户系统消息
      *
      * @return void
      */
     public function handle()
     {
-        // 通知每个用户系统消息
-        $users = User::all();
-
-        foreach ($users as $user) {
+        foreach (User::all() as $user) {
             $user->addNotice($this->notice);
         }
     }

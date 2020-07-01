@@ -1739,8 +1739,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App'
 });
@@ -2019,11 +2017,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Sidebar',
   data: function data() {
     return {
+      lastToken: '',
       sidebarList: []
     };
   },
@@ -2053,7 +2053,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   mounted: function mounted() {
     this.getPermissions();
-  }
+  },
+  activated: function activated() {}
 });
 
 /***/ }),
@@ -2130,6 +2131,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2173,17 +2180,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var name, password;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                name = _this2.ruleForm.name;
-                password = _this2.ruleForm.password;
-                _context.next = 4;
-                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_2__["login"])(name, password);
+                _context.next = 2;
+                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_2__["login"])(_this2.ruleForm);
 
-              case 4:
+              case 2:
                 _this2.token = _context.sent.token;
 
                 if (_this2.token) {
@@ -2192,7 +2196,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   _this2.redirectToHomePage();
                 }
 
-              case 6:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -2272,12 +2276,46 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Notice',
   data: function data() {
     return {
-      noticeList: []
+      noticeList: [],
+      dialogFormVisible: false,
+      form: {
+        title: '',
+        content: ''
+      },
+      rules: {
+        title: [{
+          required: true,
+          message: '请输入标题',
+          trigger: 'blur'
+        }],
+        content: [{
+          required: true,
+          message: '请输入内容',
+          trigger: 'blur'
+        }]
+      },
+      formLabelWidth: '120px'
     };
   },
   methods: {
@@ -2303,8 +2341,68 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
+    handleStoreNotice: function handleStoreNotice() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["storeNotice"])(_this2.form);
+
+              case 2:
+                _context2.next = 4;
+                return _this2.notices();
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    handleDeleteNotice: function handleDeleteNotice(id) {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["deleteNotice"])(id);
+
+              case 2:
+                _context3.next = 4;
+                return _this3.notices();
+
+              case 4:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
     deleteRow: function deleteRow(index, rows) {
-      rows.splice(index, 1);
+      this.handleDeleteNotice(rows[index].id);
+    },
+    submitForm: function submitForm(formName) {
+      var _this4 = this;
+
+      this.$refs[formName].validate(function (valid) {
+        if (valid) {
+          _this4.handleStoreNotice();
+
+          _this4.dialogFormVisible = false;
+        } else {
+          console.log('提交失败！！');
+          return false;
+        }
+      });
     }
   },
   mounted: function mounted() {
@@ -79081,7 +79179,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("keep-alive", [_c("router-view")], 1)
+  return _c("router-view")
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -79276,11 +79374,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.sidebarList, function(menu, key) {
+    _vm._l(_vm.sidebarList, function(menu) {
       return _c(
         "el-menu",
         {
-          key: key,
+          key: menu.index,
           attrs: {
             router: "",
             "default-active": _vm.$route.name,
@@ -79289,38 +79387,54 @@ var render = function() {
             "active-text-color": "#ffd04b"
           }
         },
-        _vm._l(menu, function(submenu, subKey) {
-          return menu.children
-            ? _c(
-                "el-submenu",
-                { key: subKey, attrs: { index: menu.index } },
-                [
-                  _c("template", { slot: "title" }, [
+        [
+          0 !== menu.children.length
+            ? [
+                _c(
+                  "el-submenu",
+                  { attrs: { index: menu.index } },
+                  [
+                    _c("template", { slot: "title" }, [
+                      _c("i", { class: menu.icon }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(menu.name))])
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(menu.children, function(submenu) {
+                      return _c(
+                        "el-menu-item",
+                        {
+                          key: submenu.index,
+                          attrs: {
+                            index: submenu.index,
+                            disabled: submenu.disabled
+                          }
+                        },
+                        [
+                          _c("i", { class: submenu.icon }),
+                          _vm._v(_vm._s(submenu.name) + "\n        ")
+                        ]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]
+            : [
+                _c(
+                  "el-menu-item",
+                  { attrs: { index: menu.index, disabled: menu.disabled } },
+                  [
                     _c("i", { class: menu.icon }),
                     _vm._v(" "),
-                    _c("span", [_vm._v(_vm._s(menu.name))])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "el-menu-item",
-                    { attrs: { index: [] !== submenu.index } },
-                    [
-                      _c("i", { class: submenu.icon }),
-                      _vm._v(_vm._s(submenu.name))
-                    ]
-                  )
-                ],
-                2
-              )
-            : _c("el-menu-item", { attrs: { index: menu.index } }, [
-                _c("i", { class: menu.icon }),
-                _vm._v(" "),
-                _c("span", { attrs: { slot: "title" }, slot: "title" }, [
-                  _vm._v(_vm._s(menu.name))
-                ])
-              ])
-        }),
-        1
+                    _c("span", { attrs: { slot: "title" }, slot: "title" }, [
+                      _vm._v(_vm._s(menu.name))
+                    ])
+                  ]
+                )
+              ]
+        ],
+        2
       )
     }),
     1
@@ -79509,9 +79623,123 @@ var render = function() {
         _vm._v("\n    通知列表\n  ")
       ]),
       _vm._v(" "),
-      _c("el-button", { attrs: { type: "primary", size: "mini" } }, [
-        _vm._v("新增通知")
-      ]),
+      _c(
+        "el-button",
+        {
+          attrs: { type: "primary", size: "mini" },
+          on: {
+            click: function($event) {
+              _vm.dialogFormVisible = true
+            }
+          }
+        },
+        [_vm._v("新增通知")]
+      ),
+      _vm._v(" "),
+      _c(
+        "el-dialog",
+        {
+          attrs: { title: "收货地址", visible: _vm.dialogFormVisible },
+          on: {
+            "update:visible": function($event) {
+              _vm.dialogFormVisible = $event
+            }
+          }
+        },
+        [
+          _c(
+            "el-form",
+            { ref: "form", attrs: { model: _vm.form, rules: _vm.rules } },
+            [
+              _c(
+                "el-form-item",
+                {
+                  attrs: {
+                    label: "标题",
+                    prop: "title",
+                    "label-width": _vm.formLabelWidth
+                  }
+                },
+                [
+                  _c("el-input", {
+                    attrs: { autocomplete: "off" },
+                    model: {
+                      value: _vm.form.title,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "title", $$v)
+                      },
+                      expression: "form.title"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-form-item",
+                {
+                  attrs: {
+                    label: "内容",
+                    prop: "content",
+                    "label-width": _vm.formLabelWidth
+                  }
+                },
+                [
+                  _c("el-input", {
+                    attrs: { type: "textarea", autocomplete: "off" },
+                    model: {
+                      value: _vm.form.content,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "content", $$v)
+                      },
+                      expression: "form.content"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "dialog-footer",
+              attrs: { slot: "footer" },
+              slot: "footer"
+            },
+            [
+              _c(
+                "el-button",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.dialogFormVisible = false
+                    }
+                  }
+                },
+                [_vm._v("取 消")]
+              ),
+              _vm._v(" "),
+              _c(
+                "el-button",
+                {
+                  attrs: { type: "primary" },
+                  on: {
+                    click: function($event) {
+                      return _vm.submitForm("form")
+                    }
+                  }
+                },
+                [_vm._v("确 定")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "el-table",
@@ -79524,7 +79752,7 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("el-table-column", {
-            attrs: { fixed: "right", label: "操作", width: "120" },
+            attrs: { prop: "id", fixed: "right", label: "操作", width: "120" },
             scopedSlots: _vm._u([
               {
                 key: "default",
@@ -79537,7 +79765,7 @@ var render = function() {
                         nativeOn: {
                           click: function($event) {
                             $event.preventDefault()
-                            return _vm.deleteRow(scope.$index, _vm.notices)
+                            return _vm.deleteRow(scope.$index, _vm.noticeList)
                           }
                         }
                       },
@@ -79800,7 +80028,7 @@ var render = function() {
                         nativeOn: {
                           click: function($event) {
                             $event.preventDefault()
-                            return _vm.deleteRow(scope.$index, _vm.topics)
+                            return _vm.deleteRow(scope.$index, _vm.topicList)
                           }
                         }
                       },
@@ -96737,11 +96965,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               'Content-Type': 'application/json',
               'Authorization': Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getStore"])('token')
             },
-            mode: 'cors' // cache: 'force-cache'
-
+            mode: 'cors'
           };
 
-          if ('POST' === type) {
+          if ('POST' === type || 'DELETE' === type) {
             Object.defineProperty(requestConfig, 'body', {
               value: JSON.stringify(data)
             });
@@ -97716,7 +97943,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*!*****************************************!*\
   !*** ./resources/js/service/getData.js ***!
   \*****************************************/
-/*! exports provided: login, logout, getSideBarList, getAdminInfo, getAdminUsers, getAdminRoles, getAdminPermissions, getPosts, getTopics, getNotices */
+/*! exports provided: login, logout, getSideBarList, getAdminInfo, getAdminUsers, getAdminRoles, getAdminPermissions, getPosts, getTopics, getNotices, storeNotice, deleteNotice */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -97731,9 +97958,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPosts", function() { return getPosts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTopics", function() { return getTopics; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNotices", function() { return getNotices; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeNotice", function() { return storeNotice; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteNotice", function() { return deleteNotice; });
 /* harmony import */ var _config_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config/fetch */ "./resources/js/config/fetch.js");
 
-var login = function login(name, password) {
+var login = function login(_ref) {
+  var name = _ref.name,
+      password = _ref.password;
   return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('login', {
     name: name,
     password: password
@@ -97765,6 +97996,17 @@ var getTopics = function getTopics() {
 };
 var getNotices = function getNotices() {
   return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('notices');
+};
+var storeNotice = function storeNotice(_ref2) {
+  var title = _ref2.title,
+      content = _ref2.content;
+  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('notices', {
+    title: title,
+    content: content
+  }, 'POST');
+};
+var deleteNotice = function deleteNotice(id) {
+  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('notices/destroy?XDEBUG_SESSION_START=18130&id=' + id, {}, 'DELETE');
 };
 
 /***/ }),

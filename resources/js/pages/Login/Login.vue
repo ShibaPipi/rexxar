@@ -7,8 +7,14 @@
         </el-row>
         <el-row :style="{background: '#fff'}">
           <el-card shadow="always">
-            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"
-                     :style="{paddingTop: '40px', paddingRight: '40px'}">
+            <el-form
+              :model="ruleForm"
+              :rules="rules"
+              ref="ruleForm"
+              label-width="100px"
+              class="demo-ruleForm"
+              :style="{paddingTop: '40px', paddingRight: '40px'}"
+            >
               <el-form-item label="用户名" prop="name">
                 <el-input v-model="ruleForm.name"></el-input>
               </el-form-item>
@@ -65,10 +71,7 @@
         });
       },
       async handleLogin() {
-        const { name } = this.ruleForm;
-        const { password } = this.ruleForm;
-
-        this.token = (await login(name, password)).token;
+        this.token = (await login(this.ruleForm)).token;
 
         if (this.token) {
           this.RECORD_ADMIN(this.token);

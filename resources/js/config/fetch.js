@@ -28,10 +28,9 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch') => {
         'Authorization': getStore('token')
       },
       mode: 'cors',
-      // cache: 'force-cache'
     };
 
-    if ('POST' === type) {
+    if ('POST' === type || 'DELETE' === type) {
       Object.defineProperty(requestConfig, 'body', {
         value: JSON.stringify(data)
       })

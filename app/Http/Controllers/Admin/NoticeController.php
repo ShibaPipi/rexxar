@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Jobs\SendMessage;
+use App\Jobs\SendNotices;
 use App\Models\Notice;
 use Illuminate\Http\Request;
 
@@ -36,7 +36,7 @@ class NoticeController extends Controller
 
         $notice = Notice::query()->create(request(['title', 'content']));
 
-        dispatch(new SendMessage($notice));
+        dispatch(new SendNotices($notice));
 
         return redirect('/admin/notices');
     }

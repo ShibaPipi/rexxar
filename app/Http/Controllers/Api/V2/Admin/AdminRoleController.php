@@ -13,7 +13,6 @@ class AdminRoleController extends Controller
         return api()->success(
             AdminRole::query()
                 ->select('id', 'name', 'description')
-                ->latest()
                 ->paginate()
         );
     }

@@ -13,7 +13,6 @@ class AdminPermissionController extends Controller
         return api()->success(
             AdminPermission::query()
                 ->select('id', 'name', 'description')
-                ->latest()
                 ->paginate()
         );
     }

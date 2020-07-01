@@ -17,4 +17,11 @@ class TopicController extends Controller
                 ->paginate()
         );
     }
+
+    public function destroy()
+    {
+        Topic::destroy(request('id'));
+
+        return api()->deleted();
+    }
 }
