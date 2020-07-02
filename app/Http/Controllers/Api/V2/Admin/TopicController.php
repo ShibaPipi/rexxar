@@ -22,12 +22,17 @@ class TopicController extends Controller
     {
         Topic::create($request->only('name'));
 
-        return api()->created();
+        return api()->createdOrUpdated();
     }
 
-    public function destroy()
+    /**
+     * @param Topic $topic
+     * @return mixed
+     * @throws \Exception
+     */
+    public function destroy(Topic $topic)
     {
-        Topic::destroy(request('id'));
+        $topic->delete();
 
         return api()->deleted();
     }

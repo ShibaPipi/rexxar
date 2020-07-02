@@ -2342,7 +2342,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    handleDeleteNotice: function handleDeleteNotice(id) {
+    handleStoreNotice: function handleStoreNotice() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
@@ -2351,7 +2351,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["deleteNotice"])(id);
+                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["storeNotice"])(_this2.form);
 
               case 2:
                 _context2.next = 4;
@@ -2365,27 +2365,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    deleteRow: function deleteRow(index, rows) {
-      var _this3 = this;
-
+    deleteRow: function deleteRow() {
       this.$alert('暂未开放该功能', '通知', {
-        confirmButtonText: '确定',
-        callback: function callback(action) {
-          _this3.$message({
-            type: 'info',
-            message: "action: ".concat(action)
-          });
-        }
+        confirmButtonText: '确定'
       });
     },
     submitForm: function submitForm(formName) {
-      var _this4 = this;
+      var _this3 = this;
 
       this.$refs[formName].validate(function (valid) {
         if (valid) {
-          _this4.handleStoreNotice();
+          _this3.handleStoreNotice();
 
-          _this4.dialogFormVisible = false;
+          _this3.dialogFormVisible = false;
+          _this3.form.title = '';
+          _this3.form.content = '';
         } else {
           console.log('提交失败！！');
           return false;
@@ -2455,12 +2449,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Permission',
   data: function data() {
     return {
-      adminPermissionList: []
+      adminPermissionList: [],
+      dialogFormVisible: false,
+      form: {
+        name: '',
+        description: ''
+      },
+      rules: {
+        name: [{
+          required: true,
+          message: '请输入权限名',
+          trigger: 'blur'
+        }],
+        description: [{
+          required: true,
+          message: '请输入描述',
+          trigger: 'blur'
+        }]
+      },
+      formLabelWidth: '120px'
     };
   },
   methods: {
@@ -2485,6 +2500,45 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    handleStoreAdminPermission: function handleStoreAdminPermission() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["storeAdminPermission"])(_this2.form);
+
+              case 2:
+                _context2.next = 4;
+                return _this2.$router.go(0);
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    submitForm: function submitForm(formName) {
+      var _this3 = this;
+
+      this.$refs[formName].validate(function (valid) {
+        if (valid) {
+          _this3.handleStoreAdminPermission();
+
+          _this3.dialogFormVisible = false;
+          _this3.form.name = '';
+          _this3.form.description = '';
+        } else {
+          console.log('提交失败！！');
+          return false;
+        }
+      });
     }
   },
   mounted: function mounted() {
@@ -2512,6 +2566,33 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2573,6 +2654,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    handleToggleStatus: function handleToggleStatus(row) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["togglePostStatus"])(row.id, !row.status + 0);
+
+              case 2:
+                _context2.next = 4;
+                return _this2.posts();
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    handleDetail: function handleDetail() {
+      this.$alert('暂未开放该功能', '通知', {
+        confirmButtonText: '确定'
+      });
     }
   },
   mounted: function mounted() {
@@ -2637,12 +2746,45 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Role',
   data: function data() {
     return {
-      adminRoleList: []
+      adminRoleList: [],
+      dialogFormVisible: false,
+      form: {
+        name: '',
+        description: ''
+      },
+      rules: {
+        name: [{
+          required: true,
+          message: '请输入角色名',
+          trigger: 'blur'
+        }],
+        description: [{
+          required: true,
+          message: '请输入描述',
+          trigger: 'blur'
+        }]
+      },
+      formLabelWidth: '120px'
     };
   },
   methods: {
@@ -2667,6 +2809,45 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    handleStoreAdminRole: function handleStoreAdminRole() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["storeAdminRole"])(_this2.form);
+
+              case 2:
+                _context2.next = 4;
+                return _this2.adminRoles();
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    submitForm: function submitForm(formName) {
+      var _this3 = this;
+
+      this.$refs[formName].validate(function (valid) {
+        if (valid) {
+          _this3.handleStoreAdminRole();
+
+          _this3.dialogFormVisible = false;
+          _this3.form.name = '';
+          _this3.form.description = '';
+        } else {
+          console.log('提交失败！！');
+          return false;
+        }
+      });
     }
   },
   mounted: function mounted() {
@@ -2807,7 +2988,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    handleDeleteTopic: function handleDeleteTopic(id) {
+    deleteRow: function deleteRow(row) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
@@ -2816,7 +2997,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["deleteTopic"])(id);
+                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["deleteTopic"])(row.id);
 
               case 2:
                 _context3.next = 4;
@@ -2830,9 +3011,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    deleteRow: function deleteRow(index, rows) {
-      this.handleDeleteTopic(rows[index].id);
-    },
     submitForm: function submitForm(formName) {
       var _this4 = this;
 
@@ -2841,6 +3019,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           _this4.handleStoreTopic();
 
           _this4.dialogFormVisible = false;
+          _this4.form.name = '';
         } else {
           console.log('提交失败！！');
           return false;
@@ -2931,12 +3110,44 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'User',
   data: function data() {
     return {
-      adminUsers: []
+      adminUsers: [],
+      dialogFormVisible: false,
+      form: {
+        name: '',
+        password: ''
+      },
+      rules: {
+        name: [{
+          required: true,
+          message: '请输入用户名',
+          trigger: 'blur'
+        }],
+        password: [{
+          required: true,
+          message: '请输入密码',
+          trigger: 'blur'
+        }]
+      },
+      formLabelWidth: '120px'
     };
   },
   methods: {
@@ -2961,6 +3172,45 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    handleStoreUser: function handleStoreUser() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["storeAdminUser"])(_this2.form);
+
+              case 2:
+                _context2.next = 4;
+                return _this2.getAdminUsers();
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    submitForm: function submitForm(formName) {
+      var _this3 = this;
+
+      this.$refs[formName].validate(function (valid) {
+        if (valid) {
+          _this3.handleStoreUser();
+
+          _this3.dialogFormVisible = false;
+          _this3.form.name = '';
+          _this3.form.password = '';
+        } else {
+          console.log('提交失败！！');
+          return false;
+        }
+      });
     }
   },
   mounted: function mounted() {
@@ -76095,6 +76345,1557 @@ module.exports = normalizeWheel;
 
 /***/ }),
 
+/***/ "./node_modules/particles.js/particles.js":
+/*!************************************************!*\
+  !*** ./node_modules/particles.js/particles.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* -----------------------------------------------
+/* Author : Vincent Garreau  - vincentgarreau.com
+/* MIT license: http://opensource.org/licenses/MIT
+/* Demo / Generator : vincentgarreau.com/particles.js
+/* GitHub : github.com/VincentGarreau/particles.js
+/* How to use? : Check the GitHub README
+/* v2.0.0
+/* ----------------------------------------------- */
+
+var pJS = function(tag_id, params){
+
+  var canvas_el = document.querySelector('#'+tag_id+' > .particles-js-canvas-el');
+
+  /* particles.js variables with default values */
+  this.pJS = {
+    canvas: {
+      el: canvas_el,
+      w: canvas_el.offsetWidth,
+      h: canvas_el.offsetHeight
+    },
+    particles: {
+      number: {
+        value: 400,
+        density: {
+          enable: true,
+          value_area: 800
+        }
+      },
+      color: {
+        value: '#fff'
+      },
+      shape: {
+        type: 'circle',
+        stroke: {
+          width: 0,
+          color: '#ff0000'
+        },
+        polygon: {
+          nb_sides: 5
+        },
+        image: {
+          src: '',
+          width: 100,
+          height: 100
+        }
+      },
+      opacity: {
+        value: 1,
+        random: false,
+        anim: {
+          enable: false,
+          speed: 2,
+          opacity_min: 0,
+          sync: false
+        }
+      },
+      size: {
+        value: 20,
+        random: false,
+        anim: {
+          enable: false,
+          speed: 20,
+          size_min: 0,
+          sync: false
+        }
+      },
+      line_linked: {
+        enable: true,
+        distance: 100,
+        color: '#fff',
+        opacity: 1,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 2,
+        direction: 'none',
+        random: false,
+        straight: false,
+        out_mode: 'out',
+        bounce: false,
+        attract: {
+          enable: false,
+          rotateX: 3000,
+          rotateY: 3000
+        }
+      },
+      array: []
+    },
+    interactivity: {
+      detect_on: 'canvas',
+      events: {
+        onhover: {
+          enable: true,
+          mode: 'grab'
+        },
+        onclick: {
+          enable: true,
+          mode: 'push'
+        },
+        resize: true
+      },
+      modes: {
+        grab:{
+          distance: 100,
+          line_linked:{
+            opacity: 1
+          }
+        },
+        bubble:{
+          distance: 200,
+          size: 80,
+          duration: 0.4
+        },
+        repulse:{
+          distance: 200,
+          duration: 0.4
+        },
+        push:{
+          particles_nb: 4
+        },
+        remove:{
+          particles_nb: 2
+        }
+      },
+      mouse:{}
+    },
+    retina_detect: false,
+    fn: {
+      interact: {},
+      modes: {},
+      vendors:{}
+    },
+    tmp: {}
+  };
+
+  var pJS = this.pJS;
+
+  /* params settings */
+  if(params){
+    Object.deepExtend(pJS, params);
+  }
+
+  pJS.tmp.obj = {
+    size_value: pJS.particles.size.value,
+    size_anim_speed: pJS.particles.size.anim.speed,
+    move_speed: pJS.particles.move.speed,
+    line_linked_distance: pJS.particles.line_linked.distance,
+    line_linked_width: pJS.particles.line_linked.width,
+    mode_grab_distance: pJS.interactivity.modes.grab.distance,
+    mode_bubble_distance: pJS.interactivity.modes.bubble.distance,
+    mode_bubble_size: pJS.interactivity.modes.bubble.size,
+    mode_repulse_distance: pJS.interactivity.modes.repulse.distance
+  };
+
+
+  pJS.fn.retinaInit = function(){
+
+    if(pJS.retina_detect && window.devicePixelRatio > 1){
+      pJS.canvas.pxratio = window.devicePixelRatio; 
+      pJS.tmp.retina = true;
+    } 
+    else{
+      pJS.canvas.pxratio = 1;
+      pJS.tmp.retina = false;
+    }
+
+    pJS.canvas.w = pJS.canvas.el.offsetWidth * pJS.canvas.pxratio;
+    pJS.canvas.h = pJS.canvas.el.offsetHeight * pJS.canvas.pxratio;
+
+    pJS.particles.size.value = pJS.tmp.obj.size_value * pJS.canvas.pxratio;
+    pJS.particles.size.anim.speed = pJS.tmp.obj.size_anim_speed * pJS.canvas.pxratio;
+    pJS.particles.move.speed = pJS.tmp.obj.move_speed * pJS.canvas.pxratio;
+    pJS.particles.line_linked.distance = pJS.tmp.obj.line_linked_distance * pJS.canvas.pxratio;
+    pJS.interactivity.modes.grab.distance = pJS.tmp.obj.mode_grab_distance * pJS.canvas.pxratio;
+    pJS.interactivity.modes.bubble.distance = pJS.tmp.obj.mode_bubble_distance * pJS.canvas.pxratio;
+    pJS.particles.line_linked.width = pJS.tmp.obj.line_linked_width * pJS.canvas.pxratio;
+    pJS.interactivity.modes.bubble.size = pJS.tmp.obj.mode_bubble_size * pJS.canvas.pxratio;
+    pJS.interactivity.modes.repulse.distance = pJS.tmp.obj.mode_repulse_distance * pJS.canvas.pxratio;
+
+  };
+
+
+
+  /* ---------- pJS functions - canvas ------------ */
+
+  pJS.fn.canvasInit = function(){
+    pJS.canvas.ctx = pJS.canvas.el.getContext('2d');
+  };
+
+  pJS.fn.canvasSize = function(){
+
+    pJS.canvas.el.width = pJS.canvas.w;
+    pJS.canvas.el.height = pJS.canvas.h;
+
+    if(pJS && pJS.interactivity.events.resize){
+
+      window.addEventListener('resize', function(){
+
+          pJS.canvas.w = pJS.canvas.el.offsetWidth;
+          pJS.canvas.h = pJS.canvas.el.offsetHeight;
+
+          /* resize canvas */
+          if(pJS.tmp.retina){
+            pJS.canvas.w *= pJS.canvas.pxratio;
+            pJS.canvas.h *= pJS.canvas.pxratio;
+          }
+
+          pJS.canvas.el.width = pJS.canvas.w;
+          pJS.canvas.el.height = pJS.canvas.h;
+
+          /* repaint canvas on anim disabled */
+          if(!pJS.particles.move.enable){
+            pJS.fn.particlesEmpty();
+            pJS.fn.particlesCreate();
+            pJS.fn.particlesDraw();
+            pJS.fn.vendors.densityAutoParticles();
+          }
+
+        /* density particles enabled */
+        pJS.fn.vendors.densityAutoParticles();
+
+      });
+
+    }
+
+  };
+
+
+  pJS.fn.canvasPaint = function(){
+    pJS.canvas.ctx.fillRect(0, 0, pJS.canvas.w, pJS.canvas.h);
+  };
+
+  pJS.fn.canvasClear = function(){
+    pJS.canvas.ctx.clearRect(0, 0, pJS.canvas.w, pJS.canvas.h);
+  };
+
+
+  /* --------- pJS functions - particles ----------- */
+
+  pJS.fn.particle = function(color, opacity, position){
+
+    /* size */
+    this.radius = (pJS.particles.size.random ? Math.random() : 1) * pJS.particles.size.value;
+    if(pJS.particles.size.anim.enable){
+      this.size_status = false;
+      this.vs = pJS.particles.size.anim.speed / 100;
+      if(!pJS.particles.size.anim.sync){
+        this.vs = this.vs * Math.random();
+      }
+    }
+
+    /* position */
+    this.x = position ? position.x : Math.random() * pJS.canvas.w;
+    this.y = position ? position.y : Math.random() * pJS.canvas.h;
+
+    /* check position  - into the canvas */
+    if(this.x > pJS.canvas.w - this.radius*2) this.x = this.x - this.radius;
+    else if(this.x < this.radius*2) this.x = this.x + this.radius;
+    if(this.y > pJS.canvas.h - this.radius*2) this.y = this.y - this.radius;
+    else if(this.y < this.radius*2) this.y = this.y + this.radius;
+
+    /* check position - avoid overlap */
+    if(pJS.particles.move.bounce){
+      pJS.fn.vendors.checkOverlap(this, position);
+    }
+
+    /* color */
+    this.color = {};
+    if(typeof(color.value) == 'object'){
+
+      if(color.value instanceof Array){
+        var color_selected = color.value[Math.floor(Math.random() * pJS.particles.color.value.length)];
+        this.color.rgb = hexToRgb(color_selected);
+      }else{
+        if(color.value.r != undefined && color.value.g != undefined && color.value.b != undefined){
+          this.color.rgb = {
+            r: color.value.r,
+            g: color.value.g,
+            b: color.value.b
+          }
+        }
+        if(color.value.h != undefined && color.value.s != undefined && color.value.l != undefined){
+          this.color.hsl = {
+            h: color.value.h,
+            s: color.value.s,
+            l: color.value.l
+          }
+        }
+      }
+
+    }
+    else if(color.value == 'random'){
+      this.color.rgb = {
+        r: (Math.floor(Math.random() * (255 - 0 + 1)) + 0),
+        g: (Math.floor(Math.random() * (255 - 0 + 1)) + 0),
+        b: (Math.floor(Math.random() * (255 - 0 + 1)) + 0)
+      }
+    }
+    else if(typeof(color.value) == 'string'){
+      this.color = color;
+      this.color.rgb = hexToRgb(this.color.value);
+    }
+
+    /* opacity */
+    this.opacity = (pJS.particles.opacity.random ? Math.random() : 1) * pJS.particles.opacity.value;
+    if(pJS.particles.opacity.anim.enable){
+      this.opacity_status = false;
+      this.vo = pJS.particles.opacity.anim.speed / 100;
+      if(!pJS.particles.opacity.anim.sync){
+        this.vo = this.vo * Math.random();
+      }
+    }
+
+    /* animation - velocity for speed */
+    var velbase = {}
+    switch(pJS.particles.move.direction){
+      case 'top':
+        velbase = { x:0, y:-1 };
+      break;
+      case 'top-right':
+        velbase = { x:0.5, y:-0.5 };
+      break;
+      case 'right':
+        velbase = { x:1, y:-0 };
+      break;
+      case 'bottom-right':
+        velbase = { x:0.5, y:0.5 };
+      break;
+      case 'bottom':
+        velbase = { x:0, y:1 };
+      break;
+      case 'bottom-left':
+        velbase = { x:-0.5, y:1 };
+      break;
+      case 'left':
+        velbase = { x:-1, y:0 };
+      break;
+      case 'top-left':
+        velbase = { x:-0.5, y:-0.5 };
+      break;
+      default:
+        velbase = { x:0, y:0 };
+      break;
+    }
+
+    if(pJS.particles.move.straight){
+      this.vx = velbase.x;
+      this.vy = velbase.y;
+      if(pJS.particles.move.random){
+        this.vx = this.vx * (Math.random());
+        this.vy = this.vy * (Math.random());
+      }
+    }else{
+      this.vx = velbase.x + Math.random()-0.5;
+      this.vy = velbase.y + Math.random()-0.5;
+    }
+
+    // var theta = 2.0 * Math.PI * Math.random();
+    // this.vx = Math.cos(theta);
+    // this.vy = Math.sin(theta);
+
+    this.vx_i = this.vx;
+    this.vy_i = this.vy;
+
+    
+
+    /* if shape is image */
+
+    var shape_type = pJS.particles.shape.type;
+    if(typeof(shape_type) == 'object'){
+      if(shape_type instanceof Array){
+        var shape_selected = shape_type[Math.floor(Math.random() * shape_type.length)];
+        this.shape = shape_selected;
+      }
+    }else{
+      this.shape = shape_type;
+    }
+
+    if(this.shape == 'image'){
+      var sh = pJS.particles.shape;
+      this.img = {
+        src: sh.image.src,
+        ratio: sh.image.width / sh.image.height
+      }
+      if(!this.img.ratio) this.img.ratio = 1;
+      if(pJS.tmp.img_type == 'svg' && pJS.tmp.source_svg != undefined){
+        pJS.fn.vendors.createSvgImg(this);
+        if(pJS.tmp.pushing){
+          this.img.loaded = false;
+        }
+      }
+    }
+
+    
+
+  };
+
+
+  pJS.fn.particle.prototype.draw = function() {
+
+    var p = this;
+
+    if(p.radius_bubble != undefined){
+      var radius = p.radius_bubble; 
+    }else{
+      var radius = p.radius;
+    }
+
+    if(p.opacity_bubble != undefined){
+      var opacity = p.opacity_bubble;
+    }else{
+      var opacity = p.opacity;
+    }
+
+    if(p.color.rgb){
+      var color_value = 'rgba('+p.color.rgb.r+','+p.color.rgb.g+','+p.color.rgb.b+','+opacity+')';
+    }else{
+      var color_value = 'hsla('+p.color.hsl.h+','+p.color.hsl.s+'%,'+p.color.hsl.l+'%,'+opacity+')';
+    }
+
+    pJS.canvas.ctx.fillStyle = color_value;
+    pJS.canvas.ctx.beginPath();
+
+    switch(p.shape){
+
+      case 'circle':
+        pJS.canvas.ctx.arc(p.x, p.y, radius, 0, Math.PI * 2, false);
+      break;
+
+      case 'edge':
+        pJS.canvas.ctx.rect(p.x-radius, p.y-radius, radius*2, radius*2);
+      break;
+
+      case 'triangle':
+        pJS.fn.vendors.drawShape(pJS.canvas.ctx, p.x-radius, p.y+radius / 1.66, radius*2, 3, 2);
+      break;
+
+      case 'polygon':
+        pJS.fn.vendors.drawShape(
+          pJS.canvas.ctx,
+          p.x - radius / (pJS.particles.shape.polygon.nb_sides/3.5), // startX
+          p.y - radius / (2.66/3.5), // startY
+          radius*2.66 / (pJS.particles.shape.polygon.nb_sides/3), // sideLength
+          pJS.particles.shape.polygon.nb_sides, // sideCountNumerator
+          1 // sideCountDenominator
+        );
+      break;
+
+      case 'star':
+        pJS.fn.vendors.drawShape(
+          pJS.canvas.ctx,
+          p.x - radius*2 / (pJS.particles.shape.polygon.nb_sides/4), // startX
+          p.y - radius / (2*2.66/3.5), // startY
+          radius*2*2.66 / (pJS.particles.shape.polygon.nb_sides/3), // sideLength
+          pJS.particles.shape.polygon.nb_sides, // sideCountNumerator
+          2 // sideCountDenominator
+        );
+      break;
+
+      case 'image':
+
+        function draw(){
+          pJS.canvas.ctx.drawImage(
+            img_obj,
+            p.x-radius,
+            p.y-radius,
+            radius*2,
+            radius*2 / p.img.ratio
+          );
+        }
+
+        if(pJS.tmp.img_type == 'svg'){
+          var img_obj = p.img.obj;
+        }else{
+          var img_obj = pJS.tmp.img_obj;
+        }
+
+        if(img_obj){
+          draw();
+        }
+
+      break;
+
+    }
+
+    pJS.canvas.ctx.closePath();
+
+    if(pJS.particles.shape.stroke.width > 0){
+      pJS.canvas.ctx.strokeStyle = pJS.particles.shape.stroke.color;
+      pJS.canvas.ctx.lineWidth = pJS.particles.shape.stroke.width;
+      pJS.canvas.ctx.stroke();
+    }
+    
+    pJS.canvas.ctx.fill();
+    
+  };
+
+
+  pJS.fn.particlesCreate = function(){
+    for(var i = 0; i < pJS.particles.number.value; i++) {
+      pJS.particles.array.push(new pJS.fn.particle(pJS.particles.color, pJS.particles.opacity.value));
+    }
+  };
+
+  pJS.fn.particlesUpdate = function(){
+
+    for(var i = 0; i < pJS.particles.array.length; i++){
+
+      /* the particle */
+      var p = pJS.particles.array[i];
+
+      // var d = ( dx = pJS.interactivity.mouse.click_pos_x - p.x ) * dx + ( dy = pJS.interactivity.mouse.click_pos_y - p.y ) * dy;
+      // var f = -BANG_SIZE / d;
+      // if ( d < BANG_SIZE ) {
+      //     var t = Math.atan2( dy, dx );
+      //     p.vx = f * Math.cos(t);
+      //     p.vy = f * Math.sin(t);
+      // }
+
+      /* move the particle */
+      if(pJS.particles.move.enable){
+        var ms = pJS.particles.move.speed/2;
+        p.x += p.vx * ms;
+        p.y += p.vy * ms;
+      }
+
+      /* change opacity status */
+      if(pJS.particles.opacity.anim.enable) {
+        if(p.opacity_status == true) {
+          if(p.opacity >= pJS.particles.opacity.value) p.opacity_status = false;
+          p.opacity += p.vo;
+        }else {
+          if(p.opacity <= pJS.particles.opacity.anim.opacity_min) p.opacity_status = true;
+          p.opacity -= p.vo;
+        }
+        if(p.opacity < 0) p.opacity = 0;
+      }
+
+      /* change size */
+      if(pJS.particles.size.anim.enable){
+        if(p.size_status == true){
+          if(p.radius >= pJS.particles.size.value) p.size_status = false;
+          p.radius += p.vs;
+        }else{
+          if(p.radius <= pJS.particles.size.anim.size_min) p.size_status = true;
+          p.radius -= p.vs;
+        }
+        if(p.radius < 0) p.radius = 0;
+      }
+
+      /* change particle position if it is out of canvas */
+      if(pJS.particles.move.out_mode == 'bounce'){
+        var new_pos = {
+          x_left: p.radius,
+          x_right:  pJS.canvas.w,
+          y_top: p.radius,
+          y_bottom: pJS.canvas.h
+        }
+      }else{
+        var new_pos = {
+          x_left: -p.radius,
+          x_right: pJS.canvas.w + p.radius,
+          y_top: -p.radius,
+          y_bottom: pJS.canvas.h + p.radius
+        }
+      }
+
+      if(p.x - p.radius > pJS.canvas.w){
+        p.x = new_pos.x_left;
+        p.y = Math.random() * pJS.canvas.h;
+      }
+      else if(p.x + p.radius < 0){
+        p.x = new_pos.x_right;
+        p.y = Math.random() * pJS.canvas.h;
+      }
+      if(p.y - p.radius > pJS.canvas.h){
+        p.y = new_pos.y_top;
+        p.x = Math.random() * pJS.canvas.w;
+      }
+      else if(p.y + p.radius < 0){
+        p.y = new_pos.y_bottom;
+        p.x = Math.random() * pJS.canvas.w;
+      }
+
+      /* out of canvas modes */
+      switch(pJS.particles.move.out_mode){
+        case 'bounce':
+          if (p.x + p.radius > pJS.canvas.w) p.vx = -p.vx;
+          else if (p.x - p.radius < 0) p.vx = -p.vx;
+          if (p.y + p.radius > pJS.canvas.h) p.vy = -p.vy;
+          else if (p.y - p.radius < 0) p.vy = -p.vy;
+        break;
+      }
+
+      /* events */
+      if(isInArray('grab', pJS.interactivity.events.onhover.mode)){
+        pJS.fn.modes.grabParticle(p);
+      }
+
+      if(isInArray('bubble', pJS.interactivity.events.onhover.mode) || isInArray('bubble', pJS.interactivity.events.onclick.mode)){
+        pJS.fn.modes.bubbleParticle(p);
+      }
+
+      if(isInArray('repulse', pJS.interactivity.events.onhover.mode) || isInArray('repulse', pJS.interactivity.events.onclick.mode)){
+        pJS.fn.modes.repulseParticle(p);
+      }
+
+      /* interaction auto between particles */
+      if(pJS.particles.line_linked.enable || pJS.particles.move.attract.enable){
+        for(var j = i + 1; j < pJS.particles.array.length; j++){
+          var p2 = pJS.particles.array[j];
+
+          /* link particles */
+          if(pJS.particles.line_linked.enable){
+            pJS.fn.interact.linkParticles(p,p2);
+          }
+
+          /* attract particles */
+          if(pJS.particles.move.attract.enable){
+            pJS.fn.interact.attractParticles(p,p2);
+          }
+
+          /* bounce particles */
+          if(pJS.particles.move.bounce){
+            pJS.fn.interact.bounceParticles(p,p2);
+          }
+
+        }
+      }
+
+
+    }
+
+  };
+
+  pJS.fn.particlesDraw = function(){
+
+    /* clear canvas */
+    pJS.canvas.ctx.clearRect(0, 0, pJS.canvas.w, pJS.canvas.h);
+
+    /* update each particles param */
+    pJS.fn.particlesUpdate();
+
+    /* draw each particle */
+    for(var i = 0; i < pJS.particles.array.length; i++){
+      var p = pJS.particles.array[i];
+      p.draw();
+    }
+
+  };
+
+  pJS.fn.particlesEmpty = function(){
+    pJS.particles.array = [];
+  };
+
+  pJS.fn.particlesRefresh = function(){
+
+    /* init all */
+    cancelRequestAnimFrame(pJS.fn.checkAnimFrame);
+    cancelRequestAnimFrame(pJS.fn.drawAnimFrame);
+    pJS.tmp.source_svg = undefined;
+    pJS.tmp.img_obj = undefined;
+    pJS.tmp.count_svg = 0;
+    pJS.fn.particlesEmpty();
+    pJS.fn.canvasClear();
+    
+    /* restart */
+    pJS.fn.vendors.start();
+
+  };
+
+
+  /* ---------- pJS functions - particles interaction ------------ */
+
+  pJS.fn.interact.linkParticles = function(p1, p2){
+
+    var dx = p1.x - p2.x,
+        dy = p1.y - p2.y,
+        dist = Math.sqrt(dx*dx + dy*dy);
+
+    /* draw a line between p1 and p2 if the distance between them is under the config distance */
+    if(dist <= pJS.particles.line_linked.distance){
+
+      var opacity_line = pJS.particles.line_linked.opacity - (dist / (1/pJS.particles.line_linked.opacity)) / pJS.particles.line_linked.distance;
+
+      if(opacity_line > 0){        
+        
+        /* style */
+        var color_line = pJS.particles.line_linked.color_rgb_line;
+        pJS.canvas.ctx.strokeStyle = 'rgba('+color_line.r+','+color_line.g+','+color_line.b+','+opacity_line+')';
+        pJS.canvas.ctx.lineWidth = pJS.particles.line_linked.width;
+        //pJS.canvas.ctx.lineCap = 'round'; /* performance issue */
+        
+        /* path */
+        pJS.canvas.ctx.beginPath();
+        pJS.canvas.ctx.moveTo(p1.x, p1.y);
+        pJS.canvas.ctx.lineTo(p2.x, p2.y);
+        pJS.canvas.ctx.stroke();
+        pJS.canvas.ctx.closePath();
+
+      }
+
+    }
+
+  };
+
+
+  pJS.fn.interact.attractParticles  = function(p1, p2){
+
+    /* condensed particles */
+    var dx = p1.x - p2.x,
+        dy = p1.y - p2.y,
+        dist = Math.sqrt(dx*dx + dy*dy);
+
+    if(dist <= pJS.particles.line_linked.distance){
+
+      var ax = dx/(pJS.particles.move.attract.rotateX*1000),
+          ay = dy/(pJS.particles.move.attract.rotateY*1000);
+
+      p1.vx -= ax;
+      p1.vy -= ay;
+
+      p2.vx += ax;
+      p2.vy += ay;
+
+    }
+    
+
+  }
+
+
+  pJS.fn.interact.bounceParticles = function(p1, p2){
+
+    var dx = p1.x - p2.x,
+        dy = p1.y - p2.y,
+        dist = Math.sqrt(dx*dx + dy*dy),
+        dist_p = p1.radius+p2.radius;
+
+    if(dist <= dist_p){
+      p1.vx = -p1.vx;
+      p1.vy = -p1.vy;
+
+      p2.vx = -p2.vx;
+      p2.vy = -p2.vy;
+    }
+
+  }
+
+
+  /* ---------- pJS functions - modes events ------------ */
+
+  pJS.fn.modes.pushParticles = function(nb, pos){
+
+    pJS.tmp.pushing = true;
+
+    for(var i = 0; i < nb; i++){
+      pJS.particles.array.push(
+        new pJS.fn.particle(
+          pJS.particles.color,
+          pJS.particles.opacity.value,
+          {
+            'x': pos ? pos.pos_x : Math.random() * pJS.canvas.w,
+            'y': pos ? pos.pos_y : Math.random() * pJS.canvas.h
+          }
+        )
+      )
+      if(i == nb-1){
+        if(!pJS.particles.move.enable){
+          pJS.fn.particlesDraw();
+        }
+        pJS.tmp.pushing = false;
+      }
+    }
+
+  };
+
+
+  pJS.fn.modes.removeParticles = function(nb){
+
+    pJS.particles.array.splice(0, nb);
+    if(!pJS.particles.move.enable){
+      pJS.fn.particlesDraw();
+    }
+
+  };
+
+
+  pJS.fn.modes.bubbleParticle = function(p){
+
+    /* on hover event */
+    if(pJS.interactivity.events.onhover.enable && isInArray('bubble', pJS.interactivity.events.onhover.mode)){
+
+      var dx_mouse = p.x - pJS.interactivity.mouse.pos_x,
+          dy_mouse = p.y - pJS.interactivity.mouse.pos_y,
+          dist_mouse = Math.sqrt(dx_mouse*dx_mouse + dy_mouse*dy_mouse),
+          ratio = 1 - dist_mouse / pJS.interactivity.modes.bubble.distance;
+
+      function init(){
+        p.opacity_bubble = p.opacity;
+        p.radius_bubble = p.radius;
+      }
+
+      /* mousemove - check ratio */
+      if(dist_mouse <= pJS.interactivity.modes.bubble.distance){
+
+        if(ratio >= 0 && pJS.interactivity.status == 'mousemove'){
+          
+          /* size */
+          if(pJS.interactivity.modes.bubble.size != pJS.particles.size.value){
+
+            if(pJS.interactivity.modes.bubble.size > pJS.particles.size.value){
+              var size = p.radius + (pJS.interactivity.modes.bubble.size*ratio);
+              if(size >= 0){
+                p.radius_bubble = size;
+              }
+            }else{
+              var dif = p.radius - pJS.interactivity.modes.bubble.size,
+                  size = p.radius - (dif*ratio);
+              if(size > 0){
+                p.radius_bubble = size;
+              }else{
+                p.radius_bubble = 0;
+              }
+            }
+
+          }
+
+          /* opacity */
+          if(pJS.interactivity.modes.bubble.opacity != pJS.particles.opacity.value){
+
+            if(pJS.interactivity.modes.bubble.opacity > pJS.particles.opacity.value){
+              var opacity = pJS.interactivity.modes.bubble.opacity*ratio;
+              if(opacity > p.opacity && opacity <= pJS.interactivity.modes.bubble.opacity){
+                p.opacity_bubble = opacity;
+              }
+            }else{
+              var opacity = p.opacity - (pJS.particles.opacity.value-pJS.interactivity.modes.bubble.opacity)*ratio;
+              if(opacity < p.opacity && opacity >= pJS.interactivity.modes.bubble.opacity){
+                p.opacity_bubble = opacity;
+              }
+            }
+
+          }
+
+        }
+
+      }else{
+        init();
+      }
+
+
+      /* mouseleave */
+      if(pJS.interactivity.status == 'mouseleave'){
+        init();
+      }
+    
+    }
+
+    /* on click event */
+    else if(pJS.interactivity.events.onclick.enable && isInArray('bubble', pJS.interactivity.events.onclick.mode)){
+
+
+      if(pJS.tmp.bubble_clicking){
+        var dx_mouse = p.x - pJS.interactivity.mouse.click_pos_x,
+            dy_mouse = p.y - pJS.interactivity.mouse.click_pos_y,
+            dist_mouse = Math.sqrt(dx_mouse*dx_mouse + dy_mouse*dy_mouse),
+            time_spent = (new Date().getTime() - pJS.interactivity.mouse.click_time)/1000;
+
+        if(time_spent > pJS.interactivity.modes.bubble.duration){
+          pJS.tmp.bubble_duration_end = true;
+        }
+
+        if(time_spent > pJS.interactivity.modes.bubble.duration*2){
+          pJS.tmp.bubble_clicking = false;
+          pJS.tmp.bubble_duration_end = false;
+        }
+      }
+
+
+      function process(bubble_param, particles_param, p_obj_bubble, p_obj, id){
+
+        if(bubble_param != particles_param){
+
+          if(!pJS.tmp.bubble_duration_end){
+            if(dist_mouse <= pJS.interactivity.modes.bubble.distance){
+              if(p_obj_bubble != undefined) var obj = p_obj_bubble;
+              else var obj = p_obj;
+              if(obj != bubble_param){
+                var value = p_obj - (time_spent * (p_obj - bubble_param) / pJS.interactivity.modes.bubble.duration);
+                if(id == 'size') p.radius_bubble = value;
+                if(id == 'opacity') p.opacity_bubble = value;
+              }
+            }else{
+              if(id == 'size') p.radius_bubble = undefined;
+              if(id == 'opacity') p.opacity_bubble = undefined;
+            }
+          }else{
+            if(p_obj_bubble != undefined){
+              var value_tmp = p_obj - (time_spent * (p_obj - bubble_param) / pJS.interactivity.modes.bubble.duration),
+                  dif = bubble_param - value_tmp;
+                  value = bubble_param + dif;
+              if(id == 'size') p.radius_bubble = value;
+              if(id == 'opacity') p.opacity_bubble = value;
+            }
+          }
+
+        }
+
+      }
+
+      if(pJS.tmp.bubble_clicking){
+        /* size */
+        process(pJS.interactivity.modes.bubble.size, pJS.particles.size.value, p.radius_bubble, p.radius, 'size');
+        /* opacity */
+        process(pJS.interactivity.modes.bubble.opacity, pJS.particles.opacity.value, p.opacity_bubble, p.opacity, 'opacity');
+      }
+
+    }
+
+  };
+
+
+  pJS.fn.modes.repulseParticle = function(p){
+
+    if(pJS.interactivity.events.onhover.enable && isInArray('repulse', pJS.interactivity.events.onhover.mode) && pJS.interactivity.status == 'mousemove') {
+
+      var dx_mouse = p.x - pJS.interactivity.mouse.pos_x,
+          dy_mouse = p.y - pJS.interactivity.mouse.pos_y,
+          dist_mouse = Math.sqrt(dx_mouse*dx_mouse + dy_mouse*dy_mouse);
+
+      var normVec = {x: dx_mouse/dist_mouse, y: dy_mouse/dist_mouse},
+          repulseRadius = pJS.interactivity.modes.repulse.distance,
+          velocity = 100,
+          repulseFactor = clamp((1/repulseRadius)*(-1*Math.pow(dist_mouse/repulseRadius,2)+1)*repulseRadius*velocity, 0, 50);
+      
+      var pos = {
+        x: p.x + normVec.x * repulseFactor,
+        y: p.y + normVec.y * repulseFactor
+      }
+
+      if(pJS.particles.move.out_mode == 'bounce'){
+        if(pos.x - p.radius > 0 && pos.x + p.radius < pJS.canvas.w) p.x = pos.x;
+        if(pos.y - p.radius > 0 && pos.y + p.radius < pJS.canvas.h) p.y = pos.y;
+      }else{
+        p.x = pos.x;
+        p.y = pos.y;
+      }
+    
+    }
+
+
+    else if(pJS.interactivity.events.onclick.enable && isInArray('repulse', pJS.interactivity.events.onclick.mode)) {
+
+      if(!pJS.tmp.repulse_finish){
+        pJS.tmp.repulse_count++;
+        if(pJS.tmp.repulse_count == pJS.particles.array.length){
+          pJS.tmp.repulse_finish = true;
+        }
+      }
+
+      if(pJS.tmp.repulse_clicking){
+
+        var repulseRadius = Math.pow(pJS.interactivity.modes.repulse.distance/6, 3);
+
+        var dx = pJS.interactivity.mouse.click_pos_x - p.x,
+            dy = pJS.interactivity.mouse.click_pos_y - p.y,
+            d = dx*dx + dy*dy;
+
+        var force = -repulseRadius / d * 1;
+
+        function process(){
+
+          var f = Math.atan2(dy,dx);
+          p.vx = force * Math.cos(f);
+          p.vy = force * Math.sin(f);
+
+          if(pJS.particles.move.out_mode == 'bounce'){
+            var pos = {
+              x: p.x + p.vx,
+              y: p.y + p.vy
+            }
+            if (pos.x + p.radius > pJS.canvas.w) p.vx = -p.vx;
+            else if (pos.x - p.radius < 0) p.vx = -p.vx;
+            if (pos.y + p.radius > pJS.canvas.h) p.vy = -p.vy;
+            else if (pos.y - p.radius < 0) p.vy = -p.vy;
+          }
+
+        }
+
+        // default
+        if(d <= repulseRadius){
+          process();
+        }
+
+        // bang - slow motion mode
+        // if(!pJS.tmp.repulse_finish){
+        //   if(d <= repulseRadius){
+        //     process();
+        //   }
+        // }else{
+        //   process();
+        // }
+        
+
+      }else{
+
+        if(pJS.tmp.repulse_clicking == false){
+
+          p.vx = p.vx_i;
+          p.vy = p.vy_i;
+        
+        }
+
+      }
+
+    }
+
+  }
+
+
+  pJS.fn.modes.grabParticle = function(p){
+
+    if(pJS.interactivity.events.onhover.enable && pJS.interactivity.status == 'mousemove'){
+
+      var dx_mouse = p.x - pJS.interactivity.mouse.pos_x,
+          dy_mouse = p.y - pJS.interactivity.mouse.pos_y,
+          dist_mouse = Math.sqrt(dx_mouse*dx_mouse + dy_mouse*dy_mouse);
+
+      /* draw a line between the cursor and the particle if the distance between them is under the config distance */
+      if(dist_mouse <= pJS.interactivity.modes.grab.distance){
+
+        var opacity_line = pJS.interactivity.modes.grab.line_linked.opacity - (dist_mouse / (1/pJS.interactivity.modes.grab.line_linked.opacity)) / pJS.interactivity.modes.grab.distance;
+
+        if(opacity_line > 0){
+
+          /* style */
+          var color_line = pJS.particles.line_linked.color_rgb_line;
+          pJS.canvas.ctx.strokeStyle = 'rgba('+color_line.r+','+color_line.g+','+color_line.b+','+opacity_line+')';
+          pJS.canvas.ctx.lineWidth = pJS.particles.line_linked.width;
+          //pJS.canvas.ctx.lineCap = 'round'; /* performance issue */
+          
+          /* path */
+          pJS.canvas.ctx.beginPath();
+          pJS.canvas.ctx.moveTo(p.x, p.y);
+          pJS.canvas.ctx.lineTo(pJS.interactivity.mouse.pos_x, pJS.interactivity.mouse.pos_y);
+          pJS.canvas.ctx.stroke();
+          pJS.canvas.ctx.closePath();
+
+        }
+
+      }
+
+    }
+
+  };
+
+
+
+  /* ---------- pJS functions - vendors ------------ */
+
+  pJS.fn.vendors.eventsListeners = function(){
+
+    /* events target element */
+    if(pJS.interactivity.detect_on == 'window'){
+      pJS.interactivity.el = window;
+    }else{
+      pJS.interactivity.el = pJS.canvas.el;
+    }
+
+
+    /* detect mouse pos - on hover / click event */
+    if(pJS.interactivity.events.onhover.enable || pJS.interactivity.events.onclick.enable){
+
+      /* el on mousemove */
+      pJS.interactivity.el.addEventListener('mousemove', function(e){
+
+        if(pJS.interactivity.el == window){
+          var pos_x = e.clientX,
+              pos_y = e.clientY;
+        }
+        else{
+          var pos_x = e.offsetX || e.clientX,
+              pos_y = e.offsetY || e.clientY;
+        }
+
+        pJS.interactivity.mouse.pos_x = pos_x;
+        pJS.interactivity.mouse.pos_y = pos_y;
+
+        if(pJS.tmp.retina){
+          pJS.interactivity.mouse.pos_x *= pJS.canvas.pxratio;
+          pJS.interactivity.mouse.pos_y *= pJS.canvas.pxratio;
+        }
+
+        pJS.interactivity.status = 'mousemove';
+
+      });
+
+      /* el on onmouseleave */
+      pJS.interactivity.el.addEventListener('mouseleave', function(e){
+
+        pJS.interactivity.mouse.pos_x = null;
+        pJS.interactivity.mouse.pos_y = null;
+        pJS.interactivity.status = 'mouseleave';
+
+      });
+
+    }
+
+    /* on click event */
+    if(pJS.interactivity.events.onclick.enable){
+
+      pJS.interactivity.el.addEventListener('click', function(){
+
+        pJS.interactivity.mouse.click_pos_x = pJS.interactivity.mouse.pos_x;
+        pJS.interactivity.mouse.click_pos_y = pJS.interactivity.mouse.pos_y;
+        pJS.interactivity.mouse.click_time = new Date().getTime();
+
+        if(pJS.interactivity.events.onclick.enable){
+
+          switch(pJS.interactivity.events.onclick.mode){
+
+            case 'push':
+              if(pJS.particles.move.enable){
+                pJS.fn.modes.pushParticles(pJS.interactivity.modes.push.particles_nb, pJS.interactivity.mouse);
+              }else{
+                if(pJS.interactivity.modes.push.particles_nb == 1){
+                  pJS.fn.modes.pushParticles(pJS.interactivity.modes.push.particles_nb, pJS.interactivity.mouse);
+                }
+                else if(pJS.interactivity.modes.push.particles_nb > 1){
+                  pJS.fn.modes.pushParticles(pJS.interactivity.modes.push.particles_nb);
+                }
+              }
+            break;
+
+            case 'remove':
+              pJS.fn.modes.removeParticles(pJS.interactivity.modes.remove.particles_nb);
+            break;
+
+            case 'bubble':
+              pJS.tmp.bubble_clicking = true;
+            break;
+
+            case 'repulse':
+              pJS.tmp.repulse_clicking = true;
+              pJS.tmp.repulse_count = 0;
+              pJS.tmp.repulse_finish = false;
+              setTimeout(function(){
+                pJS.tmp.repulse_clicking = false;
+              }, pJS.interactivity.modes.repulse.duration*1000)
+            break;
+
+          }
+
+        }
+
+      });
+        
+    }
+
+
+  };
+
+  pJS.fn.vendors.densityAutoParticles = function(){
+
+    if(pJS.particles.number.density.enable){
+
+      /* calc area */
+      var area = pJS.canvas.el.width * pJS.canvas.el.height / 1000;
+      if(pJS.tmp.retina){
+        area = area/(pJS.canvas.pxratio*2);
+      }
+
+      /* calc number of particles based on density area */
+      var nb_particles = area * pJS.particles.number.value / pJS.particles.number.density.value_area;
+
+      /* add or remove X particles */
+      var missing_particles = pJS.particles.array.length - nb_particles;
+      if(missing_particles < 0) pJS.fn.modes.pushParticles(Math.abs(missing_particles));
+      else pJS.fn.modes.removeParticles(missing_particles);
+
+    }
+
+  };
+
+
+  pJS.fn.vendors.checkOverlap = function(p1, position){
+    for(var i = 0; i < pJS.particles.array.length; i++){
+      var p2 = pJS.particles.array[i];
+
+      var dx = p1.x - p2.x,
+          dy = p1.y - p2.y,
+          dist = Math.sqrt(dx*dx + dy*dy);
+
+      if(dist <= p1.radius + p2.radius){
+        p1.x = position ? position.x : Math.random() * pJS.canvas.w;
+        p1.y = position ? position.y : Math.random() * pJS.canvas.h;
+        pJS.fn.vendors.checkOverlap(p1);
+      }
+    }
+  };
+
+
+  pJS.fn.vendors.createSvgImg = function(p){
+
+    /* set color to svg element */
+    var svgXml = pJS.tmp.source_svg,
+        rgbHex = /#([0-9A-F]{3,6})/gi,
+        coloredSvgXml = svgXml.replace(rgbHex, function (m, r, g, b) {
+          if(p.color.rgb){
+            var color_value = 'rgba('+p.color.rgb.r+','+p.color.rgb.g+','+p.color.rgb.b+','+p.opacity+')';
+          }else{
+            var color_value = 'hsla('+p.color.hsl.h+','+p.color.hsl.s+'%,'+p.color.hsl.l+'%,'+p.opacity+')';
+          }
+          return color_value;
+        });
+
+    /* prepare to create img with colored svg */
+    var svg = new Blob([coloredSvgXml], {type: 'image/svg+xml;charset=utf-8'}),
+        DOMURL = window.URL || window.webkitURL || window,
+        url = DOMURL.createObjectURL(svg);
+
+    /* create particle img obj */
+    var img = new Image();
+    img.addEventListener('load', function(){
+      p.img.obj = img;
+      p.img.loaded = true;
+      DOMURL.revokeObjectURL(url);
+      pJS.tmp.count_svg++;
+    });
+    img.src = url;
+
+  };
+
+
+  pJS.fn.vendors.destroypJS = function(){
+    cancelAnimationFrame(pJS.fn.drawAnimFrame);
+    canvas_el.remove();
+    pJSDom = null;
+  };
+
+
+  pJS.fn.vendors.drawShape = function(c, startX, startY, sideLength, sideCountNumerator, sideCountDenominator){
+
+    // By Programming Thomas - https://programmingthomas.wordpress.com/2013/04/03/n-sided-shapes/
+    var sideCount = sideCountNumerator * sideCountDenominator;
+    var decimalSides = sideCountNumerator / sideCountDenominator;
+    var interiorAngleDegrees = (180 * (decimalSides - 2)) / decimalSides;
+    var interiorAngle = Math.PI - Math.PI * interiorAngleDegrees / 180; // convert to radians
+    c.save();
+    c.beginPath();
+    c.translate(startX, startY);
+    c.moveTo(0,0);
+    for (var i = 0; i < sideCount; i++) {
+      c.lineTo(sideLength,0);
+      c.translate(sideLength,0);
+      c.rotate(interiorAngle);
+    }
+    //c.stroke();
+    c.fill();
+    c.restore();
+
+  };
+
+  pJS.fn.vendors.exportImg = function(){
+    window.open(pJS.canvas.el.toDataURL('image/png'), '_blank');
+  };
+
+
+  pJS.fn.vendors.loadImg = function(type){
+
+    pJS.tmp.img_error = undefined;
+
+    if(pJS.particles.shape.image.src != ''){
+
+      if(type == 'svg'){
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', pJS.particles.shape.image.src);
+        xhr.onreadystatechange = function (data) {
+          if(xhr.readyState == 4){
+            if(xhr.status == 200){
+              pJS.tmp.source_svg = data.currentTarget.response;
+              pJS.fn.vendors.checkBeforeDraw();
+            }else{
+              console.log('Error pJS - Image not found');
+              pJS.tmp.img_error = true;
+            }
+          }
+        }
+        xhr.send();
+
+      }else{
+
+        var img = new Image();
+        img.addEventListener('load', function(){
+          pJS.tmp.img_obj = img;
+          pJS.fn.vendors.checkBeforeDraw();
+        });
+        img.src = pJS.particles.shape.image.src;
+
+      }
+
+    }else{
+      console.log('Error pJS - No image.src');
+      pJS.tmp.img_error = true;
+    }
+
+  };
+
+
+  pJS.fn.vendors.draw = function(){
+
+    if(pJS.particles.shape.type == 'image'){
+
+      if(pJS.tmp.img_type == 'svg'){
+
+        if(pJS.tmp.count_svg >= pJS.particles.number.value){
+          pJS.fn.particlesDraw();
+          if(!pJS.particles.move.enable) cancelRequestAnimFrame(pJS.fn.drawAnimFrame);
+          else pJS.fn.drawAnimFrame = requestAnimFrame(pJS.fn.vendors.draw);
+        }else{
+          //console.log('still loading...');
+          if(!pJS.tmp.img_error) pJS.fn.drawAnimFrame = requestAnimFrame(pJS.fn.vendors.draw);
+        }
+
+      }else{
+
+        if(pJS.tmp.img_obj != undefined){
+          pJS.fn.particlesDraw();
+          if(!pJS.particles.move.enable) cancelRequestAnimFrame(pJS.fn.drawAnimFrame);
+          else pJS.fn.drawAnimFrame = requestAnimFrame(pJS.fn.vendors.draw);
+        }else{
+          if(!pJS.tmp.img_error) pJS.fn.drawAnimFrame = requestAnimFrame(pJS.fn.vendors.draw);
+        }
+
+      }
+
+    }else{
+      pJS.fn.particlesDraw();
+      if(!pJS.particles.move.enable) cancelRequestAnimFrame(pJS.fn.drawAnimFrame);
+      else pJS.fn.drawAnimFrame = requestAnimFrame(pJS.fn.vendors.draw);
+    }
+
+  };
+
+
+  pJS.fn.vendors.checkBeforeDraw = function(){
+
+    // if shape is image
+    if(pJS.particles.shape.type == 'image'){
+
+      if(pJS.tmp.img_type == 'svg' && pJS.tmp.source_svg == undefined){
+        pJS.tmp.checkAnimFrame = requestAnimFrame(check);
+      }else{
+        //console.log('images loaded! cancel check');
+        cancelRequestAnimFrame(pJS.tmp.checkAnimFrame);
+        if(!pJS.tmp.img_error){
+          pJS.fn.vendors.init();
+          pJS.fn.vendors.draw();
+        }
+        
+      }
+
+    }else{
+      pJS.fn.vendors.init();
+      pJS.fn.vendors.draw();
+    }
+
+  };
+
+
+  pJS.fn.vendors.init = function(){
+
+    /* init canvas + particles */
+    pJS.fn.retinaInit();
+    pJS.fn.canvasInit();
+    pJS.fn.canvasSize();
+    pJS.fn.canvasPaint();
+    pJS.fn.particlesCreate();
+    pJS.fn.vendors.densityAutoParticles();
+
+    /* particles.line_linked - convert hex colors to rgb */
+    pJS.particles.line_linked.color_rgb_line = hexToRgb(pJS.particles.line_linked.color);
+
+  };
+
+
+  pJS.fn.vendors.start = function(){
+
+    if(isInArray('image', pJS.particles.shape.type)){
+      pJS.tmp.img_type = pJS.particles.shape.image.src.substr(pJS.particles.shape.image.src.length - 3);
+      pJS.fn.vendors.loadImg(pJS.tmp.img_type);
+    }else{
+      pJS.fn.vendors.checkBeforeDraw();
+    }
+
+  };
+
+
+
+
+  /* ---------- pJS - start ------------ */
+
+
+  pJS.fn.vendors.eventsListeners();
+
+  pJS.fn.vendors.start();
+  
+
+
+};
+
+/* ---------- global functions - vendors ------------ */
+
+Object.deepExtend = function(destination, source) {
+  for (var property in source) {
+    if (source[property] && source[property].constructor &&
+     source[property].constructor === Object) {
+      destination[property] = destination[property] || {};
+      arguments.callee(destination[property], source[property]);
+    } else {
+      destination[property] = source[property];
+    }
+  }
+  return destination;
+};
+
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame    ||
+    window.oRequestAnimationFrame      ||
+    window.msRequestAnimationFrame     ||
+    function(callback){
+      window.setTimeout(callback, 1000 / 60);
+    };
+})();
+
+window.cancelRequestAnimFrame = ( function() {
+  return window.cancelAnimationFrame         ||
+    window.webkitCancelRequestAnimationFrame ||
+    window.mozCancelRequestAnimationFrame    ||
+    window.oCancelRequestAnimationFrame      ||
+    window.msCancelRequestAnimationFrame     ||
+    clearTimeout
+} )();
+
+function hexToRgb(hex){
+  // By Tim Down - http://stackoverflow.com/a/5624139/3493650
+  // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+     return r + r + g + g + b + b;
+  });
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+  } : null;
+};
+
+function clamp(number, min, max) {
+  return Math.min(Math.max(number, min), max);
+};
+
+function isInArray(value, array) {
+  return array.indexOf(value) > -1;
+}
+
+
+/* ---------- particles.js functions - start ------------ */
+
+window.pJSDom = [];
+
+window.particlesJS = function(tag_id, params){
+
+  //console.log(params);
+
+  /* no string id? so it's object params, and set the id with default id */
+  if(typeof(tag_id) != 'string'){
+    params = tag_id;
+    tag_id = 'particles-js';
+  }
+
+  /* no id? set the id to default id */
+  if(!tag_id){
+    tag_id = 'particles-js';
+  }
+
+  /* pJS elements */
+  var pJS_tag = document.getElementById(tag_id),
+      pJS_canvas_class = 'particles-js-canvas-el',
+      exist_canvas = pJS_tag.getElementsByClassName(pJS_canvas_class);
+
+  /* remove canvas if exists into the pJS target tag */
+  if(exist_canvas.length){
+    while(exist_canvas.length > 0){
+      pJS_tag.removeChild(exist_canvas[0]);
+    }
+  }
+
+  /* create canvas element */
+  var canvas_el = document.createElement('canvas');
+  canvas_el.className = pJS_canvas_class;
+
+  /* set size canvas */
+  canvas_el.style.width = "100%";
+  canvas_el.style.height = "100%";
+
+  /* append canvas */
+  var canvas = document.getElementById(tag_id).appendChild(canvas_el);
+
+  /* launch particle.js */
+  if(canvas != null){
+    pJSDom.push(new pJS(tag_id, params));
+  }
+
+};
+
+window.particlesJS.load = function(tag_id, path_config_json, callback){
+
+  /* load json config */
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', path_config_json);
+  xhr.onreadystatechange = function (data) {
+    if(xhr.readyState == 4){
+      if(xhr.status == 200){
+        var params = JSON.parse(data.currentTarget.response);
+        window.particlesJS(tag_id, params);
+        if(callback) callback();
+      }else{
+        console.log('Error pJS - XMLHttpRequest status: '+xhr.status);
+        console.log('Error pJS - File config not found');
+      }
+    }
+  };
+  xhr.send();
+
+};
+
+/***/ }),
+
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
@@ -79236,6 +81037,306 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/index.js?!./node_modules/vue-particles/src/vue-particles/vue-particles.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-particles/src/vue-particles/vue-particles.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* eslint-disable */
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'vue-particles',
+  props: {
+    color: {
+      type: String,
+      default: '#dedede'
+    },
+    particleOpacity: {
+      type: Number,
+      default: 0.7
+    },
+    particlesNumber: {
+      type: Number,
+      default: 80
+    },
+    shapeType: {
+      type: String,
+      default: 'circle'
+    },
+    particleSize: {
+      type: Number,
+      default: 4
+    },
+    linesColor: {
+      type: String,
+      default: '#dedede'
+    },
+    linesWidth: {
+      type: Number,
+      default: 1
+    },
+    lineLinked: {
+      type: Boolean,
+      default: true
+    },
+    lineOpacity: {
+      type: Number,
+      default: 0.4
+    },
+    linesDistance: {
+      type: Number,
+      default: 150
+    },
+    moveSpeed: {
+      type: Number,
+      default: 3
+    },
+    hoverEffect: {
+      type: Boolean,
+      default: true
+    },
+    hoverMode: {
+      type: String,
+      default: 'grab'
+    },
+    clickEffect: {
+      type: Boolean,
+      default: true
+    },
+    clickMode: {
+      type: String,
+      default: 'push'
+    }
+  },
+  mounted () {
+    // import particle.js only on client-side
+    __webpack_require__(/*! particles.js */ "./node_modules/particles.js/particles.js")
+    this.$nextTick(() => {
+      this.initParticleJS(
+        this.color,
+        this.particleOpacity,
+        this.particlesNumber,
+        this.shapeType,
+        this.particleSize,
+        this.linesColor,
+        this.linesWidth,
+        this.lineLinked,
+        this.lineOpacity,
+        this.linesDistance,
+        this.moveSpeed,
+        this.hoverEffect,
+        this.hoverMode,
+        this.clickEffect,
+        this.clickMode
+      )
+    })
+  },
+  methods: {
+    initParticleJS (
+      color,
+      particleOpacity,
+      particlesNumber,
+      shapeType,
+      particleSize,
+      linesColor,
+      linesWidth,
+      lineLinked,
+      lineOpacity,
+      linesDistance,
+      moveSpeed,
+      hoverEffect,
+      hoverMode,
+      clickEffect,
+      clickMode
+    ) {
+      particlesJS('particles-js', {
+        "particles": {
+          "number": {
+            "value": particlesNumber,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": color
+          },
+          "shape": {
+            // circle, edge, triangle, polygon, star, image
+            "type": shapeType,
+            "stroke": {
+              "width": 0,
+              "color": "#192231"
+            },
+            "polygon": {
+              "nb_sides": 5
+            }
+          },
+          "opacity": {
+            "value": particleOpacity,
+            "random": false,
+            "anim": {
+              "enable": false,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": particleSize,
+            "random": true,
+            "anim": {
+              "enable": false,
+              "speed": 40,
+              "size_min": 0.1,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": lineLinked,
+            "distance": linesDistance,
+            "color": linesColor,
+            "opacity": lineOpacity,
+            "width": linesWidth
+          },
+          "move": {
+            "enable": true,
+            "speed": moveSpeed,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": hoverEffect,
+              "mode": hoverMode
+            },
+            "onclick": {
+              "enable": clickEffect,
+              "mode": clickMode
+            },
+            "onresize": {
+
+              "enable": true,
+              "density_auto": true,
+              "density_area": 400
+
+            }
+          },
+          "modes": {
+            "grab": {
+              "distance": 140,
+              "line_linked": {
+                "opacity": 1
+              }
+            },
+            "bubble": {
+              "distance": 400,
+              "size": 40,
+              "duration": 2,
+              "opacity": 8,
+              "speed": 3
+            },
+            "repulse": {
+              "distance": 200,
+              "duration": 0.4
+            },
+            "push": {
+              "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
+            }
+          }
+        },
+        "retina_detect": true
+      });
+    }
+
+  }
+});
+/* eslint-disable */
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./node_modules/vue-particles/src/vue-particles/vue-particles.vue?vue&type=template&id=beb6e31c&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-particles/src/vue-particles/vue-particles.vue?vue&type=template&id=beb6e31c& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {
+    attrs: {
+      id: "particles-js",
+      color: _vm.color,
+      particleOpacity: _vm.particleOpacity,
+      linesColor: _vm.linesColor,
+      particlesNumber: _vm.particlesNumber,
+      shapeType: _vm.shapeType,
+      particleSize: _vm.particleSize,
+      linesWidth: _vm.linesWidth,
+      lineLinked: _vm.lineLinked,
+      lineOpacity: _vm.lineOpacity,
+      linesDistance: _vm.linesDistance,
+      moveSpeed: _vm.moveSpeed,
+      hoverEffect: _vm.hoverEffect,
+      hoverMode: _vm.hoverMode,
+      clickEffect: _vm.clickEffect,
+      clickMode: _vm.clickMode
+    }
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/App.vue?vue&type=template&id=f348271a&scoped=true&":
 /*!*******************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/App.vue?vue&type=template&id=f348271a&scoped=true& ***!
@@ -79823,31 +81924,30 @@ var render = function() {
             attrs: { prop: "title", label: "通知标题" }
           }),
           _vm._v(" "),
-          _c("el-table-column", {
-            attrs: { prop: "id", fixed: "right", label: "操作", width: "120" },
-            scopedSlots: _vm._u([
-              {
-                key: "default",
-                fn: function(scope) {
-                  return [
-                    _c(
-                      "el-button",
-                      {
-                        attrs: { type: "text", size: "small" },
-                        nativeOn: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.deleteRow(scope.$index, _vm.noticeList)
-                          }
-                        }
-                      },
-                      [_vm._v("\n          移除\n        ")]
-                    )
-                  ]
-                }
-              }
-            ])
-          })
+          _c(
+            "el-table-column",
+            {
+              attrs: { prop: "id", fixed: "right", label: "操作", width: "120" }
+            },
+            [
+              [
+                _c(
+                  "el-button",
+                  {
+                    attrs: { type: "text", size: "small" },
+                    nativeOn: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.deleteRow()
+                      }
+                    }
+                  },
+                  [_vm._v("\n          移除\n        ")]
+                )
+              ]
+            ],
+            2
+          )
         ],
         1
       )
@@ -79881,8 +81981,126 @@ var render = function() {
     "el-card",
     [
       _c("div", { attrs: { slot: "header" }, slot: "header" }, [
-        _c("span", [_vm._v("用户权限列表")])
+        _c("span", [_vm._v("权限列表")])
       ]),
+      _vm._v(" "),
+      _c(
+        "el-button",
+        {
+          attrs: { type: "primary", size: "mini" },
+          on: {
+            click: function($event) {
+              _vm.dialogFormVisible = true
+            }
+          }
+        },
+        [_vm._v("新增权限")]
+      ),
+      _vm._v(" "),
+      _c(
+        "el-dialog",
+        {
+          attrs: { title: "新增权限", visible: _vm.dialogFormVisible },
+          on: {
+            "update:visible": function($event) {
+              _vm.dialogFormVisible = $event
+            }
+          }
+        },
+        [
+          _c(
+            "el-form",
+            { ref: "form", attrs: { model: _vm.form, rules: _vm.rules } },
+            [
+              _c(
+                "el-form-item",
+                {
+                  attrs: {
+                    label: "权限名",
+                    prop: "name",
+                    "label-width": _vm.formLabelWidth
+                  }
+                },
+                [
+                  _c("el-input", {
+                    attrs: { autocomplete: "off" },
+                    model: {
+                      value: _vm.form.name,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "name", $$v)
+                      },
+                      expression: "form.name"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-form-item",
+                {
+                  attrs: {
+                    label: "描述",
+                    prop: "description",
+                    "label-width": _vm.formLabelWidth
+                  }
+                },
+                [
+                  _c("el-input", {
+                    attrs: { type: "textarea", autocomplete: "off" },
+                    model: {
+                      value: _vm.form.description,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "description", $$v)
+                      },
+                      expression: "form.description"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "dialog-footer",
+              attrs: { slot: "footer" },
+              slot: "footer"
+            },
+            [
+              _c(
+                "el-button",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.dialogFormVisible = false
+                    }
+                  }
+                },
+                [_vm._v("取 消")]
+              ),
+              _vm._v(" "),
+              _c(
+                "el-button",
+                {
+                  attrs: { type: "primary" },
+                  on: {
+                    click: function($event) {
+                      return _vm.submitForm("form")
+                    }
+                  }
+                },
+                [_vm._v("确 定")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "el-table",
@@ -79894,29 +82112,11 @@ var render = function() {
           _c("el-table-column", { attrs: { type: "index", width: "50" } }),
           _vm._v(" "),
           _c("el-table-column", {
-            attrs: { prop: "name", label: "用户权限名" }
+            attrs: { prop: "name", label: "管理员权限名" }
           }),
           _vm._v(" "),
           _c("el-table-column", {
             attrs: { prop: "description", label: "描述" }
-          }),
-          _vm._v(" "),
-          _c("el-table-column", {
-            attrs: { fixed: "right", label: "操作", width: "120" },
-            scopedSlots: _vm._u([
-              {
-                key: "default",
-                fn: function(scope) {
-                  return [
-                    _c(
-                      "el-button",
-                      { attrs: { type: "text", size: "small" } },
-                      [_vm._v("\n          管理权限内容\n        ")]
-                    )
-                  ]
-                }
-              }
-            ])
           })
         ],
         1
@@ -79970,6 +82170,63 @@ var render = function() {
           _vm._v(" "),
           _c("el-table-column", {
             attrs: { prop: "status_name", label: "审核状态", width: "100" }
+          }),
+          _vm._v(" "),
+          _c("el-table-column", {
+            attrs: { label: "操作" },
+            scopedSlots: _vm._u([
+              {
+                key: "default",
+                fn: function(scope) {
+                  return [
+                    _c(
+                      "el-button",
+                      {
+                        attrs: { size: "mini", type: "primary" },
+                        on: {
+                          click: function($event) {
+                            return _vm.handleDetail(scope.row)
+                          }
+                        }
+                      },
+                      [_vm._v("\n          详情\n        ")]
+                    ),
+                    _vm._v(" "),
+                    1 === scope.row.status
+                      ? [
+                          _c(
+                            "el-button",
+                            {
+                              attrs: { size: "mini", type: "danger" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.handleToggleStatus(scope.row)
+                                }
+                              }
+                            },
+                            [_vm._v("封禁\n          ")]
+                          )
+                        ]
+                      : 0 === scope.row.status
+                      ? [
+                          _c(
+                            "el-button",
+                            {
+                              attrs: { size: "mini", type: "success" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.handleToggleStatus(scope.row)
+                                }
+                              }
+                            },
+                            [_vm._v("解封\n          ")]
+                          )
+                        ]
+                      : _vm._e()
+                  ]
+                }
+              }
+            ])
           })
         ],
         1
@@ -80006,6 +82263,124 @@ var render = function() {
       _c("div", { attrs: { slot: "header" }, slot: "header" }, [
         _c("span", [_vm._v("用户角色列表")])
       ]),
+      _vm._v(" "),
+      _c(
+        "el-button",
+        {
+          attrs: { type: "primary", size: "mini" },
+          on: {
+            click: function($event) {
+              _vm.dialogFormVisible = true
+            }
+          }
+        },
+        [_vm._v("新增角色")]
+      ),
+      _vm._v(" "),
+      _c(
+        "el-dialog",
+        {
+          attrs: { title: "新增角色", visible: _vm.dialogFormVisible },
+          on: {
+            "update:visible": function($event) {
+              _vm.dialogFormVisible = $event
+            }
+          }
+        },
+        [
+          _c(
+            "el-form",
+            { ref: "form", attrs: { model: _vm.form, rules: _vm.rules } },
+            [
+              _c(
+                "el-form-item",
+                {
+                  attrs: {
+                    label: "角色名",
+                    prop: "name",
+                    "label-width": _vm.formLabelWidth
+                  }
+                },
+                [
+                  _c("el-input", {
+                    attrs: { autocomplete: "off" },
+                    model: {
+                      value: _vm.form.name,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "name", $$v)
+                      },
+                      expression: "form.name"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-form-item",
+                {
+                  attrs: {
+                    label: "描述",
+                    prop: "description",
+                    "label-width": _vm.formLabelWidth
+                  }
+                },
+                [
+                  _c("el-input", {
+                    attrs: { type: "textarea", autocomplete: "off" },
+                    model: {
+                      value: _vm.form.description,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "description", $$v)
+                      },
+                      expression: "form.description"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "dialog-footer",
+              attrs: { slot: "footer" },
+              slot: "footer"
+            },
+            [
+              _c(
+                "el-button",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.dialogFormVisible = false
+                    }
+                  }
+                },
+                [_vm._v("取 消")]
+              ),
+              _vm._v(" "),
+              _c(
+                "el-button",
+                {
+                  attrs: { type: "primary" },
+                  on: {
+                    click: function($event) {
+                      return _vm.submitForm("form")
+                    }
+                  }
+                },
+                [_vm._v("确 定")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "el-table",
@@ -80190,7 +82565,7 @@ var render = function() {
                         nativeOn: {
                           click: function($event) {
                             $event.preventDefault()
-                            return _vm.deleteRow(scope.$index, _vm.topicList)
+                            return _vm.deleteRow(scope.row)
                           }
                         }
                       },
@@ -80261,9 +82636,123 @@ var render = function() {
         _c("span", [_vm._v("用户列表")])
       ]),
       _vm._v(" "),
-      _c("el-button", { attrs: { type: "primary", size: "mini" } }, [
-        _vm._v("新用户")
-      ]),
+      _c(
+        "el-button",
+        {
+          attrs: { type: "primary", size: "mini" },
+          on: {
+            click: function($event) {
+              _vm.dialogFormVisible = true
+            }
+          }
+        },
+        [_vm._v("新用户")]
+      ),
+      _vm._v(" "),
+      _c(
+        "el-dialog",
+        {
+          attrs: { title: "新增用户", visible: _vm.dialogFormVisible },
+          on: {
+            "update:visible": function($event) {
+              _vm.dialogFormVisible = $event
+            }
+          }
+        },
+        [
+          _c(
+            "el-form",
+            { ref: "form", attrs: { model: _vm.form, rules: _vm.rules } },
+            [
+              _c(
+                "el-form-item",
+                {
+                  attrs: {
+                    label: "用户名",
+                    prop: "name",
+                    "label-width": _vm.formLabelWidth
+                  }
+                },
+                [
+                  _c("el-input", {
+                    attrs: { autocomplete: "off" },
+                    model: {
+                      value: _vm.form.name,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "name", $$v)
+                      },
+                      expression: "form.name"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-form-item",
+                {
+                  attrs: {
+                    label: "密码",
+                    prop: "password",
+                    "label-width": _vm.formLabelWidth
+                  }
+                },
+                [
+                  _c("el-input", {
+                    attrs: { type: "password", autocomplete: "off" },
+                    model: {
+                      value: _vm.form.password,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "password", $$v)
+                      },
+                      expression: "form.password"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "dialog-footer",
+              attrs: { slot: "footer" },
+              slot: "footer"
+            },
+            [
+              _c(
+                "el-button",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.dialogFormVisible = false
+                    }
+                  }
+                },
+                [_vm._v("取 消")]
+              ),
+              _vm._v(" "),
+              _c(
+                "el-button",
+                {
+                  attrs: { type: "primary" },
+                  on: {
+                    click: function($event) {
+                      return _vm.submitForm("form")
+                    }
+                  }
+                },
+                [_vm._v("确 定")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "el-table",
@@ -80287,7 +82776,7 @@ var render = function() {
                     _c(
                       "el-button",
                       { attrs: { type: "text", size: "small" } },
-                      [_vm._v("\n          管理角色\n        ")]
+                      [_vm._v("\n          管理用户角色\n        ")]
                     )
                   ]
                 }
@@ -80416,6 +82905,102 @@ function normalizeComponent (
     options: options
   }
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-particles/src/vue-particles/index.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/vue-particles/src/vue-particles/index.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vue_particles_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vue-particles.vue */ "./node_modules/vue-particles/src/vue-particles/vue-particles.vue");
+/* eslint-disable */
+
+
+const VueParticles = {
+
+    install (Vue, options) {
+        Vue.component('vue-particles', _vue_particles_vue__WEBPACK_IMPORTED_MODULE_0__["default"])
+    }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (VueParticles);
+/* eslint-disable */
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-particles/src/vue-particles/vue-particles.vue":
+/*!************************************************************************!*\
+  !*** ./node_modules/vue-particles/src/vue-particles/vue-particles.vue ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vue_particles_vue_vue_type_template_id_beb6e31c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vue-particles.vue?vue&type=template&id=beb6e31c& */ "./node_modules/vue-particles/src/vue-particles/vue-particles.vue?vue&type=template&id=beb6e31c&");
+/* harmony import */ var _vue_particles_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./vue-particles.vue?vue&type=script&lang=js& */ "./node_modules/vue-particles/src/vue-particles/vue-particles.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _vue_particles_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _vue_particles_vue_vue_type_template_id_beb6e31c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _vue_particles_vue_vue_type_template_id_beb6e31c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "node_modules/vue-particles/src/vue-particles/vue-particles.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./node_modules/vue-particles/src/vue-particles/vue-particles.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/vue-particles/src/vue-particles/vue-particles.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vue_loader_lib_index_js_vue_loader_options_vue_particles_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../vue-loader/lib??vue-loader-options!./vue-particles.vue?vue&type=script&lang=js& */ "./node_modules/vue-loader/lib/index.js?!./node_modules/vue-particles/src/vue-particles/vue-particles.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_vue_loader_lib_index_js_vue_loader_options_vue_particles_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./node_modules/vue-particles/src/vue-particles/vue-particles.vue?vue&type=template&id=beb6e31c&":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/vue-particles/src/vue-particles/vue-particles.vue?vue&type=template&id=beb6e31c& ***!
+  \*******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_vue_particles_vue_vue_type_template_id_beb6e31c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../vue-loader/lib??vue-loader-options!./vue-particles.vue?vue&type=template&id=beb6e31c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./node_modules/vue-particles/src/vue-particles/vue-particles.vue?vue&type=template&id=beb6e31c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_vue_particles_vue_vue_type_template_id_beb6e31c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_vue_particles_vue_vue_type_template_id_beb6e31c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
 
 
 /***/ }),
@@ -96576,11 +99161,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(element_ui__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var less__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! less */ "./node_modules/less/dist/less.js");
 /* harmony import */ var less__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(less__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var element_ui_lib_theme_chalk_index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! element-ui/lib/theme-chalk/index.css */ "./node_modules/element-ui/lib/theme-chalk/index.css");
-/* harmony import */ var element_ui_lib_theme_chalk_index_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(element_ui_lib_theme_chalk_index_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+/* harmony import */ var vue_particles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-particles */ "./node_modules/vue-particles/src/vue-particles/index.js");
+/* harmony import */ var element_ui_lib_theme_chalk_index_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! element-ui/lib/theme-chalk/index.css */ "./node_modules/element-ui/lib/theme-chalk/index.css");
+/* harmony import */ var element_ui_lib_theme_chalk_index_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(element_ui_lib_theme_chalk_index_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 
@@ -96590,8 +99176,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(element_ui__WEBPACK_IMPORTED_MODULE_1___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(less__WEBPACK_IMPORTED_MODULE_2___default.a);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_particles__WEBPACK_IMPORTED_MODULE_3__["default"]);
 /**
  * 不显示生产模式的消息
  * 开发环境下，Vue 会提供很多警告来帮你对付常见的错误与陷阱。
@@ -96604,10 +99192,10 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.productionTip = false;
 
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#root',
-  router: _router__WEBPACK_IMPORTED_MODULE_5__["default"],
-  store: _store__WEBPACK_IMPORTED_MODULE_6__["default"],
+  router: _router__WEBPACK_IMPORTED_MODULE_6__["default"],
+  store: _store__WEBPACK_IMPORTED_MODULE_7__["default"],
   components: {
-    App: _App_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    App: _App_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   template: '<App />'
 });
@@ -97070,7 +99658,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./env */ "./resources/js/config/env.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ "./resources/js/config/utils.js");
+/* harmony import */ var _utils_localStorage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/localStorage */ "./resources/js/utils/localStorage.js");
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -97083,8 +99671,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ __webpack_exports__["default"] = (/*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
   var url,
-      data,
       type,
+      data,
       method,
       dataStr,
       requestConfig,
@@ -97096,8 +99684,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       switch (_context.prev = _context.next) {
         case 0:
           url = _args.length > 0 && _args[0] !== undefined ? _args[0] : '';
-          data = _args.length > 1 && _args[1] !== undefined ? _args[1] : {};
-          type = _args.length > 2 && _args[2] !== undefined ? _args[2] : 'GET';
+          type = _args.length > 1 && _args[1] !== undefined ? _args[1] : 'GET';
+          data = _args.length > 2 && _args[2] !== undefined ? _args[2] : {};
           method = _args.length > 3 && _args[3] !== undefined ? _args[3] : 'fetch';
           type = type.toUpperCase();
           url = _env__WEBPACK_IMPORTED_MODULE_1__["BASE_URL_PREFIX"] + url;
@@ -97125,12 +99713,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
-              'Authorization': Object(_utils__WEBPACK_IMPORTED_MODULE_2__["getStore"])('token')
+              'Authorization': Object(_utils_localStorage__WEBPACK_IMPORTED_MODULE_2__["getStore"])('token')
             },
             mode: 'cors'
           };
 
-          if ('POST' === type || 'DELETE' === type) {
+          if ('POST' === type || 'PUT' === type) {
             Object.defineProperty(requestConfig, 'body', {
               value: JSON.stringify(data)
             });
@@ -97204,54 +99792,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   }, _callee, null, [[10, 21]]);
 })));
-
-/***/ }),
-
-/***/ "./resources/js/config/utils.js":
-/*!**************************************!*\
-  !*** ./resources/js/config/utils.js ***!
-  \**************************************/
-/*! exports provided: setStore, getStore, removeStore */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setStore", function() { return setStore; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStore", function() { return getStore; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeStore", function() { return removeStore; });
-/**
- * 存储 localStorage
- */
-var setStore = function setStore(name, content) {
-  if (!name) {
-    return;
-  }
-
-  'string' !== typeof content && (content = JSON.stringify(content));
-  window.localStorage.setItem(name, content);
-};
-/**
- * 获取 localStorage
- */
-
-var getStore = function getStore(name) {
-  if (!name) {
-    return;
-  }
-
-  return window.localStorage.getItem(name);
-};
-/**
- * 删除 localStorage
- */
-
-var removeStore = function removeStore(name) {
-  if (!name) {
-    return;
-  }
-
-  window.localStorage.removeItem(name);
-};
 
 /***/ }),
 
@@ -98105,7 +100645,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*!*****************************************!*\
   !*** ./resources/js/service/getData.js ***!
   \*****************************************/
-/*! exports provided: login, logout, getSideBarList, getAdminInfo, getAdminUsers, getAdminRoles, getAdminPermissions, getPosts, getNotices, storeNotice, getTopics, storeTopic, deleteTopic */
+/*! exports provided: login, logout, getSideBarList, getAdminInfo, getAdminUsers, storeAdminUser, getAdminRoles, storeAdminRole, getAdminPermissions, storeAdminPermission, getPosts, togglePostStatus, getNotices, storeNotice, getTopics, storeTopic, deleteTopic */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98115,9 +100655,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSideBarList", function() { return getSideBarList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminInfo", function() { return getAdminInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminUsers", function() { return getAdminUsers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeAdminUser", function() { return storeAdminUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminRoles", function() { return getAdminRoles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeAdminRole", function() { return storeAdminRole; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminPermissions", function() { return getAdminPermissions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeAdminPermission", function() { return storeAdminPermission; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPosts", function() { return getPosts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "togglePostStatus", function() { return togglePostStatus; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNotices", function() { return getNotices; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeNotice", function() { return storeNotice; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTopics", function() { return getTopics; });
@@ -98128,10 +100672,10 @@ __webpack_require__.r(__webpack_exports__);
 var login = function login(_ref) {
   var name = _ref.name,
       password = _ref.password;
-  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('login', {
+  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('login', 'POST', {
     name: name,
     password: password
-  }, 'POST');
+  });
 };
 var logout = function logout() {
   return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('logout');
@@ -98145,39 +100689,66 @@ var getAdminInfo = function getAdminInfo() {
 var getAdminUsers = function getAdminUsers() {
   return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_users');
 };
+var storeAdminUser = function storeAdminUser(_ref2) {
+  var name = _ref2.name,
+      password = _ref2.password;
+  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_users', 'POST', {
+    name: name,
+    password: password
+  });
+};
 var getAdminRoles = function getAdminRoles() {
   return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_roles');
+};
+var storeAdminRole = function storeAdminRole(_ref3) {
+  var name = _ref3.name,
+      description = _ref3.description;
+  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_roles', 'POST', {
+    name: name,
+    description: description
+  });
 };
 var getAdminPermissions = function getAdminPermissions() {
   return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_permissions');
 };
+var storeAdminPermission = function storeAdminPermission(_ref4) {
+  var name = _ref4.name,
+      description = _ref4.description;
+  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_permissions', 'POST', {
+    name: name,
+    description: description
+  });
+};
 var getPosts = function getPosts() {
   return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('posts');
+};
+var togglePostStatus = function togglePostStatus(id, status) {
+  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('posts/' + id, 'PUT', {
+    status: status
+  });
 };
 var getNotices = function getNotices() {
   return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('notices');
 };
-var storeNotice = function storeNotice(_ref2) {
-  var title = _ref2.title,
-      content = _ref2.content;
-  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('notices', {
+var storeNotice = function storeNotice(_ref5) {
+  var title = _ref5.title,
+      content = _ref5.content;
+  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('notices', 'POST', {
     title: title,
     content: content
-  }, 'POST');
+  });
 };
 var getTopics = function getTopics() {
   return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('topics');
 };
-var storeTopic = function storeTopic(_ref3) {
-  var name = _ref3.name;
-  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('topics', {
+var storeTopic = function storeTopic(_ref6) {
+  var name = _ref6.name;
+  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('topics', 'POST', {
     name: name
-  }, 'POST');
+  });
 };
 var deleteTopic = function deleteTopic(id) {
-  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('topics/destroy', {
-    id: id
-  }, 'DELETE');
+  return Object(_config_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('topics/' + id, 'DELETE');
 }; // ?XDEBUG_SESSION_START=18130
 
 /***/ }),
@@ -98305,7 +100876,7 @@ var SET_ADMIN_INFO = 'SET_ADMIN_INFO';
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mutation_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mutation-types */ "./resources/js/store/mutation-types.js");
-/* harmony import */ var _config_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config/utils */ "./resources/js/config/utils.js");
+/* harmony import */ var _utils_localStorage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/localStorage */ "./resources/js/utils/localStorage.js");
 var _RECORD_ADMIN$LOGOUT$;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -98314,12 +100885,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = (_RECORD_ADMIN$LOGOUT$ = {}, _defineProperty(_RECORD_ADMIN$LOGOUT$, _mutation_types__WEBPACK_IMPORTED_MODULE_0__["RECORD_ADMIN"], function (state, token) {
   state.isLoggedIn = true;
-  Object(_config_utils__WEBPACK_IMPORTED_MODULE_1__["setStore"])('token', token);
-  Object(_config_utils__WEBPACK_IMPORTED_MODULE_1__["setStore"])('isLoggedIn', true);
+  Object(_utils_localStorage__WEBPACK_IMPORTED_MODULE_1__["setStore"])('token', token);
+  Object(_utils_localStorage__WEBPACK_IMPORTED_MODULE_1__["setStore"])('isLoggedIn', true);
 }), _defineProperty(_RECORD_ADMIN$LOGOUT$, _mutation_types__WEBPACK_IMPORTED_MODULE_0__["LOGOUT"], function (state) {
   state.isLoggedIn = false;
-  Object(_config_utils__WEBPACK_IMPORTED_MODULE_1__["removeStore"])('token');
-  Object(_config_utils__WEBPACK_IMPORTED_MODULE_1__["removeStore"])('isLoggedIn');
+  Object(_utils_localStorage__WEBPACK_IMPORTED_MODULE_1__["removeStore"])('token');
+  Object(_utils_localStorage__WEBPACK_IMPORTED_MODULE_1__["removeStore"])('isLoggedIn');
 }), _defineProperty(_RECORD_ADMIN$LOGOUT$, _mutation_types__WEBPACK_IMPORTED_MODULE_0__["SET_ADMIN_INFO"], function (state, adminInfo) {
   state.adminInfo = adminInfo;
 }), _RECORD_ADMIN$LOGOUT$);
@@ -98350,6 +100921,54 @@ try {
   // 是否登录
   isLoggedIn: defaultIsLoggedIn
 });
+
+/***/ }),
+
+/***/ "./resources/js/utils/localStorage.js":
+/*!********************************************!*\
+  !*** ./resources/js/utils/localStorage.js ***!
+  \********************************************/
+/*! exports provided: setStore, getStore, removeStore */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setStore", function() { return setStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStore", function() { return getStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeStore", function() { return removeStore; });
+/**
+ * 存储 localStorage
+ */
+var setStore = function setStore(name, content) {
+  if (!name) {
+    return;
+  }
+
+  'string' !== typeof content && (content = JSON.stringify(content));
+  window.localStorage.setItem(name, content);
+};
+/**
+ * 获取 localStorage
+ */
+
+var getStore = function getStore(name) {
+  if (!name) {
+    return;
+  }
+
+  return window.localStorage.getItem(name);
+};
+/**
+ * 删除 localStorage
+ */
+
+var removeStore = function removeStore(name) {
+  if (!name) {
+    return;
+  }
+
+  window.localStorage.removeItem(name);
+};
 
 /***/ }),
 

@@ -34,7 +34,7 @@
       >
         <template slot-scope="scope">
           <el-button
-            @click.native.prevent="deleteRow(scope.$index, topicList)"
+            @click.native.prevent="deleteRow(scope.row)"
             type="text"
             size="small">
             移除
@@ -73,18 +73,16 @@
         await storeTopic(this.form);
         await this.topics();
       },
-      async handleDeleteTopic(id) {
-        await deleteTopic(id);
+      async deleteRow(row) {
+        await deleteTopic(row.id);
         await this.topics();
-      },
-      deleteRow(index, rows) {
-        this.handleDeleteTopic(rows[index].id);
       },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             this.handleStoreTopic();
             this.dialogFormVisible = false;
+            this.form.name = '';
           } else {
             console.log('提交失败！！');
             return false;

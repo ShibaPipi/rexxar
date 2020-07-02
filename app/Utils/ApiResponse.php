@@ -116,7 +116,7 @@ class ApiResponse
      * @param string $message
      * @return mixed
      */
-    public function created($message = 'created')
+    public function createdOrUpdated($message = 'created or updated')
     {
         return $this->setStatusCode(FoundationResponse::HTTP_CREATED)
             ->message($message);

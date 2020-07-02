@@ -1,5 +1,5 @@
 import { LOGOUT, RECORD_ADMIN, SET_ADMIN_INFO } from './mutation-types';
-import { removeStore, setStore } from '../config/utils';
+import { removeStore, setStore } from '../utils/localStorage';
 
 export default {
   [RECORD_ADMIN](state, token) {

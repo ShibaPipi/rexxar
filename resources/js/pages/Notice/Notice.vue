@@ -36,9 +36,9 @@
         label="操作"
         width="120"
       >
-        <template slot-scope="scope">
+        <template>
           <el-button
-            @click.native.prevent="deleteRow(scope.$index, noticeList)"
+            @click.native.prevent="deleteRow()"
             type="text"
             size="small"
           >
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-  import { deleteNotice, getNotices, storeNotice } from '../../service/getData';
+  import { getNotices, storeNotice } from '../../service/getData';
 
   export default {
     name: 'Notice',
@@ -78,19 +78,13 @@
       async notices() {
         this.noticeList = (await getNotices()).data
       },
-      async handleDeleteNotice(id) {
-        await deleteNotice(id);
+      async handleStoreNotice() {
+        await storeNotice(this.form);
         await this.notices();
       },
-      deleteRow(index, rows) {
+      deleteRow() {
         this.$alert('暂未开放该功能', '通知', {
-          confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: `action: ${ action }`
-            });
-          }
+          confirmButtonText: '确定'
         });
       },
       submitForm(formName) {
@@ -98,12 +92,14 @@
           if (valid) {
             this.handleStoreNotice();
             this.dialogFormVisible = false;
+            this.form.title = '';
+            this.form.content = '';
           } else {
             console.log('提交失败！！');
             return false;
           }
         });
-      },
+      }
     },
     mounted() {
       this.notices()

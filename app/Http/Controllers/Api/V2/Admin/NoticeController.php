@@ -25,6 +25,6 @@ class NoticeController extends Controller
             Notice::create($request->only('title', 'content'))
         );
 
-        return api()->created();
+        return api()->createdOrUpdated();
     }
 }

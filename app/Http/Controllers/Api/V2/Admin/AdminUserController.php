@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V2\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\V2\Admin\AdminUserRequest;
 use App\Models\AdminUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +13,13 @@ class AdminUserController extends Controller
     public function index()
     {
         return api()->success(AdminUser::paginate());
+    }
+
+    public function store(AdminUserRequest $request)
+    {
+        AdminUser::create($request->only('name', 'password'));
+
+        return api()->createdOrUpdated();
     }
 
     public function info()

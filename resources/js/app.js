@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import less from 'less'
+import VueParticles from 'vue-particles'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 import router from './router'
@@ -10,6 +11,7 @@ import store from './store'
 
 Vue.use(ElementUI);
 Vue.use(less);
+Vue.use(VueParticles);
 
 /**
  * 不显示生产模式的消息

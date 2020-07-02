@@ -1,7 +1,7 @@
 import { BASE_URL_PREFIX } from './env'
-import { getStore } from './utils';
+import { getStore } from '../utils/localStorage';
 
-export default async (url = '', data = {}, type = 'GET', method = 'fetch') => {
+export default async (url = '', type = 'GET', data = {}, method = 'fetch') => {
   type = type.toUpperCase();
   url = BASE_URL_PREFIX + url;
 
@@ -30,7 +30,7 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch') => {
       mode: 'cors',
     };
 
-    if ('POST' === type || 'DELETE' === type) {
+    if ('POST' === type || 'PUT' === type) {
       Object.defineProperty(requestConfig, 'body', {
         value: JSON.stringify(data)
       })
