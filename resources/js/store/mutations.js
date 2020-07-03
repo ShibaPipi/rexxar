@@ -3,6 +3,8 @@ import { removeStore, setStore } from '../utils/localStorage';
 
 export default {
   [RECORD_ADMIN](state, token) {
+    console.log(2,token)
+
     state.isLoggedIn = true;
     setStore('token', token);
     setStore('isLoggedIn', true)

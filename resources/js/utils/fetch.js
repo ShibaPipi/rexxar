@@ -1,12 +1,13 @@
-import { BASE_URL_PREFIX } from './env'
-import { getStore } from '../utils/localStorage';
+import { BASE_URL_PREFIX } from '../config/env'
+import { getStore } from './localStorage';
+import router from '../router'
+import store from '../store'
 
 export default async (url = '', type = 'GET', data = {}, method = 'fetch') => {
   type = type.toUpperCase();
   url = BASE_URL_PREFIX + url;
 
   if ('GET' === type) {
-    // 数据拼接字符串
     let dataStr = '';
 
     Object.keys(data).forEach(key => {
@@ -25,6 +26,7 @@ export default async (url = '', type = 'GET', data = {}, method = 'fetch') => {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
         'Authorization': getStore('token')
       },
       mode: 'cors',
@@ -39,9 +41,21 @@ export default async (url = '', type = 'GET', data = {}, method = 'fetch') => {
     try {
       const response = await fetch(url, requestConfig);
       const jsonRes = await response.json();
+      const { code, status, data } = jsonRes;
 
-      if ('success' === jsonRes.status) {
-        return jsonRes.data;
+      const token = response.headers.get('Authorization');
+      if (null !== token) {
+        store.commit('RECORD_ADMIN', token)
+      }
+
+      if ('success' === status) {
+        return data;
+      } else {
+        switch (code) {
+          case 422:
+            store.commit('LOGOUT');
+            router.push({ name: 'login' });
+        }
       }
     } catch (error) {
       // throw new Error(error)

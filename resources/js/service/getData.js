@@ -1,4 +1,4 @@
-import fetch from '../config/fetch'
+import fetch from '../utils/fetch'
 
 export const login = ({ name, password }) => fetch(
   'login',
@@ -19,6 +19,14 @@ export const storeAdminRole = ({ name, description }) => fetch(
   'admin_roles',
   'POST',
   { name, description }
+);
+export const getAdminRolePermissions = (id) => fetch(
+  'admin_roles/' + id + '/admin_permissions'
+);
+export const storeAdminRolePermissions = (id, { adminRolePermissionList }) => fetch(
+  'admin_roles/' + id + '/admin_permissions',
+  'POST',
+  { adminRolePermissionList }
 );
 export const getAdminPermissions = () => fetch('admin_permissions');
 export const storeAdminPermission = ({ name, description }) => fetch(

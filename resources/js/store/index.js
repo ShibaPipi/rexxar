@@ -4,12 +4,16 @@ import state from './state'
 import getters from './getters'
 import actions from './actions'
 import mutations from './mutations'
+import rolePermission from './modules/rolePermission'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state,
   getters,
+  mutations,
   actions,
-  mutations
+  modules: {
+    rolePermission
+  }
 })

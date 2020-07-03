@@ -4,7 +4,9 @@ import Home from '../components/Home/Home'
 import Login from '../pages/Login/Login'
 import Index from '../pages/Index/Index'
 import User from '../pages/User/User'
+import UserRole from '../pages/User/UserRole';
 import Role from '../pages/Role/Role'
+import RolePermission from '../pages/Role/RolePermission'
 import Permission from '../pages/Permission/Permission'
 import Post from '../pages/Post/Post'
 import Topic from '../pages/Topic/Topic'
@@ -35,9 +37,17 @@ export default new Router({
       name: 'users',
       component: User
     }, {
+      path: '/users/:id/roles',
+      name: 'users.roles',
+      component: UserRole
+    }, {
       path: '/roles',
       name: 'roles',
       component: Role
+    }, {
+      path: '/roles/:id/permissions',
+      name: 'roles.permissions',
+      component: RolePermission
     }, {
       path: '/permissions',
       name: 'permissions',

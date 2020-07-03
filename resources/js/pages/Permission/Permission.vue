@@ -68,7 +68,7 @@
       },
       async handleStoreAdminPermission() {
         await storeAdminPermission(this.form);
-        await this.$router.go(0)
+        this.$router.push({ name: 'home' })
       },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {

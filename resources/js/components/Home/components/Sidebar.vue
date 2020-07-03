@@ -2,7 +2,7 @@
   <div>
     <el-menu
       router
-      :default-active="$route.name"
+      :default-active="'/' + $route.name"
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
@@ -18,7 +18,7 @@
           <el-menu-item
             v-for="submenu in menu.children"
             :key="submenu.index"
-            :index="submenu.index"
+            :index="'/' + submenu.index"
             :disabled="submenu.disabled"
           >
             <i :class="submenu.icon"></i>{{ submenu.name }}
@@ -26,7 +26,7 @@
         </el-submenu>
       </template>
       <template v-else>
-        <el-menu-item :index="menu.index" :disabled="menu.disabled">
+        <el-menu-item :index="'/' + menu.index" :disabled="menu.disabled">
           <i :class="menu.icon"></i>
           <span slot="title">{{ menu.name }}</span>
         </el-menu-item>
@@ -53,8 +53,6 @@
     },
     mounted() {
       this.getPermissions();
-    },
-    activated() {
     }
   }
 </script>

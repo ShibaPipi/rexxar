@@ -40,7 +40,6 @@
     name: 'Login',
     data() {
       return {
-        token: '',
         ruleForm: {
           name: '',
           password: '',
@@ -71,10 +70,10 @@
         });
       },
       async handleLogin() {
-        this.token = (await login(this.ruleForm)).token;
+        const { token } = await login(this.ruleForm);
 
-        if (this.token) {
-          this.RECORD_ADMIN(this.token);
+        if (token) {
+          this.RECORD_ADMIN(token);
           this.redirectToHomePage()
         }
       },

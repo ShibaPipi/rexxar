@@ -62,6 +62,7 @@ class ApiResponse
         if ($code) {
             $this->setStatusCode($code);
         }
+
         $status = [
             'status' => $status,
             'code' => $this->statusCode

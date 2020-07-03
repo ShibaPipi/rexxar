@@ -22,6 +22,7 @@ class ExceptionReport
      * @var Exception
      */
     public $exception;
+
     /**
      * @var Request
      */
@@ -44,10 +45,10 @@ class ExceptionReport
     }
 
     /**
+     * 当抛出这些异常时，可以使用我们定义的错误信息与 HTTP 状态码，可以把常见异常放在这里
+     *
      * @var array
      */
-    //当抛出这些异常时，可以使用我们定义的错误信息与HTTP状态码
-    //可以把常见异常放在这里
     public $doReport = [
         AuthenticationException::class => ['未授权', 401],
         ModelNotFoundException::class => ['该模型未找到', 404],
@@ -62,7 +63,6 @@ class ExceptionReport
 
     public function register($className, callable $callback)
     {
-
         $this->doReport[$className] = $callback;
     }
 
@@ -79,12 +79,12 @@ class ExceptionReport
         foreach (array_keys($this->doReport) as $report) {
             if ($this->exception instanceof $report) {
                 $this->report = $report;
+
                 return true;
             }
         }
 
         return false;
-
     }
 
     /**
@@ -93,7 +93,6 @@ class ExceptionReport
      */
     public static function make(Throwable $e)
     {
-
         return new static(request(), $e);
     }
 
@@ -104,9 +103,12 @@ class ExceptionReport
     {
         if ($this->exception instanceof ValidationException) {
             $error = Arr::first($this->exception->errors());
+
             return api()->failed(Arr::first($error), $this->exception->status);
         }
+
         $message = $this->doReport[$this->report];
+
         return api()->failed($message[0], $message[1]);
     }
 
