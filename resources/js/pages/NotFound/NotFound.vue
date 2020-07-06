@@ -1,6 +1,6 @@
 <template>
   <el-card>
-    <div>对不起，您没有权限！</div>
+    <p>该页面不存在！</p>
     <router-link :to="{ name: 'home' }">
       <el-button>返回首页</el-button>
     </router-link>
@@ -9,7 +9,7 @@
 
 <script>
   export default {
-    name: 'Unauthorized'
+    name: 'NotFound'
   }
 </script>
 

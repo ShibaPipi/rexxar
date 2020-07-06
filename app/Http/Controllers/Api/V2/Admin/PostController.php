@@ -16,7 +16,7 @@ class PostController extends Controller
             ->select('id', 'title', 'status', 'created_at')
             ->withoutGlobalScope('available')
             ->latest()
-            ->paginate(20)
+            ->paginate(50)
         );
     }
 

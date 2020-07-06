@@ -1,7 +1,8 @@
 import { BASE_URL_PREFIX } from '../config/env'
-import { getStore } from './localStorage';
+import { getStore } from './localStorage'
 import router from '../router'
 import store from '../store'
+import { Loading } from 'element-ui'
 
 export default async (url = '', type = 'GET', data = {}, method = 'fetch') => {
   type = type.toUpperCase();
@@ -39,11 +40,18 @@ export default async (url = '', type = 'GET', data = {}, method = 'fetch') => {
     }
 
     try {
+      let loading = Loading.service({ fullscreen: true });
+
       const response = await fetch(url, requestConfig);
+
       const jsonRes = await response.json();
+
+      loading.close();
+
       const { code, status, data } = jsonRes;
 
       const token = response.headers.get('Authorization');
+
       if (null !== token) {
         store.commit('RECORD_ADMIN', token)
       }
@@ -52,9 +60,17 @@ export default async (url = '', type = 'GET', data = {}, method = 'fetch') => {
         return data;
       } else {
         switch (code) {
+          case 403:
+            router.push({ name: 'unauthorized' });
+            break;
+
           case 422:
             store.commit('LOGOUT');
             router.push({ name: 'login' });
+            break;
+
+          default:
+            break;
         }
       }
     } catch (error) {

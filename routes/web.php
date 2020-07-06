@@ -97,4 +97,4 @@ Route::namespace('Onstage')->group(function () {
     });
 });
 
-include_once 'web_admin.php';
+Route::view('/admin', 'admin');

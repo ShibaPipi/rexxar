@@ -28,31 +28,33 @@ Route::namespace('Api\V2\Admin')->prefix('v2/admin')->middleware('api_admin.guar
 
         Route::prefix('admin_users')->name('admin_users.')->group(function () {
             Route::get('info', 'AdminUserController@info')->name('info');
-            Route::get('permissions', 'AdminUserController@permissions')->name('permissions');
+            Route::middleware('can:users')->get('permissions', 'AdminUserController@permissions')->name('permissions');
         });
 
-        Route::apiResource('admin_users', 'AdminUserController')
+        Route::middleware('can:users')->group(function () {
+            Route::apiResource('admin_users', 'AdminUserController')
+                ->only(['index', 'store']);
+            Route::apiResource('admin_users.admin_roles', 'AdminUserRoleController')
+                ->only(['index', 'store']);
+        });
+
+        Route::middleware('can:roles')->group(function () {
+            Route::apiResource('admin_roles', 'AdminRoleController')
+                ->only(['index', 'store']);
+            Route::apiResource('admin_roles.admin_permissions', 'AdminRolePermissionController')
+                ->only(['index', 'store']);
+        });
+
+        Route::middleware('can:permissions')->apiResource('admin_permissions', 'AdminPermissionController')
             ->only(['index', 'store']);
 
-        Route::apiResource('admin_users.admin_roles', 'AdminUserRoleController')
-            ->only(['index', 'store']);
-
-        Route::apiResource('admin_roles', 'AdminRoleController')
-            ->only(['index', 'store']);
-
-        Route::apiResource('admin_roles.admin_permissions', 'AdminRolePermissionController')
-            ->only(['index', 'store']);
-
-        Route::apiResource('admin_permissions', 'AdminPermissionController')
-            ->only(['index', 'store']);
-
-        Route::apiResource('posts', 'PostController')
+        Route::middleware('can:posts')->apiResource('posts', 'PostController')
             ->only(['index', 'update']);
 
-        Route::apiResource('topics', 'TopicController')
+        Route::middleware('can:topics')->apiResource('topics', 'TopicController')
             ->only(['index', 'store', 'destroy']);
 
-        Route::apiResource('notices', 'NoticeController')
+        Route::middleware('can:notices')->apiResource('notices', 'NoticeController')
             ->only(['index', 'store']);
     });
 });

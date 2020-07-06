@@ -12,6 +12,7 @@ import Post from '../pages/Post/Post'
 import Topic from '../pages/Topic/Topic'
 import Notice from '../pages/Notice/Notice'
 import Unauthorized from '../pages/Unauthorized/Unauthorized'
+import NotFound from '../pages/NotFound/NotFound'
 
 // 解决两次访问相同路由地址报错
 const originalPush = Router.prototype.push;
@@ -73,6 +74,9 @@ export default new Router({
     path: '/login',
     name: 'login',
     component: Login
+  }, {
+    path: '*',
+    component: NotFound
   }],
   scrollBehavior(to, from, savedPosition) {
     return { x: 0, y: 0 }

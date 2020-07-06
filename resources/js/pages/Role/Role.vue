@@ -39,7 +39,7 @@
         label="操作"
         width="120">
         <template slot-scope="scope">
-          <router-link :to="{name: 'roles.permissions', params: {id: scope.row.id}}">
+          <router-link :to="{ name: 'roles.permissions', params: {id: scope.row.id} }">
             <el-button
               type="text"
               size="small">
