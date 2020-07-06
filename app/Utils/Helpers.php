@@ -6,23 +6,23 @@
  * Date: 2020/4/27
  */
 
-//use App\Helpers\ApiResponse;
+use App\Utils\ApiResponse;
 use Illuminate\Support\Facades\DB;
 
-//if (!function_exists('api')) {
-//    /**
-//     * 处理 api / ajax 形式的返回结果。
-//     *
-//     * User: sun.yaopeng
-//     * Date: 2020/4/27
-//     *
-//     * @return ApiResponse
-//     */
-//    function api()
-//    {
-//        return app(ApiResponse::class);
-//    }
-//}
+if (!function_exists('api')) {
+    /**
+     * 处理 api / ajax 形式的返回结果。
+     *
+     * User: sun.yaopeng
+     * Date: 2020/4/27
+     *
+     * @return ApiResponse
+     */
+    function api()
+    {
+        return app(ApiResponse::class);
+    }
+}
 
 if (!function_exists('table_comment')) {
     /**

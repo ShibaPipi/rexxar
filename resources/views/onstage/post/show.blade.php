@@ -1,4 +1,4 @@
-@extends('onstage.layout.main')
+@extends('onstage.layouts.app')
 
 @section('content')
     <div class="col-sm-8 blog-main">
@@ -54,7 +54,7 @@
                     {{ csrf_field() }}
                     <li class="list-group-item">
                         <textarea name="content" class="form-control" rows="10"></textarea>
-                        @include('onstage.layout.error')
+                        @include('onstage.layouts.error')
                         <button class="btn btn-default" type="submit">提交</button>
                     </li>
                 </form>

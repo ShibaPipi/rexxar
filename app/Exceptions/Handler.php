@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Utils\ExceptionReport;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -29,7 +30,7 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param  \Throwable  $exception
+     * @param \Throwable $exception
      * @return void
      *
      * @throws \Exception
@@ -40,16 +41,31 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * Render an exception into an HTTP response.
+     * AJAX 请求我们才捕捉异常
+     * 将方法拦截到自己的 ExceptionReport
+     * 声明一个需要被拦截的异常数组，拦截异常
+     * 如果未开启 APP_DEBUG，则直接返回 5XX 错误
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Throwable  $exception
+     * @param \Illuminate\Http\Request $request
+     * @param \Throwable $exception
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @throws \Throwable
      */
     public function render($request, Throwable $exception)
     {
+        if ($request->ajax()) {
+            $reporter = ExceptionReport::make($exception);
+
+            if ($reporter->shouldReturn()) {
+                return $reporter->report();
+            }
+
+            if (!config('APP_DEBUG')) {
+                return $reporter->prodReport();
+            }
+        }
+
         return parent::render($request, $exception);
     }
 }

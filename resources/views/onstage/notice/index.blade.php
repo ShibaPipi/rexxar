@@ -1,4 +1,4 @@
-@extends('onstage.layout.main')
+@extends('onstage.layouts.app')
 
 @section('content')
     <div class="col-sm-8 blog-main">

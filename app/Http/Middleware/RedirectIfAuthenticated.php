@@ -11,15 +11,19 @@ class RedirectIfAuthenticated
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $guard
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
+     * @param string|null $guard
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
     {
         if (auth()->guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+            // 根据不同 guard 跳转到不同的页面
+            return redirect($guard
+                ? RouteServiceProvider::ADMIN_HOME
+                : RouteServiceProvider::HOME
+            );
         }
 
         return $next($request);

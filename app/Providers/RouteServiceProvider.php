@@ -23,6 +23,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/home';
 
+    public const ADMIN_HOME = '/admin/home';
+
     /**
      * Define your route model bindings, pattern filters, etc.
      *
@@ -73,7 +75,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::prefix('api')
-            ->middleware('api')
+            ->middleware(['api', 'cors'])
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
     }

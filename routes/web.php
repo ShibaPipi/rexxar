@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,23 +15,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::namespace('Onstage')->group(function () {
+    Route::redirect('/home', '/');
+
     Route::get('/', 'IndexController@index')->name('index');
 
     /**
      *  登录模块
      */
-    Route::prefix('register')->name('register.')->group(function () {
-        // 注册页面
-        Route::get('', 'RegisterController@index')->name('index');
-        // 注册行为
-        Route::post('', 'RegisterController@register')->name('register');
-    });
+    Route::middleware('guest')->group(function () {
+        Route::prefix('register')->name('register.')->group(function () {
+            // 注册页面
+            Route::get('', 'RegisterController@index')->name('index');
+            // 注册行为
+            Route::post('', 'RegisterController@register')->name('register');
+        });
 
-    Route::prefix('login')->name('login.')->group(function () {
-        // 登录页面
-        Route::get('', 'LoginController@index')->name('index');
-        // 登录行为
-        Route::post('', 'LoginController@login')->name('login');
+        Route::prefix('login')->name('login.')->group(function () {
+            // 登录页面
+            Route::get('', 'LoginController@showLoginForm')->name('index');
+            // 登录行为
+            Route::post('', 'LoginController@login')->name('login');
+        });
     });
 
     // 登出行为
@@ -92,4 +97,4 @@ Route::namespace('Onstage')->group(function () {
     });
 });
 
-include_once 'web_admin.php';
+Route::view('/admin', 'admin');
