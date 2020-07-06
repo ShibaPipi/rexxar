@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V2\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\V2\Admin\AdminRolePermissionRequest;
 use App\Models\AdminPermission;
 use App\Models\AdminRole;
 
@@ -29,9 +30,9 @@ class AdminRolePermissionController extends Controller
      * @param AdminRole $adminRole
      * @return mixed
      */
-    public function store(AdminRole $adminRole)
+    public function store(AdminRolePermissionRequest $request,AdminRole $adminRole)
     {
-        $newPermissions = AdminPermission::query()->findMany(request('adminRolePermissionList'));
+        $newPermissions = AdminPermission::query()->findMany($request->adminRolePermissionList);
 
         $oldPermissions = $adminRole->permissions;
 

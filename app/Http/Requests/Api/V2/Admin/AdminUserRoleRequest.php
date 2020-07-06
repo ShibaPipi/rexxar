@@ -26,7 +26,7 @@ class AdminUserRoleRequest extends FormRequest
         switch ($this->method()) {
             case 'POST':
                 return [
-                    'permissions' => 'required|array'
+                    'adminUserRoleList' => 'required|array'
                 ];
             default:
                 return [];

@@ -34,6 +34,9 @@ Route::namespace('Api\V2\Admin')->prefix('v2/admin')->middleware('api_admin.guar
         Route::apiResource('admin_users', 'AdminUserController')
             ->only(['index', 'store']);
 
+        Route::apiResource('admin_users.admin_roles', 'AdminUserRoleController')
+            ->only(['index', 'store']);
+
         Route::apiResource('admin_roles', 'AdminRoleController')
             ->only(['index', 'store']);
 

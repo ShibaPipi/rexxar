@@ -40,11 +40,13 @@
         label="操作"
         width="120">
         <template slot-scope="scope">
-          <el-button
-            type="text"
-            size="small">
-            管理用户角色
-          </el-button>
+          <router-link :to="{name: 'users.roles', params: {id: scope.row.id}}">
+            <el-button
+              type="text"
+              size="small">
+              管理用户角色
+            </el-button>
+          </router-link>
         </template>
       </el-table-column>
     </el-table>

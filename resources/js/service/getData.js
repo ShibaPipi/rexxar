@@ -14,6 +14,14 @@ export const storeAdminUser = ({ name, password }) => fetch(
   'POST',
   { name, password }
 );
+export const getAdminUserRoles = (id) => fetch(
+  'admin_users/' + id + '/admin_roles'
+);
+export const storeAdminUserRoles = (id, { adminUserRoleList }) => fetch(
+  'admin_users/' + id + '/admin_roles',
+  'POST',
+  { adminUserRoleList }
+);
 export const getAdminRoles = () => fetch('admin_roles');
 export const storeAdminRole = ({ name, description }) => fetch(
   'admin_roles',
@@ -56,5 +64,3 @@ export const deleteTopic = (id) => fetch(
   'topics/' + id,
   'DELETE'
 );
-
-// ?XDEBUG_SESSION_START=18130

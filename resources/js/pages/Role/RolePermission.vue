@@ -46,7 +46,7 @@
         },
         rules: {
           adminRolePermissionList: [
-            { type: 'array', required: true, message: '请至少选择一个活动权限', trigger: 'change' }
+            { type: 'array', required: true, message: '请至少选择一个权限', trigger: 'change' }
           ]
         }
       }
