@@ -1,7 +1,32 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import ElementUI from 'element-ui'
+import {
+  Col,
+  Row,
+  Container,
+  Header,
+  Footer,
+  Main,
+  Aside,
+  Menu,
+  Submenu,
+  MenuItem,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Card,
+  Form,
+  FormItem,
+  Dialog,
+  Input,
+  Table,
+  TableColumn,
+  Checkbox,
+  CheckboxGroup,
+  Button,
+  Select
+} from 'element-ui'
 import less from 'less'
 import VueParticles from 'vue-particles'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -9,7 +34,30 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-Vue.use(ElementUI);
+Vue.use(Col);
+Vue.use(Row);
+Vue.use(Container);
+Vue.use(Header);
+Vue.use(Footer);
+Vue.use(Main);
+Vue.use(Aside);
+Vue.use(Menu);
+Vue.use(Submenu);
+Vue.use(MenuItem);
+Vue.use(Dropdown);
+Vue.use(DropdownMenu);
+Vue.use(DropdownItem);
+Vue.use(Card);
+Vue.use(Form);
+Vue.use(FormItem);
+Vue.use(Dialog);
+Vue.use(Input);
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Checkbox);
+Vue.use(CheckboxGroup);
+Vue.use(Button);
+Vue.use(Select);
 Vue.use(less);
 Vue.use(VueParticles);
 

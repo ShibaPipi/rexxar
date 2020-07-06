@@ -12,5 +12,6 @@
     "/topic.js": "/topic.js",
     "/unauthorized.js": "/unauthorized.js",
     "/user.js": "/user.js",
-    "/userRole.js": "/userRole.js"
+    "/userRole.js": "/userRole.js",
+    "/vendors~home.js": "/vendors~home.js"
 }
