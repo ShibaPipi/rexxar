@@ -2,7 +2,7 @@ import { BASE_URL_PREFIX } from '../config/env'
 import { getStore } from './localStorage'
 import router from '../router'
 import store from '../store'
-import { Loading } from 'element-ui'
+import { Message, Loading } from 'element-ui'
 
 export default async (url = '', type = 'GET', data = {}, method = 'fetch') => {
   type = type.toUpperCase();
@@ -60,6 +60,10 @@ export default async (url = '', type = 'GET', data = {}, method = 'fetch') => {
         return data;
       } else {
         switch (code) {
+          case 400:
+            Message.error({ message: jsonRes.message });
+            break;
+
           case 403:
             router.push({ name: 'unauthorized' });
             break;
