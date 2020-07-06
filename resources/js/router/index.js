@@ -1,18 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../components/Home/Home'
-import Login from '../pages/Login/Login'
-import Index from '../pages/Index/Index'
-import User from '../pages/User/User'
-import UserRole from '../pages/User/UserRole';
-import Role from '../pages/Role/Role'
-import RolePermission from '../pages/Role/RolePermission'
-import Permission from '../pages/Permission/Permission'
-import Post from '../pages/Post/Post'
-import Topic from '../pages/Topic/Topic'
-import Notice from '../pages/Notice/Notice'
-import Unauthorized from '../pages/Unauthorized/Unauthorized'
-import NotFound from '../pages/NotFound/NotFound'
+
+// 路由懒加载
+const login = r => require.ensure([], () => r(require('../pages/Login/Login')), 'login');
+const home = r => require.ensure([], () => r(require('../components/Home/Home')), 'home');
+const index = r => require.ensure([], () => r(require('../pages/Index/Index')), 'index');
+const user = r => require.ensure([], () => r(require('../pages/User/User')), 'user');
+const userRole = r => require.ensure([], () => r(require('../pages/User/UserRole')), 'userRole');
+const role = r => require.ensure([], () => r(require('../pages/Role/Role')), 'role');
+const rolePermission = r => require.ensure([], () => r(require('../pages/Role/RolePermission')), 'rolePermission');
+const permission = r => require.ensure([], () => r(require('../pages/Permission/Permission')), 'permission');
+const post = r => require.ensure([], () => r(require('../pages/Post/Post')), 'post');
+const topic = r => require.ensure([], () => r(require('../pages/Topic/Topic')), 'topic');
+const notice = r => require.ensure([], () => r(require('../pages/Notice/Notice')), 'notice');
+const unauthorized = r => require.ensure([], () => r(require('../pages/Unauthorized/Unauthorized')), 'unauthorized');
+const notFound = r => require.ensure([], () => r(require('../pages/NotFound/NotFound')), 'notFound');
 
 // 解决两次访问相同路由地址报错
 const originalPush = Router.prototype.push;
@@ -24,59 +26,59 @@ Vue.use(Router);
 
 export default new Router({
   routes: [{
+    path: '/login',
+    name: 'login',
+    component: login
+  }, {
     path: '/',
-    component: Home,
+    component: home,
     children: [{
       path: '',
       redirect: '/home'
     }, {
       path: '/home',
       name: 'home',
-      component: Index
+      component: index
     }, {
       path: '/users',
       name: 'users',
-      component: User
+      component: user
     }, {
       path: '/users/:id/roles',
       name: 'users.roles',
-      component: UserRole
+      component: userRole
     }, {
       path: '/roles',
       name: 'roles',
-      component: Role
+      component: role
     }, {
       path: '/roles/:id/permissions',
       name: 'roles.permissions',
-      component: RolePermission
+      component: rolePermission
     }, {
       path: '/permissions',
       name: 'permissions',
-      component: Permission
+      component: permission
     }, {
       path: '/posts',
       name: 'posts',
-      component: Post
+      component: post
     }, {
       path: '/topics',
       name: 'topics',
-      component: Topic
+      component: topic
     }, {
       path: '/notices',
       name: 'notices',
-      component: Notice
+      component: notice
     }, {
       path: '/403',
       name: 'unauthorized',
-      component: Unauthorized
+      component: unauthorized
     }]
   }, {
-    path: '/login',
-    name: 'login',
-    component: Login
-  }, {
     path: '*',
-    component: NotFound
+    component: notFound
   }],
   scrollBehavior(to, from, savedPosition) {
     return { x: 0, y: 0 }

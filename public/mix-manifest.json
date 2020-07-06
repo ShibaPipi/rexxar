@@ -1,3 +1,16 @@
 {
-    "/js/app.js": "/js/app.js"
+    "/js/app.js": "/js/app.js",
+    "/home.js": "/home.js",
+    "/index.js": "/index.js",
+    "/login.js": "/login.js",
+    "/notFound.js": "/notFound.js",
+    "/notice.js": "/notice.js",
+    "/permission.js": "/permission.js",
+    "/post.js": "/post.js",
+    "/role.js": "/role.js",
+    "/rolePermission.js": "/rolePermission.js",
+    "/topic.js": "/topic.js",
+    "/unauthorized.js": "/unauthorized.js",
+    "/user.js": "/user.js",
+    "/userRole.js": "/userRole.js"
 }
