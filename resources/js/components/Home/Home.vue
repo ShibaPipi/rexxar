@@ -27,7 +27,6 @@
   import Footer from './components/Footer'
 
   import { mapState } from 'vuex'
-  import { getCurrentAdminUserPermissions } from '../../service/getData';
 
   export default {
     name: 'Home',
