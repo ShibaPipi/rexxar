@@ -1,4 +1,4 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 import Vuex from 'vuex'
 import state from './state'
 import getters from './getters'
@@ -7,7 +7,7 @@ import mutations from './mutations'
 import userRole from './modules/userRole'
 import rolePermission from './modules/rolePermission'
 
-Vue.use(Vuex);
+// Vue.use(Vuex);
 
 export default new Vuex.Store({
   state,
