@@ -2,19 +2,19 @@
 import Router from 'vue-router'
 
 // 路由懒加载
-const login = r => require.ensure([], () => r(require('../pages/Login/Login')), 'login');
-const home = r => require.ensure([], () => r(require('../components/Home/Home')), 'home');
-const index = r => require.ensure([], () => r(require('../pages/Index/Index')), 'index');
-const user = r => require.ensure([], () => r(require('../pages/User/User')), 'user');
-const userRole = r => require.ensure([], () => r(require('../pages/User/UserRole')), 'userRole');
-const role = r => require.ensure([], () => r(require('../pages/Role/Role')), 'role');
-const rolePermission = r => require.ensure([], () => r(require('../pages/Role/RolePermission')), 'rolePermission');
-const permission = r => require.ensure([], () => r(require('../pages/Permission/Permission')), 'permission');
-const post = r => require.ensure([], () => r(require('../pages/Post/Post')), 'post');
-const topic = r => require.ensure([], () => r(require('../pages/Topic/Topic')), 'topic');
-const notice = r => require.ensure([], () => r(require('../pages/Notice/Notice')), 'notice');
-const unauthorized = r => require.ensure([], () => r(require('../pages/Unauthorized/Unauthorized')), 'unauthorized');
-const notFound = r => require.ensure([], () => r(require('../pages/NotFound/NotFound')), 'notFound');
+const login = () => import('../pages/Login/Login');
+const home = () => import('../components/Home/Home');
+const index = () => import('../pages/Index/Index');
+const user = () => import('../pages/User/User');
+const userRole = () => import('../pages/User/UserRole');
+const role = () => import('../pages/Role/Role');
+const rolePermission = () => import('../pages/Role/RolePermission');
+const permission = () => import('../pages/Permission/Permission');
+const post = () => import('../pages/Post/Post');
+const topic = () => import('../pages/Topic/Topic');
+const notice = () => import('../pages/Notice/Notice');
+const unauthorized = () => import('../pages/Unauthorized/Unauthorized');
+const notFound = () => import('../pages/NotFound/NotFound');
 
 // 解决两次访问相同路由地址报错
 const originalPush = Router.prototype.push;

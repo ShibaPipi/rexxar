@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "js/chunk/" + ({"index":"index","vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole":"vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole","home":"home","login":"login","notFound":"notFound","notice":"notice","permission":"permission","post":"post","role":"role","rolePermission":"rolePermission","topic":"topic","unauthorized":"unauthorized","user":"user","userRole":"userRole"}[chunkId]||chunkId) + ".js?v=" + {"index":"5f6b93ec6949e5ff2abe","vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole":"f672f5face6b08103519","home":"bf8877360fb77055b2bb","login":"5d7bec973bf4b5e0c888","notFound":"9264c353fe01d653a1a6","notice":"5ca7b82515ad8f1a2ee1","permission":"c5bb676f8d995d0ffc11","post":"845476ed6fc477d6f41a","role":"5b87e17e55e2566aec74","rolePermission":"c028fd51e799023adbaf","topic":"17c0583ec7642a965443","unauthorized":"722156ce15d482a4e77e","user":"08ae2e404d2010f7d4e2","userRole":"0710c1976a5c966783d3"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "js/chunk/" + ({}[chunkId]||chunkId) + ".js?v=" + {"0":"64f03b50003c7c98be30","1":"c78bf263aceab8f3be29","2":"dfadd57295c557184d45","3":"83266f511703a91069c4","4":"6ec623f38dd7389a92a0","5":"9e26ba44462879ff49a3","6":"ee20e1541b0ae093f653","7":"a92234b1634c252a1be3","8":"1ea351b426bc7aab0b49","9":"ee8b4cf0dd4ce8569ec5","10":"5f482e38707518921e0a","11":"afd69ada9d975b97a22c","12":"3a0630a749b9009796c8","13":"1d45c39b8c5ad2d90b96"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -18936,82 +18936,56 @@ __webpack_require__.r(__webpack_exports__);
 // import Vue from 'vue'
  // 路由懒加载
 
-var login = function login(r) {
-  return Promise.all(/*! require.ensure | login */[__webpack_require__.e("vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole"), __webpack_require__.e("login")]).then((function () {
-    return r(__webpack_require__(/*! ../pages/Login/Login */ "./resources/js/pages/Login/Login.vue"));
-  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+var login = function login() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ../pages/Login/Login */ "./resources/js/pages/Login/Login.vue"));
 };
 
-var home = function home(r) {
-  return Promise.all(/*! require.ensure | home */[__webpack_require__.e("vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole"), __webpack_require__.e("home")]).then((function () {
-    return r(__webpack_require__(/*! ../components/Home/Home */ "./resources/js/components/Home/Home.vue"));
-  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+var home = function home() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../components/Home/Home */ "./resources/js/components/Home/Home.vue"));
 };
 
-var index = function index(r) {
-  return __webpack_require__.e(/*! require.ensure | index */ "index").then((function () {
-    return r(__webpack_require__(/*! ../pages/Index/Index */ "./resources/js/pages/Index/Index.vue"));
-  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+var index = function index() {
+  return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ../pages/Index/Index */ "./resources/js/pages/Index/Index.vue"));
 };
 
-var user = function user(r) {
-  return Promise.all(/*! require.ensure | user */[__webpack_require__.e("vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole"), __webpack_require__.e("user")]).then((function () {
-    return r(__webpack_require__(/*! ../pages/User/User */ "./resources/js/pages/User/User.vue"));
-  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+var user = function user() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ../pages/User/User */ "./resources/js/pages/User/User.vue"));
 };
 
-var userRole = function userRole(r) {
-  return Promise.all(/*! require.ensure | userRole */[__webpack_require__.e("vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole"), __webpack_require__.e("userRole")]).then((function () {
-    return r(__webpack_require__(/*! ../pages/User/UserRole */ "./resources/js/pages/User/UserRole.vue"));
-  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+var userRole = function userRole() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ../pages/User/UserRole */ "./resources/js/pages/User/UserRole.vue"));
 };
 
-var role = function role(r) {
-  return Promise.all(/*! require.ensure | role */[__webpack_require__.e("vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole"), __webpack_require__.e("role")]).then((function () {
-    return r(__webpack_require__(/*! ../pages/Role/Role */ "./resources/js/pages/Role/Role.vue"));
-  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+var role = function role() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ../pages/Role/Role */ "./resources/js/pages/Role/Role.vue"));
 };
 
-var rolePermission = function rolePermission(r) {
-  return Promise.all(/*! require.ensure | rolePermission */[__webpack_require__.e("vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole"), __webpack_require__.e("rolePermission")]).then((function () {
-    return r(__webpack_require__(/*! ../pages/Role/RolePermission */ "./resources/js/pages/Role/RolePermission.vue"));
-  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+var rolePermission = function rolePermission() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ../pages/Role/RolePermission */ "./resources/js/pages/Role/RolePermission.vue"));
 };
 
-var permission = function permission(r) {
-  return Promise.all(/*! require.ensure | permission */[__webpack_require__.e("vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole"), __webpack_require__.e("permission")]).then((function () {
-    return r(__webpack_require__(/*! ../pages/Permission/Permission */ "./resources/js/pages/Permission/Permission.vue"));
-  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+var permission = function permission() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ../pages/Permission/Permission */ "./resources/js/pages/Permission/Permission.vue"));
 };
 
-var post = function post(r) {
-  return Promise.all(/*! require.ensure | post */[__webpack_require__.e("vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole"), __webpack_require__.e("post")]).then((function () {
-    return r(__webpack_require__(/*! ../pages/Post/Post */ "./resources/js/pages/Post/Post.vue"));
-  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+var post = function post() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ../pages/Post/Post */ "./resources/js/pages/Post/Post.vue"));
 };
 
-var topic = function topic(r) {
-  return Promise.all(/*! require.ensure | topic */[__webpack_require__.e("vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole"), __webpack_require__.e("topic")]).then((function () {
-    return r(__webpack_require__(/*! ../pages/Topic/Topic */ "./resources/js/pages/Topic/Topic.vue"));
-  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+var topic = function topic() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ../pages/Topic/Topic */ "./resources/js/pages/Topic/Topic.vue"));
 };
 
-var notice = function notice(r) {
-  return Promise.all(/*! require.ensure | notice */[__webpack_require__.e("vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole"), __webpack_require__.e("notice")]).then((function () {
-    return r(__webpack_require__(/*! ../pages/Notice/Notice */ "./resources/js/pages/Notice/Notice.vue"));
-  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+var notice = function notice() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ../pages/Notice/Notice */ "./resources/js/pages/Notice/Notice.vue"));
 };
 
-var unauthorized = function unauthorized(r) {
-  return Promise.all(/*! require.ensure | unauthorized */[__webpack_require__.e("vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole"), __webpack_require__.e("unauthorized")]).then((function () {
-    return r(__webpack_require__(/*! ../pages/Unauthorized/Unauthorized */ "./resources/js/pages/Unauthorized/Unauthorized.vue"));
-  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+var unauthorized = function unauthorized() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ../pages/Unauthorized/Unauthorized */ "./resources/js/pages/Unauthorized/Unauthorized.vue"));
 };
 
-var notFound = function notFound(r) {
-  return Promise.all(/*! require.ensure | notFound */[__webpack_require__.e("vendors~home~login~notFound~notice~permission~post~role~rolePermission~topic~unauthorized~user~userRole"), __webpack_require__.e("notFound")]).then((function () {
-    return r(__webpack_require__(/*! ../pages/NotFound/NotFound */ "./resources/js/pages/NotFound/NotFound.vue"));
-  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+var notFound = function notFound() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ../pages/NotFound/NotFound */ "./resources/js/pages/NotFound/NotFound.vue"));
 }; // 解决两次访问相同路由地址报错
 
 
