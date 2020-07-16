@@ -75,17 +75,14 @@ class ApiResponse
     }
 
     /**
+     * 格式
+     * data:
+     * code:422, message:xxx, status:'error'
+     *
      * @param $message
      * @param int $code
      * @param string $status
      * @return mixed
-     */
-    /*
-     * 格式
-     * data:
-     *  code:422
-     *  message:xxx
-     *  status:'error'
      */
     public function failed($message, $code = FoundationResponse::HTTP_BAD_REQUEST, $status = 'error')
     {
@@ -99,9 +96,7 @@ class ApiResponse
      */
     public function message($message, $status = 'success')
     {
-        return $this->status($status, [
-            'message' => $message
-        ]);
+        return $this->status($status, compact('message'));
     }
 
     /**
@@ -121,7 +116,6 @@ class ApiResponse
     {
         return $this->setStatusCode(FoundationResponse::HTTP_CREATED)
             ->message($message);
-
     }
 
     /**
