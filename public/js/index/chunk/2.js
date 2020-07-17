@@ -81,12 +81,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       rules: {
         textarea1: [{
           required: true,
-          message: '不输入我给你去毛线？',
+          message: '速度加快速度加快。。。我和公婆齐头并进不分高低',
           trigger: 'blur'
         }],
         textarea2: [{
           required: true,
-          message: '不输入我给你去毛线...',
+          message: '我做了假动作公婆甩在了后头。。。跟在后面只差一点点距离一点点距离',
           trigger: 'blur'
         }]
       }
@@ -214,7 +214,7 @@ var render = function() {
               slot: "header"
             },
             [
-              _c("span", [_vm._v("来吧，复制粘贴给你找重复")]),
+              _c("span", [_vm._v("瞧瞧公婆骑着摩的")]),
               _vm._v(" "),
               _c(
                 "el-button",
@@ -223,7 +223,7 @@ var render = function() {
                   attrs: { type: "text" },
                   on: { click: _vm.handleClearTextArea }
                 },
-                [_vm._v("清空你写的玩应")]
+                [_vm._v("速度，速度，速度，速度，速度加快")]
               )
             ],
             1
@@ -244,7 +244,12 @@ var render = function() {
             [
               _c(
                 "el-form-item",
-                { attrs: { label: "咱也不知道你要输什么", prop: "textarea1" } },
+                {
+                  attrs: {
+                    label: "高速公路上，始终和我保持零距离",
+                    prop: "textarea1"
+                  }
+                },
                 [
                   _c("el-input", {
                     attrs: {
@@ -269,7 +274,10 @@ var render = function() {
               _c(
                 "el-form-item",
                 {
-                  attrs: { label: "咱也不知道你要比对什么", prop: "textarea2" }
+                  attrs: {
+                    label: "她伸出拳头，要和我比一比",
+                    prop: "textarea2"
+                  }
                 },
                 [
                   _c("el-input", {
@@ -303,7 +311,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("开始比较")]
+                    [_vm._v("比就比 谁怕谁 谁怕谁")]
                   )
                 ],
                 1
@@ -324,7 +332,7 @@ var render = function() {
                         attrs: { slot: "header" },
                         slot: "header"
                       },
-                      [_c("span", [_vm._v("你要找的是不是：")])]
+                      [_c("span", [_vm._v("摩的大飚客，您要找的是不是：")])]
                     ),
                     _vm._v(" "),
                     _vm._l(_vm.resultList, function(res) {

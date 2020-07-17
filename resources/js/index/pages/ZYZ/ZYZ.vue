@@ -2,8 +2,8 @@
   <el-row type="flex" justify="center" align="middle">
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span>来吧，复制粘贴给你找重复</span>
-        <el-button style="float: right; padding: 3px 0" type="text" @click="handleClearTextArea">清空你写的玩应</el-button>
+        <span>瞧瞧公婆骑着摩的</span>
+        <el-button style="float: right; padding: 3px 0" type="text" @click="handleClearTextArea">速度，速度，速度，速度，速度加快</el-button>
       </div>
       <el-form
         :model="ruleForm"
@@ -13,7 +13,7 @@
         label-position="top"
         :style="{ padding: '0 20px' }"
       >
-        <el-form-item label="咱也不知道你要输什么" prop="textarea1">
+        <el-form-item label="高速公路上，始终和我保持零距离" prop="textarea1">
           <el-input
             type="textarea"
             :autosize="{ minRows: 5 }"
@@ -22,7 +22,7 @@
           </el-input>
         </el-form-item>
         <div style="margin: 20px 0;"></div>
-        <el-form-item label="咱也不知道你要比对什么" prop="textarea2">
+        <el-form-item label="她伸出拳头，要和我比一比" prop="textarea2">
           <el-input
             type="textarea"
             :autosize="{ minRows: 5 }"
@@ -31,13 +31,13 @@
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" size="small" @click="submitForm('ruleForm')">比就比，谁怕谁</el-button>
+          <el-button type="primary" size="small" @click="submitForm('ruleForm')">比就比 谁怕谁 谁怕谁</el-button>
         </el-form-item>
       </el-form>
       <template v-if="0 !== resultList.length">
         <el-card>
           <div slot="header" class="clearfix">
-            <span>你要找的是不是：</span>
+            <span>摩的大飚客，您要找的是不是：</span>
           </div>
           <div v-for="res in resultList" :key="res" class="text item">
             <div>{{ res }}</div>
@@ -62,10 +62,10 @@
         },
         rules: {
           textarea1: [
-            { required: true, message: '不输入我给你去毛线？', trigger: 'blur' }
+            { required: true, message: '速度加快速度加快。。。我和公婆齐头并进不分高低', trigger: 'blur' }
           ],
           textarea2: [
-            { required: true, message: '不输入我给你去毛线...', trigger: 'blur' }
+            { required: true, message: '我做了假动作公婆甩在了后头。。。跟在后面只差一点点距离一点点距离', trigger: 'blur' }
           ],
         }
       }
