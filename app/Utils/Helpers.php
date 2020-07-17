@@ -7,14 +7,27 @@
  */
 
 use App\Utils\ApiResponse;
-use Illuminate\Support\Facades\DB;
+
+//if (!function_exists('mb_str_split')) {
+//    /**
+//     * 把字符串拆散成数组，支持中文汉字
+//     * User: sun.yaopeng
+//     * Date: 2020-07-17
+//     *
+//     * @param string $string
+//     * @return array
+//     */
+//    function mb_str_split(string $string): array
+//    {
+//        return preg_split('/(?<!^)(?!$)/u', $string);
+//    }
+//}
 
 if (!function_exists('api')) {
     /**
      * 处理 api / ajax 形式的返回结果。
-     *
      * User: sun.yaopeng
-     * Date: 2020/4/27
+     * Date: 2020-04-27
      *
      * @return ApiResponse
      */
@@ -29,14 +42,15 @@ if (!function_exists('table_comment')) {
      * 给一个数据表添加注释。
      *
      * User: sun.yaopeng
-     * Date: 2020/4/27
+     * Date: 2020-04-27
      *
      * @param string $tableName 表名
      * @param string $comment 注释内容
+     * @return string
      */
-    function table_comment($tableName, $comment)
+    function table_comment($tableName, $comment): string
     {
-        DB::statement("ALTER TABLE `" . config('database.connections.mysql.prefix') . $tableName . "` COMMENT '" . $comment . "'");
+        return "ALTER TABLE `" . config('database.connections.mysql.prefix') . $tableName . "` COMMENT '" . $comment . "'";
     }
 }
 
@@ -45,7 +59,7 @@ if (!function_exists('build_where')) {
      * 将传入的字段和查询条件运算符转换为 ORM 的查询条件数组。
      *
      * User: sun.yaopeng
-     * Date: 2020/5/8
+     * Date: 2020-05-08
      *
      * @param array $where
      * @return array
@@ -72,18 +86,5 @@ if (!function_exists('build_where')) {
         }
 
         return $whereBuilder;
-    }
-    
-    if (!function_exists('deal_price')) {
-        /**
-         * 处理价格
-         * @param $price
-         * @param int $decimals
-         * @return string
-         */
-        function deal_price($price, $decimals = 2)
-        {
-            return number_format($price, $decimals, '.', '');
-        }
     }
 }
