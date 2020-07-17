@@ -15436,8 +15436,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _localStorage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./localStorage */ "./resources/js/admin/utils/localStorage.js");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../router */ "./resources/js/admin/router/index.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store */ "./resources/js/admin/store/index.js");
-/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! element-ui */ "element-ui");
-/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(element_ui__WEBPACK_IMPORTED_MODULE_5__);
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -15445,7 +15443,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 
 
 
@@ -15513,7 +15510,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
 
           _context.prev = 10;
-          loading = element_ui__WEBPACK_IMPORTED_MODULE_5__["Loading"].service({
+          loading = ELEMENT.Loading.service({
             fullscreen: true
           });
           _context.next = 14;
@@ -15547,7 +15544,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           break;
 
         case 29:
-          element_ui__WEBPACK_IMPORTED_MODULE_5__["Message"].error({
+          ELEMENT.Message.error({
             message: jsonRes.message
           });
           return _context.abrupt("break", 37);
