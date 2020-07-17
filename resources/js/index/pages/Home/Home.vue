@@ -9,7 +9,8 @@
       </div>
       <div class="home-body">
         <div class="list">
-          <router-link class="link" to="/posts">文章</router-link>
+<!--          <router-link class="link" to="/posts">文章</router-link>-->
+          <a class="link" href="/posts">文章</a>
           <a
             target="_blank"
             rel="noopener noreferrer"
