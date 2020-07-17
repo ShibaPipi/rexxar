@@ -2,7 +2,6 @@ import { BASE_URL_PREFIX } from '../config/env'
 import { getStore } from './localStorage'
 import router from '../router'
 import store from '../store'
-import { Message, Loading } from 'element-ui'
 
 export default async (url = '', type = 'GET', data = {}, method = 'fetch') => {
   type = type.toUpperCase();
@@ -40,7 +39,7 @@ export default async (url = '', type = 'GET', data = {}, method = 'fetch') => {
     }
 
     try {
-      let loading = Loading.service({ fullscreen: true });
+      let loading = ELEMENT.Loading.service({ fullscreen: true });
 
       const response = await fetch(url, requestConfig);
 
@@ -61,7 +60,7 @@ export default async (url = '', type = 'GET', data = {}, method = 'fetch') => {
       } else {
         switch (code) {
           case 400:
-            Message.error({ message: jsonRes.message });
+            ELEMENT.Message.error({ message: jsonRes.message });
             break;
 
           case 403:

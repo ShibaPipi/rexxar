@@ -68,6 +68,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ZYZ',
@@ -112,6 +113,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -120,9 +122,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return Object(_service_getData__WEBPACK_IMPORTED_MODULE_1__["compare"])(_this2.ruleForm);
 
               case 2:
-                _this2.resultList = _context.sent;
+                res = _context.sent;
 
-              case 3:
+                if (0 !== res.length) {
+                  _this2.resultList = res;
+                } else {
+                  ELEMENT.MessageBox.alert('骗子，我找了半天，根本没有一样的');
+                }
+
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -223,7 +231,7 @@ var render = function() {
                   attrs: { type: "text" },
                   on: { click: _vm.handleClearTextArea }
                 },
-                [_vm._v("速度，速度，速度，速度，速度加快")]
+                [_vm._v("速度，速度，速度，速度，速度加快\n      ")]
               )
             ],
             1
@@ -511,8 +519,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _localStorage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./localStorage */ "./resources/js/index/utils/localStorage.js");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../router */ "./resources/js/index/router/index.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store */ "./resources/js/index/store/index.js");
-/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! element-ui */ "element-ui");
-/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(element_ui__WEBPACK_IMPORTED_MODULE_5__);
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -520,7 +526,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 
 
 
@@ -588,7 +593,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
 
           _context.prev = 10;
-          loading = element_ui__WEBPACK_IMPORTED_MODULE_5__["Loading"].service({
+          loading = ELEMENT.Loading.service({
             fullscreen: true
           });
           _context.next = 14;
@@ -622,7 +627,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           break;
 
         case 29:
-          element_ui__WEBPACK_IMPORTED_MODULE_5__["Message"].error({
+          ELEMENT.Message.error({
             message: jsonRes.message
           });
           return _context.abrupt("break", 37);

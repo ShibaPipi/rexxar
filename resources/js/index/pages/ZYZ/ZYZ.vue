@@ -3,7 +3,8 @@
     <el-card class="box-card">
       <div slot="header" class="clearfix">
         <span>瞧瞧公婆骑着摩的</span>
-        <el-button style="float: right; padding: 3px 0" type="text" @click="handleClearTextArea">速度，速度，速度，速度，速度加快</el-button>
+        <el-button style="float: right; padding: 3px 0" type="text" @click="handleClearTextArea">速度，速度，速度，速度，速度加快
+        </el-button>
       </div>
       <el-form
         :model="ruleForm"
@@ -85,7 +86,12 @@
         });
       },
       async handleCompare() {
-        this.resultList = await compare(this.ruleForm);
+        const res = await compare(this.ruleForm);
+        if (0 !== res.length) {
+          this.resultList = res;
+        } else {
+          ELEMENT.MessageBox.alert('骗子，我找了半天，根本没有一样的')
+        }
       }
     }
   }
