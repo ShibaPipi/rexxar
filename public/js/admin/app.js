@@ -14886,25 +14886,25 @@ new Vue({
 /*!******************************************!*\
   !*** ./resources/js/admin/config/env.js ***!
   \******************************************/
-/*! exports provided: BASE_URL_PREFIX, ROUTER_MODE, IMG_BASE_URL_PREFIX */
+/*! exports provided: ADMIN_BASE_URL_PREFIX, ROUTER_MODE, IMG_ADMIN_BASE_URL_PREFIX */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BASE_URL_PREFIX", function() { return BASE_URL_PREFIX; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADMIN_BASE_URL_PREFIX", function() { return ADMIN_BASE_URL_PREFIX; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ROUTER_MODE", function() { return ROUTER_MODE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IMG_BASE_URL_PREFIX", function() { return IMG_BASE_URL_PREFIX; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IMG_ADMIN_BASE_URL_PREFIX", function() { return IMG_ADMIN_BASE_URL_PREFIX; });
 /**
  * 配置编译环境和线上环境之间的切换
  *
- * BASE_URL_PREFIX: api 地址前缀
+ * ADMIN_BASE_URL_PREFIX: api 地址前缀
  * ROUTER_MODE: 路由模式
- * IMG_BASE_URL_PREFIX: 图片所在域名地址
+ * IMG_ADMIN_BASE_URL_PREFIX: 图片所在域名地址
  *
  */
-var BASE_URL_PREFIX = '/api/v2/admin/';
+var ADMIN_BASE_URL_PREFIX = '/api/v2/admin/';
 var ROUTER_MODE = 'hash';
-var IMG_BASE_URL_PREFIX = '';
+var IMG_ADMIN_BASE_URL_PREFIX = '';
 
 
 /***/ }),
@@ -15476,7 +15476,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           data = _args.length > 2 && _args[2] !== undefined ? _args[2] : {};
           method = _args.length > 3 && _args[3] !== undefined ? _args[3] : 'fetch';
           type = type.toUpperCase();
-          url = _config_env__WEBPACK_IMPORTED_MODULE_1__["BASE_URL_PREFIX"] + url;
+          url = _config_env__WEBPACK_IMPORTED_MODULE_1__["ADMIN_BASE_URL_PREFIX"] + url;
 
           if ('GET' === type) {
             dataStr = '';

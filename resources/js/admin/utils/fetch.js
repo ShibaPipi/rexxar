@@ -1,4 +1,4 @@
-import { BASE_URL_PREFIX } from '../config/env'
+import { ADMIN_BASE_URL_PREFIX } from '../config/env'
 import { getStore } from './localStorage'
 import router from '../router'
 import store from '../store'
@@ -6,7 +6,7 @@ import { Message, Loading } from 'element-ui'
 
 export default async (url = '', type = 'GET', data = {}, method = 'fetch') => {
   type = type.toUpperCase();
-  url = BASE_URL_PREFIX + url;
+  url = ADMIN_BASE_URL_PREFIX + url;
 
   if ('GET' === type) {
     let dataStr = '';
