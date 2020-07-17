@@ -175,7 +175,7 @@ render._withStripped = true
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/logo.jpg?31d957a7d816356578c2a071387d3439";
+module.exports = "/images/logo.jpg?f1fc639e059ff16a6c0719613669d8ea";
 
 /***/ }),
 
