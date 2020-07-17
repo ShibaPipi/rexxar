@@ -31,7 +31,7 @@
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" size="small" @click="submitForm('ruleForm')">开始比较</el-button>
+          <el-button type="primary" size="small" @click="submitForm('ruleForm')">比就比，谁怕谁</el-button>
         </el-form-item>
       </el-form>
       <template v-if="0 !== resultList.length">
