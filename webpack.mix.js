@@ -1,5 +1,19 @@
 let mix = require('laravel-mix');
 
+const JS_RESOURCE_DIR = 'resources/js/';
+const CSS_RESOURCE_DIR = 'resources/assets/css/';
+const JS_PUBLIC_DIR = 'public/js/';
+
+const MODULE_ONSTAGE = 'index';
+const MODULE_ADMIN = 'admin';
+
+let externals = {
+  'element-ui': 'ELEMENT',
+  'vue': 'Vue',
+  'vuex': 'Vuex',
+  'vue-router': 'VueRouter',
+  'lodash': '_'
+};
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,20 +25,26 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').version().webpackConfig({
+mix.js(JS_RESOURCE_DIR + MODULE_ADMIN + '/app.js', JS_PUBLIC_DIR + MODULE_ADMIN).version().webpackConfig({
   output: {
-    chunkFilename: 'js/chunk/[name].js?v=[chunkHash]'
+    chunkFilename: 'js/' + MODULE_ADMIN + '/chunk/[name].js?v=[chunkHash]'
   },
   resolve: {
     alias: {
-      Css: path.resolve(__dirname, 'resources/assets/css')
+      Css: path.resolve(__dirname, CSS_RESOURCE_DIR + MODULE_ADMIN)
     }
   },
-  externals: {
-    'element-ui': 'ELEMENT',
-    'vue': 'Vue',
-    'vuex': 'Vuex',
-    'vue-router': 'VueRouter',
-    'lodash': '_'
-  }
+  externals
+});
+
+mix.js(JS_RESOURCE_DIR + MODULE_ONSTAGE + '/app.js', JS_PUBLIC_DIR + MODULE_ONSTAGE).version().webpackConfig({
+  output: {
+    chunkFilename: 'js/' + MODULE_ONSTAGE + '/chunk/[name].js?v=[chunkHash]'
+  },
+  resolve: {
+    alias: {
+      Css: path.resolve(__dirname, CSS_RESOURCE_DIR + MODULE_ONSTAGE)
+    }
+  },
+  externals
 });

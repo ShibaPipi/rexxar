@@ -97,4 +97,6 @@ Route::namespace('Onstage')->group(function () {
     });
 });
 
-Route::view('/admin', 'admin');
+Route::view('index', 'index');
+
+Route::view('admin', 'admin');

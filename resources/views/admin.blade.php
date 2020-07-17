@@ -21,5 +21,5 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/vuex/3.2.0/vuex.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/vue-router/3.2.0/vue-router.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/index.js"></script>
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/admin/app.js') }}"></script>
 </html>
