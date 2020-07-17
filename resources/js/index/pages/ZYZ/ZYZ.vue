@@ -10,9 +10,10 @@
         :rules="rules"
         ref="ruleForm"
         label-width="80px"
-        :style="{ paddingRight: '20px' }"
+        label-position="top"
+        :style="{ padding: '0 20px' }"
       >
-        <el-form-item label="阴文字" prop="textarea1">
+        <el-form-item label="咱也不知道你要输什么" prop="textarea1">
           <el-input
             type="textarea"
             :autosize="{ minRows: 5 }"
@@ -21,7 +22,7 @@
           </el-input>
         </el-form-item>
         <div style="margin: 20px 0;"></div>
-        <el-form-item label="阳文字" prop="textarea2">
+        <el-form-item label="咱也不知道你要比对什么" prop="textarea2">
           <el-input
             type="textarea"
             :autosize="{ minRows: 5 }"

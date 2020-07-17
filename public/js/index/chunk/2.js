@@ -67,6 +67,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ZYZ',
@@ -232,17 +233,18 @@ var render = function() {
             "el-form",
             {
               ref: "ruleForm",
-              style: { paddingRight: "20px" },
+              style: { padding: "0 20px" },
               attrs: {
                 model: _vm.ruleForm,
                 rules: _vm.rules,
-                "label-width": "80px"
+                "label-width": "80px",
+                "label-position": "top"
               }
             },
             [
               _c(
                 "el-form-item",
-                { attrs: { label: "阴文字", prop: "textarea1" } },
+                { attrs: { label: "咱也不知道你要输什么", prop: "textarea1" } },
                 [
                   _c("el-input", {
                     attrs: {
@@ -266,7 +268,9 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "el-form-item",
-                { attrs: { label: "阳文字", prop: "textarea2" } },
+                {
+                  attrs: { label: "咱也不知道你要比对什么", prop: "textarea2" }
+                },
                 [
                   _c("el-input", {
                     attrs: {
