@@ -1,6 +1,7 @@
 import Router from 'vue-router'
 
 // 路由懒加载
+const home = () => import('../pages/Home/Home');
 const zyz = () => import('../pages/ZYZ/ZYZ');
 const notFound = () => import('../pages/NotFound/NotFound');
 
@@ -12,6 +13,13 @@ Router.prototype.push = function push(location) {
 
 export default new Router({
   routes: [{
+    path: '/',
+    redirect: '/home'
+  }, {
+    path: '/home',
+    name: 'home',
+    component: home
+  }, {
     path: '/zyz',
     name: 'zyz',
     component: zyz

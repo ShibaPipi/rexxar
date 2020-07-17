@@ -1,31 +1,15 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[18],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/pages/Login/Login.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/pages/Login/Login.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/index/pages/Home/Home.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/index/pages/Home/Home.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "vuex");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuex__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _service_getData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../service/getData */ "./resources/js/admin/service/getData.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+/* harmony import */ var _utils_sakura__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/sakura */ "./resources/js/index/utils/sakura.js");
 //
 //
 //
@@ -52,106 +36,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Login',
-  data: function data() {
-    return {
-      ruleForm: {
-        name: '',
-        password: ''
-      },
-      rules: {
-        name: [{
-          required: true,
-          message: '请输入用户名',
-          trigger: 'blur'
-        }],
-        password: [{
-          required: true,
-          message: '请输入密码',
-          trigger: 'blur'
-        }]
-      }
-    };
-  },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['isLoggedIn'])),
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapMutations"])(['RECORD_ADMIN'])), {}, {
-    submitForm: function submitForm(formName) {
-      var _this = this;
-
-      this.$refs[formName].validate(function (valid) {
-        if (valid) {
-          _this.handleLogin();
-        } else {
-          console.log('提交失败！！');
-          return false;
-        }
-      });
-    },
-    handleLogin: function handleLogin() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _yield$login, token;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return Object(_service_getData__WEBPACK_IMPORTED_MODULE_2__["login"])(_this2.ruleForm);
-
-              case 2:
-                _yield$login = _context.sent;
-                token = _yield$login.token;
-
-                if (token) {
-                  _this2.RECORD_ADMIN(token);
-
-                  _this2.redirectToHomePage();
-                }
-
-              case 5:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    },
-    checkLogin: function checkLogin() {
-      this.isLoggedIn && this.redirectToHomePage();
-    },
-    redirectToHomePage: function redirectToHomePage() {
-      this.$router.push({
-        name: 'home'
-      });
-    }
-  }),
-  beforeMount: function beforeMount() {
-    this.checkLogin();
-  },
-  activated: function activated() {
-    this.checkLogin();
+  name: 'Home',
+  mounted: function mounted() {
+    Object(_utils_sakura__WEBPACK_IMPORTED_MODULE_0__["init"])();
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/less-loader/dist/cjs.js!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/pages/Login/Login.vue?vue&type=style&index=0&lang=less&":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/less-loader/dist/cjs.js!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/pages/Login/Login.vue?vue&type=style&index=0&lang=less& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/less-loader/dist/cjs.js!./node_modules/vue-loader/lib/index.js?!./resources/js/index/pages/Home/Home.vue?vue&type=style&index=0&id=04849d39&lang=less&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/less-loader/dist/cjs.js!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/index/pages/Home/Home.vue?vue&type=style&index=0&id=04849d39&lang=less&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -159,22 +57,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "body {\n  background: #d2d6de;\n}\n", ""]);
+exports.push([module.i, ".home[data-v-04849d39] {\n  position: fixed;\n  left: 0;\n  top: 0;\n}\n.home .content[data-v-04849d39] {\n  position: fixed;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  font-size: 20px;\n  text-align: center;\n  padding-top: 12%;\n}\n.home .content .home-logo[data-v-04849d39] {\n  width: 220px;\n  border-radius: 50%;\n  animation: myLogo-data-v-04849d39 3s;\n  -moz-animation: myLogo-data-v-04849d39 3s;\n  /* Firefox */\n  -webkit-animation: myLogo-data-v-04849d39 3s;\n  /* Safari and Chrome */\n  -o-animation: myLogo-data-v-04849d39 3s;\n  /* Opera */\n  animation-iteration-count: infinite;\n}\n.home .content .home-header .link[data-v-04849d39] {\n  display: block;\n}\n.home .content .home-body[data-v-04849d39] {\n  padding-top: 20px;\n}\n.home .content .home-body .list .link[data-v-04849d39] {\n  display: inline-block;\n  padding: 20px;\n  color: #409eff;\n  min-width: 80px;\n}\n.home .content .home-body .list .link[data-v-04849d39]:hover {\n  color: #9b2323;\n}\n.home .content .introduce[data-v-04849d39] {\n  padding-top: 20px;\n  color: #fff;\n}\n@keyframes myLogo-data-v-04849d39 {\n0% {\n    transform: rotate(0deg) scale(0.8, 0.8);\n    opacity: 1;\n}\n25% {\n    transform: rotate(0deg) scale(1, 1);\n    opacity: 0.8;\n}\n100% {\n    transform: rotate(0deg) scale(0.8, 0.8);\n    opacity: 1;\n}\n}\n@-moz-keyframes myLogo-data-v-04849d39 {\n0% {\n    transform: rotate(0deg) scale(0.8, 0.8);\n    opacity: 1;\n}\n25% {\n    transform: rotate(0deg) scale(1, 1);\n    opacity: 0.8;\n}\n100% {\n    transform: rotate(0deg) scale(0.8, 0.8);\n    opacity: 1;\n}\n}\n@-webkit-keyframes myLogo-data-v-04849d39 {\n0% {\n    transform: rotate(0deg) scale(0.8, 0.8);\n    opacity: 1;\n}\n25% {\n    transform: rotate(0deg) scale(1, 1);\n    opacity: 0.8;\n}\n100% {\n    transform: rotate(0deg) scale(0.8, 0.8);\n    opacity: 1;\n}\n}\n@-o-keyframes myLogo-data-v-04849d39 {\n0% {\n    transform: rotate(0deg) scale(0.8, 0.8);\n    opacity: 1;\n}\n25% {\n    transform: rotate(0deg) scale(1, 1);\n    opacity: 0.8;\n}\n100% {\n    transform: rotate(0deg) scale(0.8, 0.8);\n    opacity: 1;\n}\n}\n", ""]);
 // Exports
 module.exports = exports;
 
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/less-loader/dist/cjs.js!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/pages/Login/Login.vue?vue&type=style&index=0&lang=less&":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/less-loader/dist/cjs.js!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/pages/Login/Login.vue?vue&type=style&index=0&lang=less& ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/less-loader/dist/cjs.js!./node_modules/vue-loader/lib/index.js?!./resources/js/index/pages/Home/Home.vue?vue&type=style&index=0&id=04849d39&lang=less&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/less-loader/dist/cjs.js!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/index/pages/Home/Home.vue?vue&type=style&index=0&id=04849d39&lang=less&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader/dist/cjs.js!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--8-2!../../../../../node_modules/less-loader/dist/cjs.js!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Login.vue?vue&type=style&index=0&lang=less& */ "./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/less-loader/dist/cjs.js!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/pages/Login/Login.vue?vue&type=style&index=0&lang=less&");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader/dist/cjs.js!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--8-2!../../../../../node_modules/less-loader/dist/cjs.js!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=style&index=0&id=04849d39&lang=less&scoped=true& */ "./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/less-loader/dist/cjs.js!./node_modules/vue-loader/lib/index.js?!./resources/js/index/pages/Home/Home.vue?vue&type=style&index=0&id=04849d39&lang=less&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -196,10 +94,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/pages/Login/Login.vue?vue&type=template&id=4db7732c&":
-/*!***************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/pages/Login/Login.vue?vue&type=template&id=4db7732c& ***!
-  \***************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/index/pages/Home/Home.vue?vue&type=template&id=04849d39&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/index/pages/Home/Home.vue?vue&type=template&id=04849d39&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -211,113 +109,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "el-container",
-    [
+  return _c("div", { staticClass: "home" }, [
+    _c("canvas", { attrs: { id: "sakura" } }),
+    _vm._v(" "),
+    _c("div", { staticClass: "content" }, [
       _c(
-        "el-main",
-        { style: { margin: "12% auto" } },
+        "div",
+        { staticClass: "home-header" },
         [
-          _c(
-            "el-col",
-            { attrs: { span: 10, offset: 7 } },
-            [
-              _c("el-row", { style: { textAlign: "center" } }, [
-                _c("h1", [_vm._v("Laravel 7 管理后台")])
-              ]),
-              _vm._v(" "),
-              _c(
-                "el-row",
-                { style: { background: "#fff" } },
-                [
-                  _c(
-                    "el-card",
-                    { attrs: { shadow: "always" } },
-                    [
-                      _c(
-                        "el-form",
-                        {
-                          ref: "ruleForm",
-                          staticClass: "demo-ruleForm",
-                          style: { paddingTop: "40px", paddingRight: "40px" },
-                          attrs: {
-                            model: _vm.ruleForm,
-                            rules: _vm.rules,
-                            "label-width": "100px"
-                          }
-                        },
-                        [
-                          _c(
-                            "el-form-item",
-                            { attrs: { label: "用户名", prop: "name" } },
-                            [
-                              _c("el-input", {
-                                model: {
-                                  value: _vm.ruleForm.name,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.ruleForm, "name", $$v)
-                                  },
-                                  expression: "ruleForm.name"
-                                }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "el-form-item",
-                            { attrs: { label: "密码", prop: "password" } },
-                            [
-                              _c("el-input", {
-                                attrs: { type: "password" },
-                                model: {
-                                  value: _vm.ruleForm.password,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.ruleForm, "password", $$v)
-                                  },
-                                  expression: "ruleForm.password"
-                                }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "el-form-item",
-                            [
-                              _c(
-                                "el-button",
-                                {
-                                  attrs: { type: "primary", size: "small" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.submitForm("ruleForm")
-                                    }
-                                  }
-                                },
-                                [_vm._v("登录")]
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
+          _c("router-link", { staticClass: "link", attrs: { to: "/posts" } }, [
+            _c("img", {
+              staticClass: "home-logo",
+              attrs: { src: __webpack_require__(/*! ../../assets/logo.jpg */ "./resources/js/index/assets/logo.jpg"), alt: "logo" }
+            })
+          ])
         ],
         1
-      )
-    ],
-    1
-  )
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "home-body" }, [
+        _c(
+          "div",
+          { staticClass: "list" },
+          [
+            _c(
+              "router-link",
+              { staticClass: "link", attrs: { to: "/posts" } },
+              [_vm._v("文章")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "link",
+                attrs: {
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  href: "https://github.com/ShibaPipi"
+                }
+              },
+              [_vm._v("\n          github\n        ")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "introduce" }, [
+          _vm._v("左手代码右手诗    心中编程口中歌")
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -326,45 +168,29 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/admin/config/env.js":
-/*!******************************************!*\
-  !*** ./resources/js/admin/config/env.js ***!
-  \******************************************/
-/*! exports provided: ADMIN_BASE_URL_PREFIX, ROUTER_MODE, IMG_ADMIN_BASE_URL_PREFIX */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./resources/js/index/assets/logo.jpg":
+/*!********************************************!*\
+  !*** ./resources/js/index/assets/logo.jpg ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADMIN_BASE_URL_PREFIX", function() { return ADMIN_BASE_URL_PREFIX; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ROUTER_MODE", function() { return ROUTER_MODE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IMG_ADMIN_BASE_URL_PREFIX", function() { return IMG_ADMIN_BASE_URL_PREFIX; });
-/**
- * 配置编译环境和线上环境之间的切换
- *
- * ADMIN_BASE_URL_PREFIX: api 地址前缀
- * ROUTER_MODE: 路由模式
- * IMG_ADMIN_BASE_URL_PREFIX: 图片所在域名地址
- *
- */
-var ADMIN_BASE_URL_PREFIX = '/api/v2/admin/';
-var ROUTER_MODE = 'hash';
-var IMG_ADMIN_BASE_URL_PREFIX = '';
-
+module.exports = "/images/logo.jpg?31d957a7d816356578c2a071387d3439";
 
 /***/ }),
 
-/***/ "./resources/js/admin/pages/Login/Login.vue":
-/*!**************************************************!*\
-  !*** ./resources/js/admin/pages/Login/Login.vue ***!
-  \**************************************************/
+/***/ "./resources/js/index/pages/Home/Home.vue":
+/*!************************************************!*\
+  !*** ./resources/js/index/pages/Home/Home.vue ***!
+  \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Login_vue_vue_type_template_id_4db7732c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Login.vue?vue&type=template&id=4db7732c& */ "./resources/js/admin/pages/Login/Login.vue?vue&type=template&id=4db7732c&");
-/* harmony import */ var _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Login.vue?vue&type=script&lang=js& */ "./resources/js/admin/pages/Login/Login.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _Login_vue_vue_type_style_index_0_lang_less___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Login.vue?vue&type=style&index=0&lang=less& */ "./resources/js/admin/pages/Login/Login.vue?vue&type=style&index=0&lang=less&");
+/* harmony import */ var _Home_vue_vue_type_template_id_04849d39_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home.vue?vue&type=template&id=04849d39&scoped=true& */ "./resources/js/index/pages/Home/Home.vue?vue&type=template&id=04849d39&scoped=true&");
+/* harmony import */ var _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home.vue?vue&type=script&lang=js& */ "./resources/js/index/pages/Home/Home.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Home_vue_vue_type_style_index_0_id_04849d39_lang_less_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Home.vue?vue&type=style&index=0&id=04849d39&lang=less&scoped=true& */ "./resources/js/index/pages/Home/Home.vue?vue&type=style&index=0&id=04849d39&lang=less&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -375,448 +201,856 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Login_vue_vue_type_template_id_4db7732c___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Login_vue_vue_type_template_id_4db7732c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Home_vue_vue_type_template_id_04849d39_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Home_vue_vue_type_template_id_04849d39_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  null,
+  "04849d39",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/admin/pages/Login/Login.vue"
+component.options.__file = "resources/js/index/pages/Home/Home.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/admin/pages/Login/Login.vue?vue&type=script&lang=js&":
-/*!***************************************************************************!*\
-  !*** ./resources/js/admin/pages/Login/Login.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************/
+/***/ "./resources/js/index/pages/Home/Home.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/index/pages/Home/Home.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Login.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/pages/Login/Login.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/index/pages/Home/Home.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/admin/pages/Login/Login.vue?vue&type=style&index=0&lang=less&":
-/*!************************************************************************************!*\
-  !*** ./resources/js/admin/pages/Login/Login.vue?vue&type=style&index=0&lang=less& ***!
-  \************************************************************************************/
+/***/ "./resources/js/index/pages/Home/Home.vue?vue&type=style&index=0&id=04849d39&lang=less&scoped=true&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/index/pages/Home/Home.vue?vue&type=style&index=0&id=04849d39&lang=less&scoped=true& ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_less_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_style_index_0_lang_less___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader/dist/cjs.js!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--8-2!../../../../../node_modules/less-loader/dist/cjs.js!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Login.vue?vue&type=style&index=0&lang=less& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/less-loader/dist/cjs.js!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/pages/Login/Login.vue?vue&type=style&index=0&lang=less&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_less_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_style_index_0_lang_less___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_less_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_style_index_0_lang_less___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_less_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_style_index_0_lang_less___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_less_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_style_index_0_lang_less___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_less_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_style_index_0_lang_less___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_less_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_style_index_0_id_04849d39_lang_less_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader/dist/cjs.js!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--8-2!../../../../../node_modules/less-loader/dist/cjs.js!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=style&index=0&id=04849d39&lang=less&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/less-loader/dist/cjs.js!./node_modules/vue-loader/lib/index.js?!./resources/js/index/pages/Home/Home.vue?vue&type=style&index=0&id=04849d39&lang=less&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_less_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_style_index_0_id_04849d39_lang_less_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_less_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_style_index_0_id_04849d39_lang_less_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_less_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_style_index_0_id_04849d39_lang_less_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_less_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_style_index_0_id_04849d39_lang_less_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_less_loader_dist_cjs_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_style_index_0_id_04849d39_lang_less_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
-/***/ "./resources/js/admin/pages/Login/Login.vue?vue&type=template&id=4db7732c&":
-/*!*********************************************************************************!*\
-  !*** ./resources/js/admin/pages/Login/Login.vue?vue&type=template&id=4db7732c& ***!
-  \*********************************************************************************/
+/***/ "./resources/js/index/pages/Home/Home.vue?vue&type=template&id=04849d39&scoped=true&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/index/pages/Home/Home.vue?vue&type=template&id=04849d39&scoped=true& ***!
+  \*******************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_4db7732c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Login.vue?vue&type=template&id=4db7732c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/pages/Login/Login.vue?vue&type=template&id=4db7732c&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_4db7732c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_04849d39_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=template&id=04849d39&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/index/pages/Home/Home.vue?vue&type=template&id=04849d39&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_04849d39_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_4db7732c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_04849d39_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/admin/service/getData.js":
-/*!***********************************************!*\
-  !*** ./resources/js/admin/service/getData.js ***!
-  \***********************************************/
-/*! exports provided: login, logout, getSideBarList, getAdminInfo, getAdminUsers, storeAdminUser, getAdminUserRoles, storeAdminUserRoles, getAdminRoles, storeAdminRole, getAdminRolePermissions, storeAdminRolePermissions, getAdminPermissions, storeAdminPermission, getPosts, togglePostStatus, getNotices, storeNotice, getTopics, storeTopic, deleteTopic */
+/***/ "./resources/js/index/utils/sakura.js":
+/*!********************************************!*\
+  !*** ./resources/js/index/utils/sakura.js ***!
+  \********************************************/
+/*! exports provided: init */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSideBarList", function() { return getSideBarList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminInfo", function() { return getAdminInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminUsers", function() { return getAdminUsers; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeAdminUser", function() { return storeAdminUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminUserRoles", function() { return getAdminUserRoles; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeAdminUserRoles", function() { return storeAdminUserRoles; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminRoles", function() { return getAdminRoles; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeAdminRole", function() { return storeAdminRole; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminRolePermissions", function() { return getAdminRolePermissions; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeAdminRolePermissions", function() { return storeAdminRolePermissions; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminPermissions", function() { return getAdminPermissions; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeAdminPermission", function() { return storeAdminPermission; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPosts", function() { return getPosts; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "togglePostStatus", function() { return togglePostStatus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNotices", function() { return getNotices; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeNotice", function() { return storeNotice; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTopics", function() { return getTopics; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeTopic", function() { return storeTopic; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteTopic", function() { return deleteTopic; });
-/* harmony import */ var _utils_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/fetch */ "./resources/js/admin/utils/fetch.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "init", function() { return init; });
+var init = function init() {
+  var sakura_point_vsh = "\n    uniform mat4 uProjection;\n    uniform mat4 uModelview;\n    uniform vec3 uResolution;\n    uniform vec3 uOffset;\n    uniform vec3 uDOF;  //x:focus distance, y:focus radius, z:max radius\n    uniform vec3 uFade; //x:start distance, y:half distance, z:near fade start\n\n    attribute vec3 aPosition;\n    attribute vec3 aEuler;\n    attribute vec2 aMisc; //x:size, y:fade\n\n    varying vec3 pposition;\n    varying float psize;\n    varying float palpha;\n    varying float pdist;\n\n    //varying mat3 rotMat;\n    varying vec3 normX;\n    varying vec3 normY;\n    varying vec3 normZ;\n    varying vec3 normal;\n\n    varying float diffuse;\n    varying float specular;\n    varying float rstop;\n    varying float distancefade;\n\n    void main(void) {\n        // Projection is based on vertical angle\n        vec4 pos = uModelview * vec4(aPosition + uOffset, 1.0);\n        gl_Position = uProjection * pos;\n        gl_PointSize = aMisc.x * uProjection[1][1] / -pos.z * uResolution.y * 0.5;\n\n        pposition = pos.xyz;\n        psize = aMisc.x;\n        pdist = length(pos.xyz);\n        palpha = smoothstep(0.0, 1.0, (pdist - 0.1) / uFade.z);\n\n        vec3 elrsn = sin(aEuler);\n        vec3 elrcs = cos(aEuler);\n        mat3 rotx = mat3(\n            1.0, 0.0, 0.0,\n            0.0, elrcs.x, elrsn.x,\n            0.0, -elrsn.x, elrcs.x\n        );\n        mat3 roty = mat3(\n            elrcs.y, 0.0, -elrsn.y,\n            0.0, 1.0, 0.0,\n            elrsn.y, 0.0, elrcs.y\n        );\n        mat3 rotz = mat3(\n            elrcs.z, elrsn.z, 0.0,\n            -elrsn.z, elrcs.z, 0.0,\n            0.0, 0.0, 1.0\n        );\n        mat3 rotmat = rotx * roty * rotz;\n        normal = rotmat[2];\n\n        mat3 trrotm = mat3(\n            rotmat[0][0], rotmat[1][0], rotmat[2][0],\n            rotmat[0][1], rotmat[1][1], rotmat[2][1],\n            rotmat[0][2], rotmat[1][2], rotmat[2][2]\n        );\n        normX = trrotm[0];\n        normY = trrotm[1];\n        normZ = trrotm[2];\n\n        const vec3 lit = vec3(0.6917144638660746, 0.6917144638660746, -0.20751433915982237);\n\n        float tmpdfs = dot(lit, normal);\n        if(tmpdfs < 0.0) {\n            normal = -normal;\n            tmpdfs = dot(lit, normal);\n        }\n        diffuse = 0.4 + tmpdfs;\n\n        vec3 eyev = normalize(-pos.xyz);\n        if(dot(eyev, normal) > 0.0) {\n            vec3 hv = normalize(eyev + lit);\n            specular = pow(max(dot(hv, normal), 0.0), 20.0);\n        }\n        else {\n            specular = 0.0;\n        }\n\n        rstop = clamp((abs(pdist - uDOF.x) - uDOF.y) / uDOF.z, 0.0, 1.0);\n        rstop = pow(rstop, 0.5);\n        //-0.69315 = ln(0.5)\n        distancefade = min(1.0, exp((uFade.x - pdist) * 0.69315 / uFade.y));\n    }";
+  var sakura_point_fsh = "\n    #ifdef GL_ES\n    //precision mediump float;\n    precision highp float;\n    #endif\n\n    uniform vec3 uDOF;  //x:focus distance, y:focus radius, z:max radius\n    uniform vec3 uFade; //x:start distance, y:half distance, z:near fade start\n\n    const vec3 fadeCol = vec3(0.08, 0.03, 0.06);\n\n    varying vec3 pposition;\n    varying float psize;\n    varying float palpha;\n    varying float pdist;\n\n    //varying mat3 rotMat;\n    varying vec3 normX;\n    varying vec3 normY;\n    varying vec3 normZ;\n    varying vec3 normal;\n\n    varying float diffuse;\n    varying float specular;\n    varying float rstop;\n    varying float distancefade;\n\n    float ellipse(vec2 p, vec2 o, vec2 r) {\n        vec2 lp = (p - o) / r;\n        return length(lp) - 1.0;\n    }\n\n    void main(void) {\n        vec3 p = vec3(gl_PointCoord - vec2(0.5, 0.5), 0.0) * 2.0;\n        vec3 d = vec3(0.0, 0.0, -1.0);\n        float nd = normZ.z; //dot(-normZ, d);\n        if(abs(nd) < 0.0001) discard;\n\n        float np = dot(normZ, p);\n        vec3 tp = p + d * np / nd;\n        vec2 coord = vec2(dot(normX, tp), dot(normY, tp));\n\n        //angle = 15 degree\n        const float flwrsn = 0.258819045102521;\n        const float flwrcs = 0.965925826289068;\n        mat2 flwrm = mat2(flwrcs, -flwrsn, flwrsn, flwrcs);\n        vec2 flwrp = vec2(abs(coord.x), coord.y) * flwrm;\n\n        float r;\n        if(flwrp.x < 0.0) {\n            r = ellipse(flwrp, vec2(0.065, 0.024) * 0.5, vec2(0.36, 0.96) * 0.5);\n        }\n        else {\n            r = ellipse(flwrp, vec2(0.065, 0.024) * 0.5, vec2(0.58, 0.96) * 0.5);\n        }\n\n        if(r > rstop) discard;\n\n        vec3 col = mix(vec3(1.0, 0.8, 0.75), vec3(1.0, 0.9, 0.87), r);\n        float grady = mix(0.0, 1.0, pow(coord.y * 0.5 + 0.5, 0.35));\n        col *= vec3(1.0, grady, grady);\n        col *= mix(0.8, 1.0, pow(abs(coord.x), 0.3));\n        col = col * diffuse + specular;\n\n        col = mix(fadeCol, col, distancefade);\n\n        float alpha = (rstop > 0.001)? (0.5 - r / (rstop * 2.0)) : 1.0;\n        alpha = smoothstep(0.0, 1.0, alpha) * palpha;\n\n        gl_FragColor = vec4(col * 0.5, alpha);\n    }";
+  var fx_common_vsh = "\n    uniform vec3 uResolution;\n    attribute vec2 aPosition;\n\n    varying vec2 texCoord;\n    varying vec2 screenCoord;\n\n    void main(void) {\n        gl_Position = vec4(aPosition, 0.0, 1.0);\n        texCoord = aPosition.xy * 0.5 + vec2(0.5, 0.5);\n        screenCoord = aPosition.xy * vec2(uResolution.z, 1.0);\n    }";
+  var bg_fsh = "\n    #ifdef GL_ES\n    //precision mediump float;\n    precision highp float;\n    #endif\n\n    uniform vec2 uTimes;\n\n    varying vec2 texCoord;\n    varying vec2 screenCoord;\n\n    void main(void) {\n        vec3 col;\n        float c;\n        vec2 tmpv = texCoord * vec2(0.8, 1.0) - vec2(0.95, 1.0);\n        c = exp(-pow(length(tmpv) * 1.8, 2.0));\n        col = mix(vec3(0.02, 0.0, 0.03), vec3(0.96, 0.98, 1.0) * 1.5, c);\n        gl_FragColor = vec4(col * 0.5, 1.0);\n    }";
+  var fx_brightbuf_fsh = "\n    #ifdef GL_ES\n    //precision mediump float;\n    precision highp float;\n    #endif\n    uniform sampler2D uSrc;\n    uniform vec2 uDelta;\n\n    varying vec2 texCoord;\n    varying vec2 screenCoord;\n\n    void main(void) {\n        vec4 col = texture2D(uSrc, texCoord);\n        gl_FragColor = vec4(col.rgb * 2.0 - vec3(0.5), 1.0);\n    }";
+  var fx_dirblur_r4_fsh = "\n    #ifdef GL_ES\n    //precision mediump float;\n    precision highp float;\n    #endif\n    uniform sampler2D uSrc;\n    uniform vec2 uDelta;\n    uniform vec4 uBlurDir; //dir(x, y), stride(z, w)\n\n    varying vec2 texCoord;\n    varying vec2 screenCoord;\n\n    void main(void) {\n        vec4 col = texture2D(uSrc, texCoord);\n        col = col + texture2D(uSrc, texCoord + uBlurDir.xy * uDelta);\n        col = col + texture2D(uSrc, texCoord - uBlurDir.xy * uDelta);\n        col = col + texture2D(uSrc, texCoord + (uBlurDir.xy + uBlurDir.zw) * uDelta);\n        col = col + texture2D(uSrc, texCoord - (uBlurDir.xy + uBlurDir.zw) * uDelta);\n        gl_FragColor = col / 5.0;\n    }";
+  var pp_final_vsh = "\n    uniform vec3 uResolution;\n    attribute vec2 aPosition;\n    varying vec2 texCoord;\n    varying vec2 screenCoord;\n    void main(void) {\n        gl_Position = vec4(aPosition, 0.0, 1.0);\n        texCoord = aPosition.xy * 0.5 + vec2(0.5, 0.5);\n        screenCoord = aPosition.xy * vec2(uResolution.z, 1.0);\n    }";
+  var pp_final_fsh = "\n    #ifdef GL_ES\n    //precision mediump float;\n    precision highp float;\n    #endif\n    uniform sampler2D uSrc;\n    uniform sampler2D uBloom;\n    uniform vec2 uDelta;\n    varying vec2 texCoord;\n    varying vec2 screenCoord;\n    void main(void) {\n        vec4 srccol = texture2D(uSrc, texCoord) * 2.0;\n        vec4 bloomcol = texture2D(uBloom, texCoord);\n        vec4 col;\n        col = srccol + bloomcol * (vec4(1.0) + srccol);\n        col *= smoothstep(1.0, 0.0, pow(length((texCoord - vec2(0.5)) * 2.0), 1.2) * 0.5);\n        col = pow(col, vec4(0.45454545454545)); //(1.0 / 2.2)\n\n        gl_FragColor = vec4(col.rgb, 1.0);\n        gl_FragColor.a = 1.0;\n    }"; // Utilities
 
-var login = function login(_ref) {
-  var name = _ref.name,
-      password = _ref.password;
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('login', 'POST', {
-    name: name,
-    password: password
-  });
-};
-var logout = function logout() {
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('logout');
-};
-var getSideBarList = function getSideBarList() {
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_users/permissions');
-};
-var getAdminInfo = function getAdminInfo() {
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_users/info');
-};
-var getAdminUsers = function getAdminUsers() {
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_users');
-};
-var storeAdminUser = function storeAdminUser(_ref2) {
-  var name = _ref2.name,
-      password = _ref2.password;
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_users', 'POST', {
-    name: name,
-    password: password
-  });
-};
-var getAdminUserRoles = function getAdminUserRoles(id) {
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_users/' + id + '/admin_roles');
-};
-var storeAdminUserRoles = function storeAdminUserRoles(id, _ref3) {
-  var adminUserRoleList = _ref3.adminUserRoleList;
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_users/' + id + '/admin_roles', 'POST', {
-    adminUserRoleList: adminUserRoleList
-  });
-};
-var getAdminRoles = function getAdminRoles() {
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_roles');
-};
-var storeAdminRole = function storeAdminRole(_ref4) {
-  var name = _ref4.name,
-      description = _ref4.description;
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_roles', 'POST', {
-    name: name,
-    description: description
-  });
-};
-var getAdminRolePermissions = function getAdminRolePermissions(id) {
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_roles/' + id + '/admin_permissions');
-};
-var storeAdminRolePermissions = function storeAdminRolePermissions(id, _ref5) {
-  var adminRolePermissionList = _ref5.adminRolePermissionList;
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_roles/' + id + '/admin_permissions', 'POST', {
-    adminRolePermissionList: adminRolePermissionList
-  });
-};
-var getAdminPermissions = function getAdminPermissions() {
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_permissions');
-};
-var storeAdminPermission = function storeAdminPermission(_ref6) {
-  var name = _ref6.name,
-      description = _ref6.description;
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_permissions', 'POST', {
-    name: name,
-    description: description
-  });
-};
-var getPosts = function getPosts() {
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('posts');
-};
-var togglePostStatus = function togglePostStatus(id, status) {
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('posts/' + id, 'PUT', {
-    status: status
-  });
-};
-var getNotices = function getNotices() {
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('notices');
-};
-var storeNotice = function storeNotice(_ref7) {
-  var title = _ref7.title,
-      content = _ref7.content;
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('notices', 'POST', {
-    title: title,
-    content: content
-  });
-};
-var getTopics = function getTopics() {
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('topics');
-};
-var storeTopic = function storeTopic(_ref8) {
-  var name = _ref8.name;
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('topics', 'POST', {
-    name: name
-  });
-};
-var deleteTopic = function deleteTopic(id) {
-  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('topics/' + id, 'DELETE');
-};
+  var Vector3 = {};
+  var Matrix44 = {};
 
-/***/ }),
+  Vector3.create = function (x, y, z) {
+    return {
+      x: x,
+      y: y,
+      z: z
+    };
+  };
 
-/***/ "./resources/js/admin/utils/fetch.js":
-/*!*******************************************!*\
-  !*** ./resources/js/admin/utils/fetch.js ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+  Vector3.dot = function (v0, v1) {
+    return v0.x * v1.x + v0.y * v1.y + v0.z * v1.z;
+  };
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config_env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config/env */ "./resources/js/admin/config/env.js");
-/* harmony import */ var _localStorage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./localStorage */ "./resources/js/admin/utils/localStorage.js");
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../router */ "./resources/js/admin/router/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store */ "./resources/js/admin/store/index.js");
-/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! element-ui */ "element-ui");
-/* harmony import */ var element_ui__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(element_ui__WEBPACK_IMPORTED_MODULE_5__);
+  Vector3.cross = function (v, v0, v1) {
+    v.x = v0.y * v1.z - v0.z * v1.y;
+    v.y = v0.z * v1.x - v0.x * v1.z;
+    v.z = v0.x * v1.y - v0.y * v1.x;
+  };
+
+  Vector3.normalize = function (v) {
+    var l = v.x * v.x + v.y * v.y + v.z * v.z;
+
+    if (l > 0.00001) {
+      l = 1.0 / Math.sqrt(l);
+      v.x *= l;
+      v.y *= l;
+      v.z *= l;
+    }
+  };
+
+  Vector3.arrayForm = function (v) {
+    if (v.array) {
+      v.array[0] = v.x;
+      v.array[1] = v.y;
+      v.array[2] = v.z;
+    } else {
+      v.array = new Float32Array([v.x, v.y, v.z]);
+    }
+
+    return v.array;
+  };
+
+  Matrix44.createIdentity = function () {
+    return new Float32Array([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]);
+  };
+
+  Matrix44.loadProjection = function (m, aspect, vdeg, near, far) {
+    var h = near * Math.tan(vdeg * Math.PI / 180.0 * 0.5) * 2.0;
+    var w = h * aspect;
+    m[0] = 2.0 * near / w;
+    m[1] = 0.0;
+    m[2] = 0.0;
+    m[3] = 0.0;
+    m[4] = 0.0;
+    m[5] = 2.0 * near / h;
+    m[6] = 0.0;
+    m[7] = 0.0;
+    m[8] = 0.0;
+    m[9] = 0.0;
+    m[10] = -(far + near) / (far - near);
+    m[11] = -1.0;
+    m[12] = 0.0;
+    m[13] = 0.0;
+    m[14] = -2.0 * far * near / (far - near);
+    m[15] = 0.0;
+  };
+
+  Matrix44.loadLookAt = function (m, vpos, vlook, vup) {
+    var frontv = Vector3.create(vpos.x - vlook.x, vpos.y - vlook.y, vpos.z - vlook.z);
+    Vector3.normalize(frontv);
+    var sidev = Vector3.create(1.0, 0.0, 0.0);
+    Vector3.cross(sidev, vup, frontv);
+    Vector3.normalize(sidev);
+    var topv = Vector3.create(1.0, 0.0, 0.0);
+    Vector3.cross(topv, frontv, sidev);
+    Vector3.normalize(topv);
+    m[0] = sidev.x;
+    m[1] = topv.x;
+    m[2] = frontv.x;
+    m[3] = 0.0;
+    m[4] = sidev.y;
+    m[5] = topv.y;
+    m[6] = frontv.y;
+    m[7] = 0.0;
+    m[8] = sidev.z;
+    m[9] = topv.z;
+    m[10] = frontv.z;
+    m[11] = 0.0;
+    m[12] = -(vpos.x * m[0] + vpos.y * m[4] + vpos.z * m[8]);
+    m[13] = -(vpos.x * m[1] + vpos.y * m[5] + vpos.z * m[9]);
+    m[14] = -(vpos.x * m[2] + vpos.y * m[6] + vpos.z * m[10]);
+    m[15] = 1.0;
+  }; //
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+  var timeInfo = {
+    start: 0,
+    prev: 0,
+    // Date
+    delta: 0,
+    elapsed: 0 // Number(sec)
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+  }; //
 
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+  var gl;
+  var renderSpec = {
+    width: 0,
+    height: 0,
+    aspect: 1,
+    array: new Float32Array(3),
+    halfWidth: 0,
+    halfHeight: 0,
+    halfArray: new Float32Array(3) // and some render targets. see setViewport()
 
+  };
 
+  renderSpec.setSize = function (w, h) {
+    renderSpec.width = w;
+    renderSpec.height = h;
+    renderSpec.aspect = renderSpec.width / renderSpec.height;
+    renderSpec.array[0] = renderSpec.width;
+    renderSpec.array[1] = renderSpec.height;
+    renderSpec.array[2] = renderSpec.aspect;
+    renderSpec.halfWidth = Math.floor(w / 2);
+    renderSpec.halfHeight = Math.floor(h / 2);
+    renderSpec.halfArray[0] = renderSpec.halfWidth;
+    renderSpec.halfArray[1] = renderSpec.halfHeight;
+    renderSpec.halfArray[2] = renderSpec.halfWidth / renderSpec.halfHeight;
+  };
 
+  function deleteRenderTarget(rt) {
+    gl.deleteFramebuffer(rt.frameBuffer);
+    gl.deleteRenderbuffer(rt.renderBuffer);
+    gl.deleteTexture(rt.texture);
+  }
 
+  function createRenderTarget(w, h) {
+    var ret = {
+      width: w,
+      height: h,
+      sizeArray: new Float32Array([w, h, w / h]),
+      dtxArray: new Float32Array([1.0 / w, 1.0 / h])
+    };
+    ret.frameBuffer = gl.createFramebuffer();
+    ret.renderBuffer = gl.createRenderbuffer();
+    ret.texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, ret.texture);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.bindFramebuffer(gl.FRAMEBUFFER, ret.frameBuffer);
+    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, ret.texture, 0);
+    gl.bindRenderbuffer(gl.RENDERBUFFER, ret.renderBuffer);
+    gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, w, h);
+    gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, ret.renderBuffer);
+    gl.bindTexture(gl.TEXTURE_2D, null);
+    gl.bindRenderbuffer(gl.RENDERBUFFER, null);
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    return ret;
+  }
 
+  function compileShader(shtype, shsrc) {
+    var retsh = gl.createShader(shtype);
+    gl.shaderSource(retsh, shsrc);
+    gl.compileShader(retsh);
 
-/* harmony default export */ __webpack_exports__["default"] = (/*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-  var url,
-      type,
-      data,
-      method,
-      dataStr,
-      requestConfig,
-      loading,
-      response,
-      jsonRes,
-      code,
-      status,
-      _data,
-      token,
-      _args = arguments;
+    if (!gl.getShaderParameter(retsh, gl.COMPILE_STATUS)) {
+      var errlog = gl.getShaderInfoLog(retsh);
+      gl.deleteShader(retsh);
+      console.error(errlog);
+      return null;
+    }
 
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-          url = _args.length > 0 && _args[0] !== undefined ? _args[0] : '';
-          type = _args.length > 1 && _args[1] !== undefined ? _args[1] : 'GET';
-          data = _args.length > 2 && _args[2] !== undefined ? _args[2] : {};
-          method = _args.length > 3 && _args[3] !== undefined ? _args[3] : 'fetch';
-          type = type.toUpperCase();
-          url = _config_env__WEBPACK_IMPORTED_MODULE_1__["ADMIN_BASE_URL_PREFIX"] + url;
+    return retsh;
+  }
 
-          if ('GET' === type) {
-            dataStr = '';
-            Object.keys(data).forEach(function (key) {
-              dataStr += key + '=' + data[key] + '&';
-            });
+  function createShader(vtxsrc, frgsrc, uniformlist, attrlist) {
+    var vsh = compileShader(gl.VERTEX_SHADER, vtxsrc);
+    var fsh = compileShader(gl.FRAGMENT_SHADER, frgsrc);
 
-            if (dataStr !== '') {
-              url += '?' + dataStr.substr(0, dataStr.lastIndexOf('&'));
-            }
-          }
+    if (vsh == null || fsh == null) {
+      return null;
+    }
 
-          if (!(window.fetch && 'fetch' === method)) {
-            _context.next = 43;
-            break;
-          }
+    var prog = gl.createProgram();
+    gl.attachShader(prog, vsh);
+    gl.attachShader(prog, fsh);
+    gl.deleteShader(vsh);
+    gl.deleteShader(fsh);
+    gl.linkProgram(prog);
 
-          requestConfig = {
-            credentials: 'include',
-            method: type,
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-              'X-Requested-With': 'XMLHttpRequest',
-              'Authorization': Object(_localStorage__WEBPACK_IMPORTED_MODULE_2__["getStore"])('token')
-            },
-            mode: 'cors'
-          };
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+      var errlog = gl.getProgramInfoLog(prog);
+      console.error(errlog);
+      return null;
+    }
 
-          if ('POST' === type || 'PUT' === type) {
-            Object.defineProperty(requestConfig, 'body', {
-              value: JSON.stringify(data)
-            });
-          }
+    if (uniformlist) {
+      prog.uniforms = {};
 
-          _context.prev = 10;
-          loading = element_ui__WEBPACK_IMPORTED_MODULE_5__["Loading"].service({
-            fullscreen: true
-          });
-          _context.next = 14;
-          return fetch(url, requestConfig);
-
-        case 14:
-          response = _context.sent;
-          _context.next = 17;
-          return response.json();
-
-        case 17:
-          jsonRes = _context.sent;
-          loading.close();
-          code = jsonRes.code, status = jsonRes.status, _data = jsonRes.data;
-          token = response.headers.get('Authorization');
-
-          if (null !== token) {
-            _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('RECORD_ADMIN', token);
-          }
-
-          if (!('success' === status)) {
-            _context.next = 26;
-            break;
-          }
-
-          return _context.abrupt("return", _data);
-
-        case 26:
-          _context.t0 = code;
-          _context.next = _context.t0 === 400 ? 29 : _context.t0 === 403 ? 31 : _context.t0 === 422 ? 33 : 36;
-          break;
-
-        case 29:
-          element_ui__WEBPACK_IMPORTED_MODULE_5__["Message"].error({
-            message: jsonRes.message
-          });
-          return _context.abrupt("break", 37);
-
-        case 31:
-          _router__WEBPACK_IMPORTED_MODULE_3__["default"].push({
-            name: 'unauthorized'
-          });
-          return _context.abrupt("break", 37);
-
-        case 33:
-          _store__WEBPACK_IMPORTED_MODULE_4__["default"].commit('LOGOUT');
-          _router__WEBPACK_IMPORTED_MODULE_3__["default"].push({
-            name: 'login'
-          });
-          return _context.abrupt("break", 37);
-
-        case 36:
-          return _context.abrupt("break", 37);
-
-        case 37:
-          _context.next = 41;
-          break;
-
-        case 39:
-          _context.prev = 39;
-          _context.t1 = _context["catch"](10);
-
-        case 41:
-          _context.next = 44;
-          break;
-
-        case 43:
-          return _context.abrupt("return", new Promise(function (resolve, reject) {
-            var requestObj = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject();
-            var sendData = '';
-
-            if ('POST' === type) {
-              sendData = JSON.stringify(data);
-            }
-
-            requestObj.open(type, url, true);
-            requestObj.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            requestObj.send(sendData);
-
-            requestObj.onreadystatechange = function () {
-              if (4 === requestObj.readyState) {
-                if (200 === requestObj.status) {
-                  var obj = requestObj.response;
-
-                  if (_typeof(obj) !== 'object') {
-                    obj = JSON.parse(obj);
-                  }
-
-                  resolve(obj);
-                } else {
-                  reject(requestObj);
-                }
-              }
-            };
-          }));
-
-        case 44:
-        case "end":
-          return _context.stop();
+      for (var i = 0; i < uniformlist.length; i++) {
+        prog.uniforms[uniformlist[i]] = gl.getUniformLocation(prog, uniformlist[i]);
       }
     }
-  }, _callee, null, [[10, 39]]);
-})));
 
-/***/ }),
+    if (attrlist) {
+      prog.attributes = {};
 
-/***/ "./resources/js/admin/utils/localStorage.js":
-/*!**************************************************!*\
-  !*** ./resources/js/admin/utils/localStorage.js ***!
-  \**************************************************/
-/*! exports provided: setStore, getStore, removeStore */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+      for (var _i = 0; _i < attrlist.length; _i++) {
+        var attr = attrlist[_i];
+        prog.attributes[attr] = gl.getAttribLocation(prog, attr);
+      }
+    }
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setStore", function() { return setStore; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStore", function() { return getStore; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeStore", function() { return removeStore; });
-/**
- * 存储 localStorage
- */
-var setStore = function setStore(name, content) {
-  if (!name) {
+    return prog;
+  }
+
+  function useShader(prog) {
+    gl.useProgram(prog);
+
+    for (var attr in prog.attributes) {
+      gl.enableVertexAttribArray(prog.attributes[attr]);
+    }
+  }
+
+  function unuseShader(prog) {
+    for (var attr in prog.attributes) {
+      gl.disableVertexAttribArray(prog.attributes[attr]);
+    }
+
+    gl.useProgram(null);
+  } /////
+
+
+  var projection = {
+    angle: 60,
+    nearfar: new Float32Array([0.1, 100.0]),
+    matrix: Matrix44.createIdentity()
+  };
+  var camera = {
+    position: Vector3.create(0, 0, 100),
+    lookat: Vector3.create(0, 0, 0),
+    up: Vector3.create(0, 1, 0),
+    dof: Vector3.create(10.0, 4.0, 8.0),
+    matrix: Matrix44.createIdentity()
+  };
+  var pointFlower = {}; // var meshFlower = {};
+
+  var sceneStandBy = false;
+
+  var BlossomParticle = function BlossomParticle() {
+    this.velocity = new Array(3);
+    this.rotation = new Array(3);
+    this.position = new Array(3);
+    this.euler = new Array(3);
+    this.size = 1.0;
+    this.alpha = 1.0;
+    this.zkey = 0.0;
+  };
+
+  BlossomParticle.prototype.setVelocity = function (vx, vy, vz) {
+    this.velocity[0] = vx;
+    this.velocity[1] = vy;
+    this.velocity[2] = vz;
+  };
+
+  BlossomParticle.prototype.setRotation = function (rx, ry, rz) {
+    this.rotation[0] = rx;
+    this.rotation[1] = ry;
+    this.rotation[2] = rz;
+  };
+
+  BlossomParticle.prototype.setPosition = function (nx, ny, nz) {
+    this.position[0] = nx;
+    this.position[1] = ny;
+    this.position[2] = nz;
+  };
+
+  BlossomParticle.prototype.setEulerAngles = function (rx, ry, rz) {
+    this.euler[0] = rx;
+    this.euler[1] = ry;
+    this.euler[2] = rz;
+  };
+
+  BlossomParticle.prototype.setSize = function (s) {
+    this.size = s;
+  };
+
+  BlossomParticle.prototype.update = function (dt, et) {
+    this.position[0] += this.velocity[0] * dt;
+    this.position[1] += this.velocity[1] * dt;
+    this.position[2] += this.velocity[2] * dt;
+    this.euler[0] += this.rotation[0] * dt;
+    this.euler[1] += this.rotation[1] * dt;
+    this.euler[2] += this.rotation[2] * dt;
+  };
+
+  function createPointFlowers() {
+    // get point sizes
+    var prm = gl.getParameter(gl.ALIASED_POINT_SIZE_RANGE);
+    renderSpec.pointSize = {
+      min: prm[0],
+      max: prm[1]
+    };
+    var vtxsrc = sakura_point_vsh;
+    var frgsrc = sakura_point_fsh;
+    pointFlower.program = createShader(vtxsrc, frgsrc, ['uProjection', 'uModelview', 'uResolution', 'uOffset', 'uDOF', 'uFade'], ['aPosition', 'aEuler', 'aMisc']);
+    useShader(pointFlower.program);
+    pointFlower.offset = new Float32Array([0.0, 0.0, 0.0]);
+    pointFlower.fader = Vector3.create(0.0, 10.0, 0.0); // paramerters: velocity[3], rotate[3]
+
+    pointFlower.numFlowers = 1600;
+    pointFlower.particles = new Array(pointFlower.numFlowers); // vertex attributes {position[3], euler_xyz[3], size[1]}
+
+    pointFlower.dataArray = new Float32Array(pointFlower.numFlowers * (3 + 3 + 2));
+    pointFlower.positionArrayOffset = 0;
+    pointFlower.eulerArrayOffset = pointFlower.numFlowers * 3;
+    pointFlower.miscArrayOffset = pointFlower.numFlowers * 6;
+    pointFlower.buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, pointFlower.buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, pointFlower.dataArray, gl.DYNAMIC_DRAW);
+    gl.bindBuffer(gl.ARRAY_BUFFER, null);
+    unuseShader(pointFlower.program);
+
+    for (var i = 0; i < pointFlower.numFlowers; i++) {
+      pointFlower.particles[i] = new BlossomParticle();
+    }
+  }
+
+  function initPointFlowers() {
+    //area
+    pointFlower.area = Vector3.create(20.0, 20.0, 20.0);
+    pointFlower.area.x = pointFlower.area.y * renderSpec.aspect;
+    pointFlower.fader.x = 10.0; //env fade start
+
+    pointFlower.fader.y = pointFlower.area.z; //env fade half
+
+    pointFlower.fader.z = 0.1; //near fade start
+    //particles
+
+    var PI2 = Math.PI * 2.0;
+    var tmpv3 = Vector3.create(0, 0, 0);
+    var tmpv = 0;
+
+    var symmetryrand = function symmetryrand() {
+      return Math.random() * 2.0 - 1.0;
+    };
+
+    for (var i = 0; i < pointFlower.numFlowers; i++) {
+      var tmpprtcl = pointFlower.particles[i]; //velocity
+
+      tmpv3.x = symmetryrand() * 0.3 + 0.8;
+      tmpv3.y = symmetryrand() * 0.2 - 1.0;
+      tmpv3.z = symmetryrand() * 0.3 + 0.5;
+      Vector3.normalize(tmpv3);
+      tmpv = 2.0 + Math.random() * 1.0;
+      tmpprtcl.setVelocity(tmpv3.x * tmpv, tmpv3.y * tmpv, tmpv3.z * tmpv); //rotation
+
+      tmpprtcl.setRotation(symmetryrand() * PI2 * 0.5, symmetryrand() * PI2 * 0.5, symmetryrand() * PI2 * 0.5); //position
+
+      tmpprtcl.setPosition(symmetryrand() * pointFlower.area.x, symmetryrand() * pointFlower.area.y, symmetryrand() * pointFlower.area.z); //euler
+
+      tmpprtcl.setEulerAngles(Math.random() * Math.PI * 2.0, Math.random() * Math.PI * 2.0, Math.random() * Math.PI * 2.0); //size
+
+      tmpprtcl.setSize(0.9 + Math.random() * 0.1);
+    }
+  }
+
+  function renderPointFlowers() {
+    //update
+    var PI2 = Math.PI * 2.0; // var limit = [pointFlower.area.x, pointFlower.area.y, pointFlower.area.z];
+
+    var repeatPos = function repeatPos(prt, cmp, limit) {
+      if (Math.abs(prt.position[cmp]) - prt.size * 0.5 > limit) {
+        //out of area
+        if (prt.position[cmp] > 0) {
+          prt.position[cmp] -= limit * 2.0;
+        } else {
+          prt.position[cmp] += limit * 2.0;
+        }
+      }
+    };
+
+    var repeatEuler = function repeatEuler(prt, cmp) {
+      prt.euler[cmp] = prt.euler[cmp] % PI2;
+
+      if (prt.euler[cmp] < 0.0) {
+        prt.euler[cmp] += PI2;
+      }
+    };
+
+    for (var i = 0; i < pointFlower.numFlowers; i++) {
+      var prtcl = pointFlower.particles[i];
+      prtcl.update(timeInfo.delta, timeInfo.elapsed);
+      repeatPos(prtcl, 0, pointFlower.area.x);
+      repeatPos(prtcl, 1, pointFlower.area.y);
+      repeatPos(prtcl, 2, pointFlower.area.z);
+      repeatEuler(prtcl, 0);
+      repeatEuler(prtcl, 1);
+      repeatEuler(prtcl, 2);
+      prtcl.alpha = 1.0; //(pointFlower.area.z - prtcl.position[2]) * 0.5;
+
+      prtcl.zkey = camera.matrix[2] * prtcl.position[0] + camera.matrix[6] * prtcl.position[1] + camera.matrix[10] * prtcl.position[2] + camera.matrix[14];
+    } // sort
+
+
+    pointFlower.particles.sort(function (p0, p1) {
+      return p0.zkey - p1.zkey;
+    }); // update data
+
+    var ipos = pointFlower.positionArrayOffset;
+    var ieuler = pointFlower.eulerArrayOffset;
+    var imisc = pointFlower.miscArrayOffset;
+
+    for (var _i2 = 0; _i2 < pointFlower.numFlowers; _i2++) {
+      var _prtcl = pointFlower.particles[_i2];
+      pointFlower.dataArray[ipos] = _prtcl.position[0];
+      pointFlower.dataArray[ipos + 1] = _prtcl.position[1];
+      pointFlower.dataArray[ipos + 2] = _prtcl.position[2];
+      ipos += 3;
+      pointFlower.dataArray[ieuler] = _prtcl.euler[0];
+      pointFlower.dataArray[ieuler + 1] = _prtcl.euler[1];
+      pointFlower.dataArray[ieuler + 2] = _prtcl.euler[2];
+      ieuler += 3;
+      pointFlower.dataArray[imisc] = _prtcl.size;
+      pointFlower.dataArray[imisc + 1] = _prtcl.alpha;
+      imisc += 2;
+    } //draw
+
+
+    gl.enable(gl.BLEND); //gl.disable(gl.DEPTH_TEST);
+
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    var prog = pointFlower.program;
+    useShader(prog);
+    gl.uniformMatrix4fv(prog.uniforms.uProjection, false, projection.matrix);
+    gl.uniformMatrix4fv(prog.uniforms.uModelview, false, camera.matrix);
+    gl.uniform3fv(prog.uniforms.uResolution, renderSpec.array);
+    gl.uniform3fv(prog.uniforms.uDOF, Vector3.arrayForm(camera.dof));
+    gl.uniform3fv(prog.uniforms.uFade, Vector3.arrayForm(pointFlower.fader));
+    gl.bindBuffer(gl.ARRAY_BUFFER, pointFlower.buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, pointFlower.dataArray, gl.DYNAMIC_DRAW);
+    gl.vertexAttribPointer(prog.attributes.aPosition, 3, gl.FLOAT, false, 0, pointFlower.positionArrayOffset * Float32Array.BYTES_PER_ELEMENT);
+    gl.vertexAttribPointer(prog.attributes.aEuler, 3, gl.FLOAT, false, 0, pointFlower.eulerArrayOffset * Float32Array.BYTES_PER_ELEMENT);
+    gl.vertexAttribPointer(prog.attributes.aMisc, 2, gl.FLOAT, false, 0, pointFlower.miscArrayOffset * Float32Array.BYTES_PER_ELEMENT); // doubler
+
+    for (var _i3 = 1; _i3 < 2; _i3++) {
+      var zpos = _i3 * -2.0;
+      pointFlower.offset[0] = pointFlower.area.x * -1.0;
+      pointFlower.offset[1] = pointFlower.area.y * -1.0;
+      pointFlower.offset[2] = pointFlower.area.z * zpos;
+      gl.uniform3fv(prog.uniforms.uOffset, pointFlower.offset);
+      gl.drawArrays(gl.POINT, 0, pointFlower.numFlowers);
+      pointFlower.offset[0] = pointFlower.area.x * -1.0;
+      pointFlower.offset[1] = pointFlower.area.y * 1.0;
+      pointFlower.offset[2] = pointFlower.area.z * zpos;
+      gl.uniform3fv(prog.uniforms.uOffset, pointFlower.offset);
+      gl.drawArrays(gl.POINT, 0, pointFlower.numFlowers);
+      pointFlower.offset[0] = pointFlower.area.x * 1.0;
+      pointFlower.offset[1] = pointFlower.area.y * -1.0;
+      pointFlower.offset[2] = pointFlower.area.z * zpos;
+      gl.uniform3fv(prog.uniforms.uOffset, pointFlower.offset);
+      gl.drawArrays(gl.POINT, 0, pointFlower.numFlowers);
+      pointFlower.offset[0] = pointFlower.area.x * 1.0;
+      pointFlower.offset[1] = pointFlower.area.y * 1.0;
+      pointFlower.offset[2] = pointFlower.area.z * zpos;
+      gl.uniform3fv(prog.uniforms.uOffset, pointFlower.offset);
+      gl.drawArrays(gl.POINT, 0, pointFlower.numFlowers);
+    } //main
+
+
+    pointFlower.offset[0] = 0.0;
+    pointFlower.offset[1] = 0.0;
+    pointFlower.offset[2] = 0.0;
+    gl.uniform3fv(prog.uniforms.uOffset, pointFlower.offset);
+    gl.drawArrays(gl.POINT, 0, pointFlower.numFlowers);
+    gl.bindBuffer(gl.ARRAY_BUFFER, null);
+    unuseShader(prog);
+    gl.enable(gl.DEPTH_TEST);
+    gl.disable(gl.BLEND);
+  } // effects
+  //common util
+
+
+  function createEffectProgram(vtxsrc, frgsrc, exunifs, exattrs) {
+    var ret = {};
+    var unifs = ['uResolution', 'uSrc', 'uDelta'];
+
+    if (exunifs) {
+      unifs = unifs.concat(exunifs);
+    }
+
+    var attrs = ['aPosition'];
+
+    if (exattrs) {
+      attrs = attrs.concat(exattrs);
+    }
+
+    ret.program = createShader(vtxsrc, frgsrc, unifs, attrs);
+    useShader(ret.program);
+    ret.dataArray = new Float32Array([-1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0]);
+    ret.buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, ret.buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, ret.dataArray, gl.STATIC_DRAW);
+    gl.bindBuffer(gl.ARRAY_BUFFER, null);
+    unuseShader(ret.program);
+    return ret;
+  } // basic usage
+  // useEffect(prog, srctex({'texture':texid, 'dtxArray':(f32)[dtx, dty]})); //basic initialize
+  // gl.uniform**(...); //additional uniforms
+  // drawEffect()
+  // unuseEffect(prog)
+  // TEXTURE0 makes src
+
+
+  function useEffect(fxobj, srctex) {
+    var prog = fxobj.program;
+    useShader(prog);
+    gl.uniform3fv(prog.uniforms.uResolution, renderSpec.array);
+
+    if (srctex != null) {
+      gl.uniform2fv(prog.uniforms.uDelta, srctex.dtxArray);
+      gl.uniform1i(prog.uniforms.uSrc, 0);
+      gl.activeTexture(gl.TEXTURE0);
+      gl.bindTexture(gl.TEXTURE_2D, srctex.texture);
+    }
+  }
+
+  function drawEffect(fxobj) {
+    gl.bindBuffer(gl.ARRAY_BUFFER, fxobj.buffer);
+    gl.vertexAttribPointer(fxobj.program.attributes.aPosition, 2, gl.FLOAT, false, 0, 0);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  }
+
+  function unuseEffect(fxobj) {
+    unuseShader(fxobj.program);
+  }
+
+  var effectLib = {};
+
+  function createEffectLib() {
+    var vtxsrc, frgsrc; //common
+
+    var cmnvtxsrc = fx_common_vsh; //background
+
+    frgsrc = bg_fsh;
+    effectLib.sceneBg = createEffectProgram(cmnvtxsrc, frgsrc, ['uTimes'], null); // make brightpixels buffer
+
+    frgsrc = fx_brightbuf_fsh;
+    effectLib.mkBrightBuf = createEffectProgram(cmnvtxsrc, frgsrc, null, null); // direction blur
+
+    frgsrc = fx_dirblur_r4_fsh;
+    effectLib.dirBlur = createEffectProgram(cmnvtxsrc, frgsrc, ['uBlurDir'], null); //final composite
+
+    vtxsrc = pp_final_vsh;
+    frgsrc = pp_final_fsh; // console.log('frgsrc :',frgsrc )
+
+    effectLib.finalComp = createEffectProgram(vtxsrc, frgsrc, ['uBloom'], null);
+  } // background
+
+
+  function createBackground() {//console.log("create background");
+  }
+
+  function initBackground() {//console.log("init background");
+  }
+
+  function renderBackground() {
+    gl.disable(gl.DEPTH_TEST);
+    useEffect(effectLib.sceneBg, null);
+    gl.uniform2f(effectLib.sceneBg.program.uniforms.uTimes, timeInfo.elapsed, timeInfo.delta);
+    drawEffect(effectLib.sceneBg);
+    unuseEffect(effectLib.sceneBg);
+    gl.enable(gl.DEPTH_TEST);
+  } // post process
+  // var postProcess = {};
+
+
+  function createPostProcess() {//console.log("create post process");
+  }
+
+  function initPostProcess() {//console.log("init post process");
+  }
+
+  function renderPostProcess() {
+    // gl.enable(gl.TEXTURE_2D);
+    gl.disable(gl.DEPTH_TEST);
+
+    var bindRT = function bindRT(rt, isclear) {
+      gl.bindFramebuffer(gl.FRAMEBUFFER, rt.frameBuffer);
+      gl.viewport(0, 0, rt.width, rt.height);
+
+      if (isclear) {
+        gl.clearColor(0, 0, 0, 0);
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      }
+    }; //make bright buff
+
+
+    bindRT(renderSpec.wHalfRT0, true);
+    useEffect(effectLib.mkBrightBuf, renderSpec.mainRT);
+    drawEffect(effectLib.mkBrightBuf);
+    unuseEffect(effectLib.mkBrightBuf); // make bloom
+
+    for (var i = 0; i < 2; i++) {
+      var p = 1.5 + 1 * i;
+      var s = 2.0 + 1 * i;
+      bindRT(renderSpec.wHalfRT1, true);
+      useEffect(effectLib.dirBlur, renderSpec.wHalfRT0);
+      gl.uniform4f(effectLib.dirBlur.program.uniforms.uBlurDir, p, 0.0, s, 0.0);
+      drawEffect(effectLib.dirBlur);
+      unuseEffect(effectLib.dirBlur);
+      bindRT(renderSpec.wHalfRT0, true);
+      useEffect(effectLib.dirBlur, renderSpec.wHalfRT1);
+      gl.uniform4f(effectLib.dirBlur.program.uniforms.uBlurDir, 0.0, p, 0.0, s);
+      drawEffect(effectLib.dirBlur);
+      unuseEffect(effectLib.dirBlur);
+    } //display
+
+
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    gl.viewport(0, 0, renderSpec.width, renderSpec.height);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    useEffect(effectLib.finalComp, renderSpec.mainRT);
+    gl.uniform1i(effectLib.finalComp.program.uniforms.uBloom, 1);
+    gl.activeTexture(gl.TEXTURE1);
+    gl.bindTexture(gl.TEXTURE_2D, renderSpec.wHalfRT0.texture);
+    drawEffect(effectLib.finalComp);
+    unuseEffect(effectLib.finalComp);
+    gl.enable(gl.DEPTH_TEST);
+  } /////
+  // var SceneEnv = {};
+
+
+  function createScene() {
+    createEffectLib();
+    createBackground();
+    createPointFlowers();
+    createPostProcess();
+    sceneStandBy = true;
+  }
+
+  function initScene() {
+    initBackground();
+    initPointFlowers();
+    initPostProcess(); //camera.position.z = 17.320508;
+
+    camera.position.z = pointFlower.area.z + projection.nearfar[0];
+    projection.angle = Math.atan2(pointFlower.area.y, camera.position.z + pointFlower.area.z) * 180.0 / Math.PI * 2.0;
+    Matrix44.loadProjection(projection.matrix, renderSpec.aspect, projection.angle, projection.nearfar[0], projection.nearfar[1]);
+  }
+
+  function renderScene() {
+    //draw
+    Matrix44.loadLookAt(camera.matrix, camera.position, camera.lookat, camera.up);
+    gl.enable(gl.DEPTH_TEST); //gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+
+    gl.bindFramebuffer(gl.FRAMEBUFFER, renderSpec.mainRT.frameBuffer);
+    gl.viewport(0, 0, renderSpec.mainRT.width, renderSpec.mainRT.height);
+    gl.clearColor(0.005, 0, 0.05, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    renderBackground();
+    renderPointFlowers();
+    renderPostProcess();
+  } /////
+
+
+  function onResize(e) {
+    makeCanvasFullScreen(document.getElementById('sakura'));
+    setViewports();
+
+    if (sceneStandBy) {
+      initScene();
+    }
+  }
+
+  function setViewports() {
+    renderSpec.setSize(gl.canvas.width, gl.canvas.height);
+    gl.clearColor(0.2, 0.2, 0.5, 1.0);
+    gl.viewport(0, 0, renderSpec.width, renderSpec.height);
+
+    var rtfunc = function rtfunc(rtname, rtw, rth) {
+      var rt = renderSpec[rtname];
+      if (rt) deleteRenderTarget(rt);
+      renderSpec[rtname] = createRenderTarget(rtw, rth);
+    };
+
+    rtfunc('mainRT', renderSpec.width, renderSpec.height);
+    rtfunc('wFullRT0', renderSpec.width, renderSpec.height);
+    rtfunc('wFullRT1', renderSpec.width, renderSpec.height);
+    rtfunc('wHalfRT0', renderSpec.halfWidth, renderSpec.halfHeight);
+    rtfunc('wHalfRT1', renderSpec.halfWidth, renderSpec.halfHeight);
+  }
+
+  function render() {
+    renderScene();
+  }
+
+  var animating = true;
+
+  function animate() {
+    var curdate = new Date();
+    timeInfo.elapsed = (curdate - timeInfo.start) / 1000.0;
+    timeInfo.delta = (curdate - timeInfo.prev) / 1000.0;
+    timeInfo.prev = curdate;
+    if (animating) requestAnimationFrame(animate);
+    render();
+  }
+
+  function makeCanvasFullScreen(canvas) {
+    var b = document.body;
+    var d = document.documentElement;
+    var fullw = Math.max(b.clientWidth, b.scrollWidth, d.scrollWidth, d.clientWidth);
+    var fullh = Math.max(b.clientHeight, b.scrollHeight, d.scrollHeight, d.clientHeight);
+    canvas.width = fullw;
+    canvas.height = fullh;
+  } // window.addEventListener("load", function(e) {
+  //   var canvas = document.getElementById("sakura");
+  //   try {
+  //     makeCanvasFullScreen(canvas);
+  //     gl = canvas.getContext("experimental-webgl");
+  //   } catch (e) {
+  //     alert("WebGL not supported." + e);
+  //     console.log("WebGL not supported :", e);
+  //     return;
+  //   }
+  //   window.addEventListener("resize", onResize);
+  //   setViewports();
+  //   createScene();
+  //   initScene();
+  //   timeInfo.start = new Date();
+  //   timeInfo.prev = timeInfo.start;
+  //   animate();
+  // });
+  // 保证每次都执行
+
+
+  var canvas = document.getElementById('sakura');
+
+  try {
+    makeCanvasFullScreen(canvas);
+    gl = canvas.getContext('experimental-webgl');
+  } catch (e) {
+    alert('WebGL not supported.' + e);
+    console.error(e);
     return;
   }
 
-  'string' !== typeof content && (content = JSON.stringify(content));
-  window.localStorage.setItem(name, content);
-};
-/**
- * 获取 localStorage
- */
+  window.addEventListener('resize', onResize);
+  setViewports();
+  createScene();
+  initScene();
+  timeInfo.start = new Date();
+  timeInfo.prev = timeInfo.start;
+  animate(); //set window.requestAnimationFrame
 
-var getStore = function getStore(name) {
-  if (!name) {
-    return;
-  }
-
-  return window.localStorage.getItem(name);
-};
-/**
- * 删除 localStorage
- */
-
-var removeStore = function removeStore(name) {
-  if (!name) {
-    return;
-  }
-
-  window.localStorage.removeItem(name);
+  (function (w, r) {
+    w['r' + r] = w['r' + r] || w['webkitR' + r] || w['mozR' + r] || w['msR' + r] || w['oR' + r] || function (c) {
+      w.setTimeout(c, 1000 / 60);
+    };
+  })(window, 'equestAnimationFrame');
 };
 
 /***/ })

@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "js/index/chunk/" + ({}[chunkId]||chunkId) + ".js?v=" + {"0":"64f03b50003c7c98be30","2":"556bdf16c7cbb227e610","14":"b078607e5127e1a65dd7","16":"335727c34a16d3b9aaa1"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "js/index/chunk/" + ({}[chunkId]||chunkId) + ".js?v=" + {"0":"64f03b50003c7c98be30","2":"556bdf16c7cbb227e610","14":"b078607e5127e1a65dd7","17":"5b5c07cb784efac1a989","18":"1f5e659eb9204039a1b2"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -16093,8 +16093,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_router__WEBPACK_IMPORTED_MODULE_0__);
  // 路由懒加载
 
+var home = function home() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! ../pages/Home/Home */ "./resources/js/index/pages/Home/Home.vue"));
+};
+
 var zyz = function zyz() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(16), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../pages/ZYZ/ZYZ */ "./resources/js/index/pages/ZYZ/ZYZ.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(17), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../pages/ZYZ/ZYZ */ "./resources/js/index/pages/ZYZ/ZYZ.vue"));
 };
 
 var notFound = function notFound() {
@@ -16112,6 +16116,13 @@ vue_router__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.push = function push
 
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_0___default.a({
   routes: [{
+    path: '/',
+    redirect: '/home'
+  }, {
+    path: '/home',
+    name: 'home',
+    component: home
+  }, {
     path: '/zyz',
     name: 'zyz',
     component: zyz
