@@ -12,18 +12,17 @@ class PostController extends Controller
     // 首页
     public function index()
     {
-        return api()->success(Post::query()
+        return api_response()->success(Post::query()
             ->select('id', 'title', 'status', 'created_at')
             ->withoutGlobalScope('available')
             ->latest()
-            ->paginate(50)
-        );
+            ->paginate(50));
     }
 
     public function update(PostRequest $request, Post $post)
     {
         $post->update($request->toArray());
 
-        return api()->createdOrUpdated();
+        return api_response()->createdOrUpdated();
     }
 }

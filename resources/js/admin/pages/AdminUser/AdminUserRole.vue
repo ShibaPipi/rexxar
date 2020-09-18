@@ -30,7 +30,7 @@
   const { mapState, mapMutations } = createNamespacedHelpers('userRole');
 
   export default {
-    name: 'UserRole',
+    name: 'AdminUserRole',
     data() {
       const { id } = this.$route.params;
 

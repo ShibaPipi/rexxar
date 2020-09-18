@@ -42,6 +42,7 @@ export const storeAdminPermission = ({ name, description }) => fetch(
   'POST',
   { name, description }
 );
+export const getUsers = () => fetch('users');
 export const getPosts = () => fetch('posts');
 export const togglePostStatus = (id, status) => fetch(
   'posts/' + id,

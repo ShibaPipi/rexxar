@@ -110,55 +110,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "home" }, [
-    _c("canvas", { attrs: { id: "sakura" } }),
-    _vm._v(" "),
-    _c("div", { staticClass: "content" }, [
-      _c(
-        "div",
-        { staticClass: "home-header" },
-        [
-          _c("router-link", { staticClass: "link", attrs: { to: "/posts" } }, [
-            _c("img", {
-              staticClass: "home-logo",
-              attrs: { src: __webpack_require__(/*! ../../assets/logo.jpg */ "./resources/js/index/assets/logo.jpg"), alt: "logo" }
-            })
-          ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _vm._m(0)
-    ])
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "home-body" }, [
-      _c("div", { staticClass: "list" }, [
-        _c("a", { staticClass: "link", attrs: { href: "/posts" } }, [
-          _vm._v("文章")
+    return _c("div", { staticClass: "home" }, [
+      _c("canvas", { attrs: { id: "sakura" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [
+        _c("div", { staticClass: "home-header" }, [
+          _c("img", {
+            staticClass: "home-logo",
+            attrs: { src: __webpack_require__(/*! ../../assets/logo.jpg */ "./resources/js/index/assets/logo.jpg"), alt: "logo" }
+          })
         ]),
         _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "link",
-            attrs: {
-              target: "_blank",
-              rel: "noopener noreferrer",
-              href: "https://github.com/ShibaPipi"
-            }
-          },
-          [_vm._v("\n            github\n          ")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "introduce" }, [
-        _vm._v("左手代码右手诗    心中编程口中歌")
+        _c("div", { staticClass: "home-body" }, [
+          _c("div", { staticClass: "list" }, [
+            _c("a", { staticClass: "link", attrs: { href: "/posts" } }, [
+              _vm._v("文章")
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "link",
+                attrs: {
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  href: "https://github.com/ShibaPipi"
+                }
+              },
+              [_vm._v("\n            github\n          ")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "introduce" }, [_vm._v("左手代码右手诗")])
+        ])
       ])
     ])
   }

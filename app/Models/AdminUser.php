@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\CarbonInterface;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use DateTimeInterface;
 
@@ -28,6 +30,8 @@ use DateTimeInterface;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminUser wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminUser whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $last_login_at 上次登录时间
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminUser whereLastLoginAt($value)
  */
 class AdminUser extends Authenticatable implements JWTSubject
 {
@@ -47,6 +51,14 @@ class AdminUser extends Authenticatable implements JWTSubject
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    /**
+     * 格式化上次登录时间
+     */
+    public function getLastLoginAtAttribute($value)
+    {
+        return $value ? now()->parse($value)->diffForHumans() : '-';
     }
 
     /**

@@ -14,6 +14,6 @@ class ZYZController extends Controller
 
         $res = array_values(array_intersect($arr1, $arr2));
 
-        return api()->success($res);
+        return api_response()->success($res);
     }
 }

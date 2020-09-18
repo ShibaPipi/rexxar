@@ -36,5 +36,4 @@ class AdminPermission extends Model
             'role_id'
         )->withPivot(['permission_id', 'role_id']);
     }
-
 }

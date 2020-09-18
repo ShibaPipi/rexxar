@@ -10,7 +10,7 @@ class TopicController extends Controller
 {
     public function index()
     {
-        return api()->success(
+        return api_response()->success(
             Topic::query()
                 ->select('id', 'name')
                 ->latest()
@@ -22,7 +22,7 @@ class TopicController extends Controller
     {
         Topic::create($request->only('name'));
 
-        return api()->createdOrUpdated();
+        return api_response()->createdOrUpdated();
     }
 
     /**
@@ -34,6 +34,6 @@ class TopicController extends Controller
     {
         $topic->delete();
 
-        return api()->deleted();
+        return api_response()->deleted();
     }
 }

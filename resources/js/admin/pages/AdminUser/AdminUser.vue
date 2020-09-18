@@ -1,16 +1,16 @@
 <template>
   <el-card>
     <div slot="header">
-      <span>用户角色列表</span>
+      <span>用户列表</span>
     </div>
-    <el-button type="primary" size="mini" @click="dialogFormVisible = true">新增角色</el-button>
-    <el-dialog title="新增角色" :visible.sync="dialogFormVisible">
+    <el-button type="primary" size="mini" @click="dialogFormVisible = true">新用户</el-button>
+    <el-dialog title="新增用户" :visible.sync="dialogFormVisible">
       <el-form :model="form" :rules="rules" ref="form">
-        <el-form-item label="角色名" prop="name" :label-width="formLabelWidth">
+        <el-form-item label="用户名" prop="name" :label-width="formLabelWidth">
           <el-input v-model="form.name" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="描述" prop="description" :label-width="formLabelWidth">
-          <el-input type="textarea" v-model="form.description" autocomplete="off"></el-input>
+        <el-form-item label="密码" prop="password" :label-width="formLabelWidth">
+          <el-input type="password" v-model="form.password" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -19,7 +19,7 @@
       </div>
     </el-dialog>
     <el-table
-      :data="adminRoleList"
+      :data="adminUsers"
       style="width: 100%"
     >
       <el-table-column
@@ -28,22 +28,28 @@
       />
       <el-table-column
         prop="name"
-        label="用户角色名"
+        label="用户名"
       />
       <el-table-column
-        prop="description"
-        label="描述"
+        prop="last_login_at"
+        label="上次登录时间"
+        width="120"
+      />
+      <el-table-column
+        prop="created_at"
+        label="创建时间"
+        width="180"
       />
       <el-table-column
         fixed="right"
         label="操作"
         width="120">
         <template slot-scope="scope">
-          <router-link :to="{ name: 'roles.permissions', params: {id: scope.row.id} }">
+          <router-link :to="{name: 'admin_users.admin_roles', params: {id: scope.row.id}}">
             <el-button
               type="text"
               size="small">
-              管理角色权限
+              管理员用户角色
             </el-button>
           </router-link>
         </template>
@@ -53,44 +59,44 @@
 </template>
 
 <script>
-  import { getAdminRoles, storeAdminRole } from '../../service/getData';
+  import { getAdminUsers, storeAdminUser } from '../../service/getData';
 
   export default {
-    name: 'Role',
+    name: 'AdminUser',
     data() {
       return {
-        adminRoleList: [],
+        adminUsers: [],
         dialogFormVisible: false,
         form: {
           name: '',
-          description: '',
+          password: '',
         },
         rules: {
           name: [
-            { required: true, message: '请输入角色名', trigger: 'blur' }
+            { required: true, message: '请输入用户名', trigger: 'blur' }
           ],
-          description: [
-            { required: true, message: '请输入描述', trigger: 'blur' }
+          password: [
+            { required: true, message: '请输入密码', trigger: 'blur' }
           ]
         },
         formLabelWidth: '120px'
       }
     },
     methods: {
-      async adminRoles() {
-        this.adminRoleList = (await getAdminRoles()).data
+      async getAdminUsers() {
+        this.adminUsers = (await getAdminUsers()).data;
       },
-      async handleStoreAdminRole() {
-        await storeAdminRole(this.form);
-        await this.adminRoles()
+      async handleStoreUser() {
+        await storeAdminUser(this.form);
+        await this.getAdminUsers();
       },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.handleStoreAdminRole();
+            this.handleStoreUser();
             this.dialogFormVisible = false;
             this.form.name = '';
-            this.form.description = '';
+            this.form.password = '';
           } else {
             console.log('提交失败！！');
             return false;
@@ -99,7 +105,7 @@
       }
     },
     mounted() {
-      this.adminRoles()
+      this.getAdminUsers()
     }
   };
 </script>

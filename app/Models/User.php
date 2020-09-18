@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use App\Enums\Post\StatusEnum;
+use App\Enums\User\StatusEnum;
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -45,6 +46,11 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User withoutTrashed()
  * @mixin \Eloquent
+ * @property \Illuminate\Support\Carbon|null $last_login_at 用户上次登录时间
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereLastLoginAt($value)
+ * @property int $status 用户状态
+ * @property-read string $status_name
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereStatus($value)
  */
 class User extends Authenticatable
 {
@@ -56,8 +62,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'last_login_at'
     ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['last_login_at'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -65,7 +78,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'email_verified_at',
     ];
 
     /**
@@ -77,12 +90,48 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * 追加到模型数组表单的访问器。
+     *
+     * @var array
+     */
+    protected $appends = ['status_name'];
+
     /*
      * 将密码进行加密
      */
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    /**
+     * 获取用户的状态
+     *
+     * @return string
+     */
+    public function getStatusNameAttribute()
+    {
+        return is_numeric($this->status) ? __(StatusEnum::get($this->status)) : '';
+    }
+
+    /**
+     * 格式化上次登录时间
+     */
+    public function getLastLoginAtAttribute($value)
+    {
+        return $value ? now()->parse($value)->diffForHumans() : '-';
+    }
+
+    /**
+     * 为数组 / JSON 序列化准备日期。
+     *
+     * @param DateTimeInterface $date
+     * @return string
+     */
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format($this->dateFormat ?: 'Y-m-d H:i:s');
     }
 
     // 文章列表

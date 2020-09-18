@@ -21,7 +21,7 @@ class AdminUserRoleController extends Controller
 
         $userRoles = $adminUser->roles->pluck('id');
 
-        return api()->success(compact('roles', 'userRoles'));
+        return api_response()->success(compact('roles', 'userRoles'));
     }
 
     /**
@@ -44,6 +44,6 @@ class AdminUserRoleController extends Controller
             $adminUser->deleteRole($role);
         }
 
-        return api()->createdOrUpdated();
+        return api_response()->createdOrUpdated();
     }
 }

@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "js/index/chunk/" + ({}[chunkId]||chunkId) + ".js?v=" + {"0":"64f03b50003c7c98be30","1":"f9d6ded3a371e595d783","4":"d4466e7a9dff041b4302","5":"cd9b1dde43208d1f3136","6":"38096df3dfda191e1ce0","7":"c9ce010f7ab09d7aeca0","8":"5b7907da653ec2a23c39","9":"dc2701863c3749179084","10":"f294dc137284012f260a","11":"c840412434fb514be8c7","12":"5a5be94920df6c0ad687","13":"6098eacd500ea870aff8","14":"7d9bf0b6b2e582aed09e","16":"24f0edfc88c8fee84ff1"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "js/index/chunk/" + ({}[chunkId]||chunkId) + ".js?v=" + {"0":"64f03b50003c7c98be30","1":"f9d6ded3a371e595d783","4":"a2ded09603b8ab129d2b","5":"4f504507b1434055a6b3","6":"18fdd77d5a05d88943e9","7":"275c7e72f73eeb17e8b0","8":"99d59814b6ebd23dd4e3","9":"9fee2da9c179d8e58d98","10":"7e7eb6d28337eddc0b81","11":"6674dcca7c2df26c3c30","12":"6c76afeba7193efec11c","13":"64edf337bae05f6b2a38","14":"41db5765cdc5d7ba59d5","16":"24f0edfc88c8fee84ff1","18":"b74a1611e9b164f37f36"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -14923,7 +14923,7 @@ __webpack_require__.r(__webpack_exports__);
  // 路由懒加载
 
 var login = function login() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ../pages/Login/Login */ "./resources/js/admin/pages/Login/Login.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ../pages/Login/Login */ "./resources/js/admin/pages/Login/Login.vue"));
 };
 
 var home = function home() {
@@ -14934,44 +14934,48 @@ var index = function index() {
   return __webpack_require__.e(/*! import() */ 16).then(__webpack_require__.bind(null, /*! ../pages/Index/Index */ "./resources/js/admin/pages/Index/Index.vue"));
 };
 
+var adminUser = function adminUser() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ../pages/AdminUser/AdminUser */ "./resources/js/admin/pages/AdminUser/AdminUser.vue"));
+};
+
+var adminUserRole = function adminUserRole() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ../pages/AdminUser/AdminUserRole */ "./resources/js/admin/pages/AdminUser/AdminUserRole.vue"));
+};
+
+var adminRole = function adminRole() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ../pages/AdminRole/AdminRole */ "./resources/js/admin/pages/AdminRole/AdminRole.vue"));
+};
+
+var adminRolePermission = function adminRolePermission() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ../pages/AdminRole/AdminRolePermission */ "./resources/js/admin/pages/AdminRole/AdminRolePermission.vue"));
+};
+
+var adminPermission = function adminPermission() {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ../pages/AdminPermission/AdminPermission */ "./resources/js/admin/pages/AdminPermission/AdminPermission.vue"));
+};
+
 var user = function user() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ../pages/User/User */ "./resources/js/admin/pages/User/User.vue"));
-};
-
-var userRole = function userRole() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ../pages/User/UserRole */ "./resources/js/admin/pages/User/UserRole.vue"));
-};
-
-var role = function role() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ../pages/Role/Role */ "./resources/js/admin/pages/Role/Role.vue"));
-};
-
-var rolePermission = function rolePermission() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ../pages/Role/RolePermission */ "./resources/js/admin/pages/Role/RolePermission.vue"));
-};
-
-var permission = function permission() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ../pages/Permission/Permission */ "./resources/js/admin/pages/Permission/Permission.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! ../pages/User/User */ "./resources/js/admin/pages/User/User.vue"));
 };
 
 var post = function post() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ../pages/Post/Post */ "./resources/js/admin/pages/Post/Post.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ../pages/Post/Post */ "./resources/js/admin/pages/Post/Post.vue"));
 };
 
 var topic = function topic() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ../pages/Topic/Topic */ "./resources/js/admin/pages/Topic/Topic.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ../pages/Topic/Topic */ "./resources/js/admin/pages/Topic/Topic.vue"));
 };
 
 var notice = function notice() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ../pages/Notice/Notice */ "./resources/js/admin/pages/Notice/Notice.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ../pages/Notice/Notice */ "./resources/js/admin/pages/Notice/Notice.vue"));
 };
 
 var unauthorized = function unauthorized() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ../pages/Unauthorized/Unauthorized */ "./resources/js/admin/pages/Unauthorized/Unauthorized.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ../pages/Unauthorized/Unauthorized */ "./resources/js/admin/pages/Unauthorized/Unauthorized.vue"));
 };
 
 var notFound = function notFound() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ../pages/NotFound/NotFound */ "./resources/js/admin/pages/NotFound/NotFound.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ../pages/NotFound/NotFound */ "./resources/js/admin/pages/NotFound/NotFound.vue"));
 }; // 解决两次访问相同路由地址报错
 
 
@@ -14999,25 +15003,29 @@ vue_router__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.push = function push
       name: 'home',
       component: index
     }, {
+      path: '/admin_users',
+      name: 'admin_users',
+      component: adminUser
+    }, {
+      path: '/admin_users/:id/admin_roles',
+      name: 'admin_users.admin_roles',
+      component: adminUserRole
+    }, {
+      path: '/admin_roles',
+      name: 'admin_roles',
+      component: adminRole
+    }, {
+      path: '/admin_roles/:id/admin_role_permissions',
+      name: 'admin_roles.admin_role_permissions',
+      component: adminRolePermission
+    }, {
+      path: '/admin_permissions',
+      name: 'admin_permissions',
+      component: adminPermission
+    }, {
       path: '/users',
       name: 'users',
       component: user
-    }, {
-      path: '/users/:id/roles',
-      name: 'users.roles',
-      component: userRole
-    }, {
-      path: '/roles',
-      name: 'roles',
-      component: role
-    }, {
-      path: '/roles/:id/permissions',
-      name: 'roles.permissions',
-      component: rolePermission
-    }, {
-      path: '/permissions',
-      name: 'permissions',
-      component: permission
     }, {
       path: '/posts',
       name: 'posts',
@@ -15053,7 +15061,7 @@ vue_router__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.push = function push
 /*!***********************************************!*\
   !*** ./resources/js/admin/service/getData.js ***!
   \***********************************************/
-/*! exports provided: login, logout, getSideBarList, getAdminInfo, getAdminUsers, storeAdminUser, getAdminUserRoles, storeAdminUserRoles, getAdminRoles, storeAdminRole, getAdminRolePermissions, storeAdminRolePermissions, getAdminPermissions, storeAdminPermission, getPosts, togglePostStatus, getNotices, storeNotice, getTopics, storeTopic, deleteTopic */
+/*! exports provided: login, logout, getSideBarList, getAdminInfo, getAdminUsers, storeAdminUser, getAdminUserRoles, storeAdminUserRoles, getAdminRoles, storeAdminRole, getAdminRolePermissions, storeAdminRolePermissions, getAdminPermissions, storeAdminPermission, getUsers, getPosts, togglePostStatus, getNotices, storeNotice, getTopics, storeTopic, deleteTopic */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15072,6 +15080,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeAdminRolePermissions", function() { return storeAdminRolePermissions; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAdminPermissions", function() { return getAdminPermissions; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeAdminPermission", function() { return storeAdminPermission; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUsers", function() { return getUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPosts", function() { return getPosts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "togglePostStatus", function() { return togglePostStatus; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNotices", function() { return getNotices; });
@@ -15148,6 +15157,9 @@ var storeAdminPermission = function storeAdminPermission(_ref6) {
     name: name,
     description: description
   });
+};
+var getUsers = function getUsers() {
+  return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('users');
 };
 var getPosts = function getPosts() {
   return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('posts');

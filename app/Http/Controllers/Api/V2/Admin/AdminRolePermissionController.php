@@ -21,7 +21,7 @@ class AdminRolePermissionController extends Controller
 
         $rolePermissions = $adminRole->permissions->pluck('id');
 
-        return api()->success(compact('permissions', 'rolePermissions'));
+        return api_response()->success(compact('permissions', 'rolePermissions'));
     }
 
     /**
@@ -44,6 +44,6 @@ class AdminRolePermissionController extends Controller
             $adminRole->deletePermission($permission);
         }
 
-        return api()->createdOrUpdated();
+        return api_response()->createdOrUpdated();
     }
 }

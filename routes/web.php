@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::namespace('Onstage')->group(function () {
+    // laravel-log-viewer
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
     Route::redirect('/home', '/');
 
     Route::get('/', 'IndexController@index')->name('index');

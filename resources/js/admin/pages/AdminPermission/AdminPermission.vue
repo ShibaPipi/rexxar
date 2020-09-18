@@ -42,7 +42,7 @@
   import { getAdminPermissions, storeAdminPermission } from '../../service/getData';
 
   export default {
-    name: 'Permission',
+    name: 'AdminPermission',
     data() {
       return {
         adminPermissionList: [],

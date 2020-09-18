@@ -11,7 +11,7 @@ class NoticeController extends Controller
 {
     public function index()
     {
-        return api()->success(
+        return api_response()->success(
             Notice::query()
                 ->select('id', 'title')
                 ->latest()
@@ -25,6 +25,6 @@ class NoticeController extends Controller
             Notice::create($request->only('title', 'content'))
         );
 
-        return api()->createdOrUpdated();
+        return api_response()->createdOrUpdated();
     }
 }

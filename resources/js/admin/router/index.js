@@ -4,11 +4,12 @@ import Router from 'vue-router'
 const login = () => import('../pages/Login/Login');
 const home = () => import('../components/Home/Home');
 const index = () => import('../pages/Index/Index');
+const adminUser = () => import('../pages/AdminUser/AdminUser');
+const adminUserRole = () => import('../pages/AdminUser/AdminUserRole');
+const adminRole = () => import('../pages/AdminRole/AdminRole');
+const adminRolePermission = () => import('../pages/AdminRole/AdminRolePermission');
+const adminPermission = () => import('../pages/AdminPermission/AdminPermission');
 const user = () => import('../pages/User/User');
-const userRole = () => import('../pages/User/UserRole');
-const role = () => import('../pages/Role/Role');
-const rolePermission = () => import('../pages/Role/RolePermission');
-const permission = () => import('../pages/Permission/Permission');
 const post = () => import('../pages/Post/Post');
 const topic = () => import('../pages/Topic/Topic');
 const notice = () => import('../pages/Notice/Notice');
@@ -37,25 +38,29 @@ export default new Router({
       name: 'home',
       component: index
     }, {
+      path: '/admin_users',
+      name: 'admin_users',
+      component: adminUser
+    }, {
+      path: '/admin_users/:id/admin_roles',
+      name: 'admin_users.admin_roles',
+      component: adminUserRole
+    }, {
+      path: '/admin_roles',
+      name: 'admin_roles',
+      component: adminRole
+    }, {
+      path: '/admin_roles/:id/admin_role_permissions',
+      name: 'admin_roles.admin_role_permissions',
+      component: adminRolePermission
+    }, {
+      path: '/admin_permissions',
+      name: 'admin_permissions',
+      component: adminPermission
+    }, {
       path: '/users',
       name: 'users',
       component: user
-    }, {
-      path: '/users/:id/roles',
-      name: 'users.roles',
-      component: userRole
-    }, {
-      path: '/roles',
-      name: 'roles',
-      component: role
-    }, {
-      path: '/roles/:id/permissions',
-      name: 'roles.permissions',
-      component: rolePermission
-    }, {
-      path: '/permissions',
-      name: 'permissions',
-      component: permission
     }, {
       path: '/posts',
       name: 'posts',

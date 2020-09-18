@@ -10,7 +10,7 @@ class AdminPermissionController extends Controller
 {
     public function index()
     {
-        return api()->success(
+        return api_response()->success(
             AdminPermission::query()
                 ->select('id', 'name', 'description')
                 ->paginate()
@@ -21,6 +21,6 @@ class AdminPermissionController extends Controller
     {
         AdminPermission::create($request->only('name', 'description'));
 
-        return api()->createdOrUpdated();
+        return api_response()->createdOrUpdated();
     }
 }

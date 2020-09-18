@@ -2,7 +2,7 @@
 
 namespace App\Exceptions;
 
-use App\Utils\ExceptionReport;
+use Shibapipi\Utils\ExceptionReport;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 

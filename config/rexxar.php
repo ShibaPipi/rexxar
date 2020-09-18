@@ -13,25 +13,31 @@ return [
             'disabled' => false,
             'children' => [
                 [
-                    'index' => 'users',
-                    'name' => '用户管理',
+                    'index' => 'admin_users',
+                    'name' => '管理员用户管理',
                     'icon' => 'el-icon-s-custom',
                     'disabled' => false,
                     'children' => []
                 ], [
-                    'index' => 'roles',
-                    'name' => '角色管理',
+                    'index' => 'admin_roles',
+                    'name' => '管理员角色管理',
                     'icon' => 'el-icon-magic-stick',
                     'disabled' => false,
                     'children' => []
                 ], [
-                    'index' => 'permissions',
-                    'name' => '权限管理',
+                    'index' => 'admin_permissions',
+                    'name' => '管理员权限管理',
                     'icon' => 'el-icon-view',
                     'disabled' => false,
                     'children' => []
                 ]
             ]
+        ], [
+            'index' => 'users',
+            'name' => '用户管理',
+            'icon' => 'el-icon-s-custom',
+            'disabled' => false,
+            'children' => []
         ], [
             'index' => 'posts',
             'name' => '文章管理',

@@ -3,9 +3,9 @@
     <canvas id="sakura"></canvas>
     <div class="content">
       <div class="home-header">
-        <router-link class="link" to="/posts">
+<!--        <router-link class="link" to="/posts">-->
           <img class="home-logo" src="../../assets/logo.jpg" alt="logo" />
-        </router-link>
+<!--        </router-link>-->
       </div>
       <div class="home-body">
         <div class="list">
@@ -19,7 +19,7 @@
             github
           </a>
         </div>
-        <div class="introduce">左手代码右手诗&nbsp;&nbsp;&nbsp;&nbsp;心中编程口中歌</div>
+        <div class="introduce">左手代码右手诗</div>
       </div>
     </div>
   </div>

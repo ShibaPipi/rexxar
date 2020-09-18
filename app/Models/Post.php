@@ -43,6 +43,7 @@ use Laravel\Scout\Searchable;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Post withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Post withoutTrashed()
  * @mixin \Eloquent
+ * @property-read string $status_name
  */
 class Post extends Model
 {
@@ -59,7 +60,7 @@ class Post extends Model
     ];
 
     /**
-     * 获取用户的状态
+     * 获取文章的状态
      *
      * @return string
      */

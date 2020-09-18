@@ -10,8 +10,6 @@ class UserController extends Controller
 {
     public function index()
     {
-        return api()->success(User::paginate(5));
+        return api_response()->success(User::paginate());
     }
-
-
 }

@@ -9,6 +9,6 @@ class UserController extends Controller
 {
     public function info()
     {
-        return api()->success(auth()->user());
+        return api_response()->success(auth()->user());
     }
 }
