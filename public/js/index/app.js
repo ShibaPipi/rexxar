@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "js/index/chunk/" + ({}[chunkId]||chunkId) + ".js?v=" + {"0":"64f03b50003c7c98be30","2":"556bdf16c7cbb227e610","3":"68dce1628712dc20ba73","15":"0ec588a60f6d555c2d03","17":"5b5c07cb784efac1a989"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "js/index/chunk/" + ({}[chunkId]||chunkId) + ".js?v=" + {"0":"64f03b50003c7c98be30","2":"556bdf16c7cbb227e610","3":"68dce1628712dc20ba73","16":"94735f9eef245ac6f51f","18":"301f2c056fb67b6e0489"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -16098,11 +16098,11 @@ var home = function home() {
 };
 
 var zyz = function zyz() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(17), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../pages/ZYZ/ZYZ */ "./resources/js/index/pages/ZYZ/ZYZ.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(18), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../pages/ZYZ/ZYZ */ "./resources/js/index/pages/ZYZ/ZYZ.vue"));
 };
 
 var notFound = function notFound() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ../pages/NotFound/NotFound */ "./resources/js/index/pages/NotFound/NotFound.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ../pages/NotFound/NotFound */ "./resources/js/index/pages/NotFound/NotFound.vue"));
 }; // 解决两次访问相同路由地址报错
 
 

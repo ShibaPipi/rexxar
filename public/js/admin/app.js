@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "js/index/chunk/" + ({}[chunkId]||chunkId) + ".js?v=" + {"0":"64f03b50003c7c98be30","1":"f9d6ded3a371e595d783","4":"a2ded09603b8ab129d2b","5":"4f504507b1434055a6b3","6":"18fdd77d5a05d88943e9","7":"275c7e72f73eeb17e8b0","8":"99d59814b6ebd23dd4e3","9":"9fee2da9c179d8e58d98","10":"7e7eb6d28337eddc0b81","11":"6674dcca7c2df26c3c30","12":"6c76afeba7193efec11c","13":"64edf337bae05f6b2a38","14":"41db5765cdc5d7ba59d5","16":"24f0edfc88c8fee84ff1","18":"b74a1611e9b164f37f36"}[chunkId] + ""
+/******/ 		return __webpack_require__.p + "js/index/chunk/" + ({}[chunkId]||chunkId) + ".js?v=" + {"0":"64f03b50003c7c98be30","1":"f9d6ded3a371e595d783","4":"a2ded09603b8ab129d2b","5":"4f504507b1434055a6b3","6":"18fdd77d5a05d88943e9","7":"275c7e72f73eeb17e8b0","8":"99d59814b6ebd23dd4e3","9":"9fee2da9c179d8e58d98","10":"7e7eb6d28337eddc0b81","11":"6674dcca7c2df26c3c30","12":"6c76afeba7193efec11c","13":"64edf337bae05f6b2a38","14":"41db5765cdc5d7ba59d5","15":"e55e07839097c06dcaa4","17":"39ddbeb3ed65463fde2c"}[chunkId] + ""
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -14931,7 +14931,7 @@ var home = function home() {
 };
 
 var index = function index() {
-  return __webpack_require__.e(/*! import() */ 16).then(__webpack_require__.bind(null, /*! ../pages/Index/Index */ "./resources/js/admin/pages/Index/Index.vue"));
+  return __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.bind(null, /*! ../pages/Index/Index */ "./resources/js/admin/pages/Index/Index.vue"));
 };
 
 var adminUser = function adminUser() {
@@ -14955,7 +14955,7 @@ var adminPermission = function adminPermission() {
 };
 
 var user = function user() {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! ../pages/User/User */ "./resources/js/admin/pages/User/User.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ../pages/User/User */ "./resources/js/admin/pages/User/User.vue"));
 };
 
 var post = function post() {
@@ -15124,7 +15124,7 @@ var getAdminUserRoles = function getAdminUserRoles(id) {
 var storeAdminUserRoles = function storeAdminUserRoles(id, _ref3) {
   var adminUserRoleList = _ref3.adminUserRoleList;
   return Object(_utils_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])('admin_users/' + id + '/admin_roles', 'POST', {
-    adminUserRoleList: adminUserRoleList
+    list: adminUserRoleList
   });
 };
 var getAdminRoles = function getAdminRoles() {

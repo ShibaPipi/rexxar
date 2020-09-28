@@ -25,9 +25,9 @@ class AdminUserController extends Controller
 
     public function info()
     {
-        $user = '{"roles":["admin"],"introduction":"I am a super administrator","avatar":"https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif","name":"Super Admin"}';
-        return api_response()->success(json_decode($user));
-//        return api_response()->success(auth()->user());
+        $roles = auth()->user()->roles->pluck('name')->toArray();
+
+        return api_response()->success(array_merge(auth()->user()->toArray(), compact('roles')));
     }
 
     public function login(Request $request)
