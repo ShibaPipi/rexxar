@@ -44,30 +44,29 @@ use Laravel\Scout\Searchable;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Post withoutTrashed()
  * @mixin \Eloquent
  * @property-read string $status_name
+ * @method static Builder|Post list()
  */
 class Post extends Model
 {
     //use Searchable;
     use SoftDeletes;
 
-    /**
-     * 追加到模型数组表单的访问器。
-     *
-     * @var array
-     */
-    protected $appends = [
-        'content_limit', 'status_name'
-    ];
-
-    /**
-     * 获取文章的状态
-     *
-     * @return string
-     */
-    public function getStatusNameAttribute()
-    {
-        return is_numeric($this->status) ? __(StatusEnum::get($this->status)) : '';
-    }
+//    /**
+//     * 追加到模型数组表单的访问器。
+//     *
+//     * @var array
+//     */
+//    protected $appends = ['status_name'];
+//
+//    /**
+//     * 获取文章的状态
+//     *
+//     * @return string
+//     */
+//    public function getStatusNameAttribute()
+//    {
+//        return is_numeric($this->status) ? __(StatusEnum::get($this->status)) : '';
+//    }
 
     /*
      * 搜索的type
@@ -118,12 +117,7 @@ class Post extends Model
 
     public function topics()
     {
-        return $this->belongsToMany(Topic::class);
-    }
-
-    public function getContentLimitAttribute($value)
-    {
-        $this->attributes['content_limit'] = bcrypt($value);
+        return $this->belongsToMany(Topic::class)->select('topic_id', 'name');
     }
 
     // 不属于某个专题的文章
@@ -132,6 +126,17 @@ class Post extends Model
         return $query->doesntHave('topics', 'and', function ($q) use ($topicId) {
             $q->where('topic_id', $topicId);
         });
+    }
+
+    /**
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopeList(Builder $query)
+    {
+        return $query->select('id', 'title', 'content', 'created_at')
+            ->withCount('comments', 'likes')
+            ->latest();
     }
 
     // 全局scope的方式

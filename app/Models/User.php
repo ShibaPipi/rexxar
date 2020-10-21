@@ -7,6 +7,7 @@ use DateTimeInterface;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
  * App\Models\User
@@ -52,7 +53,7 @@ use Illuminate\Notifications\Notifiable;
  * @property-read string $status_name
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereStatus($value)
  */
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable, SoftDeletes;
 
@@ -222,5 +223,15 @@ class User extends Authenticatable
     public function deleteNotice($notice)
     {
         return $this->notices()->detach($notice);
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

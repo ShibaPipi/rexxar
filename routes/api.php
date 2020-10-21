@@ -14,14 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::namespace('Api\V2\Onstage')->prefix('v2')->group(function () {
-    Route::middleware('api.guard')->group(function () {
-        Route::prefix('users')->middleware('api.refresh:api')->name('users.')->group(function () {
-            Route::get('info', 'UserController@info')->name('info');
-        });
-    });
+Route::namespace('Api\V2\Onstage')
+    ->prefix('v2')
+    ->middleware('api.guard')
+    ->group(function () {
+        Route::get('index', 'IndexController@index')->name('index');
+        Route::get('posts', 'PostController@index')->name('posts.index');
+        Route::post('login', 'UserController@login')->name('login');
 
-    Route::post('compare','ZYZController@compare');
-});
+        Route::middleware('api.refresh:api')->group(function () {
+            Route::get('logout', 'UserController@logout')->name('logout');
+
+            Route::prefix('users')->name('users.')->group(function () {
+                Route::get('info', 'UserController@info')->name('info');
+            });
+        });
+
+        Route::post('compare', 'ZYZController@compare');
+    });
 
 include_once 'api_admin.php';

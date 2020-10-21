@@ -57,5 +57,18 @@ return [
             'disabled' => false,
             'children' => []
         ]
+    ],
+
+    'founder_id' => 4,
+
+    'index' => [
+        'post_num' => 5,
+        'topic_num' => 8,
+        'founder_post_num' => 4
+    ],
+
+    'post' => [
+        'page_size' => 10,
+        'content_limit' => 300
     ]
 ];

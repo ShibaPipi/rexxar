@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
-use Carbon\CarbonInterface;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Carbon;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use DateTimeInterface;
 
@@ -32,6 +30,10 @@ use DateTimeInterface;
  * @mixin \Eloquent
  * @property string|null $last_login_at 上次登录时间
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AdminUser whereLastLoginAt($value)
+ * @property string|null $introduction 个人介绍
+ * @property string|null $avatar 头像
+ * @method static \Illuminate\Database\Eloquent\Builder|AdminUser whereAvatar($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AdminUser whereIntroduction($value)
  */
 class AdminUser extends Authenticatable implements JWTSubject
 {
