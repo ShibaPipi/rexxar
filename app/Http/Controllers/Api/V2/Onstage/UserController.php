@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Api\V2\Onstage;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Api\V2\Onstage\LoginRequest;
+use App\Http\Requests\Api\V2\Onstage\UserRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
         $currentGuard = Auth::getDefaultDriver();
 
@@ -27,10 +29,24 @@ class UserController extends Controller
         return api_response()->success(auth()->user());
     }
 
+    public function register(UserRequest $request)
+    {
+        User::query()->create($request->only(['name', 'email', 'password']));
+
+        return api_response()->success('注册成功。。。');
+    }
+
     public function logout()
     {
         auth()->logout();
 
-        return api_response()->success('退出成功。。。');
+        return api_response()->message('退出成功。。。');
+    }
+
+    public function notices()
+    {
+        $notices = auth()->user()->notices()->paginate(5);
+
+        return api_response()->success($notices);
     }
 }

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Topic;
 use App\Repositories\PostRepository;
-use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {

@@ -206,7 +206,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function notices()
     {
-        return $this->belongsToMany(Notice::class, 'user_notice', 'user_id', 'notice_id')->withPivot(['user_id', 'notice_id']);
+        return $this->belongsToMany(Notice::class, 'user_notice', 'user_id', 'notice_id');
     }
 
     /*
