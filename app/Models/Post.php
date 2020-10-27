@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\Post\StatusEnum;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 
 /**
@@ -51,13 +52,13 @@ class Post extends Model
     //use Searchable;
     use SoftDeletes;
 
-//    /**
-//     * 追加到模型数组表单的访问器。
-//     *
-//     * @var array
-//     */
-//    protected $appends = ['status_name'];
-//
+    /**
+     * 追加到模型数组表单的访问器。
+     *
+     * @var array
+     */
+    protected $appends = ['content_limit', 'published_at'];
+
 //    /**
 //     * 获取文章的状态
 //     *
@@ -67,6 +68,26 @@ class Post extends Model
 //    {
 //        return is_numeric($this->status) ? __(StatusEnum::get($this->status)) : '';
 //    }
+
+    /**
+     * 将文章的发布时间转换为更可读时间
+     *
+     * @return string
+     */
+    public function getPublishedAtAttribute()
+    {
+        return now()->parse($this->attributes['created_at'])->diffForHumans();
+    }
+
+    /**
+     * 将文章多余的文字用...进行省略
+     *
+     * @return string
+     */
+    public function getContentLimitAttribute()
+    {
+        return isset($this->attributes['content']) ? Str::limit($this->attributes['content'], config('rexxar.post.content_limit'), '...') : '';
+    }
 
     /*
      * 搜索的type

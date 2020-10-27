@@ -23,8 +23,7 @@ class PostRepository
      */
     public function handleList()
     {
-        $this->limitContent();
-        $this->handlePublishedAt();
+        $this->topicName();
     }
 
     /**

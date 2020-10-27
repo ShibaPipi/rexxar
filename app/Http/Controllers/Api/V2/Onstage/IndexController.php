@@ -11,7 +11,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $posts = Post::list()->limit(config('rexxar.index.post_num'))->get();
+        $posts = Post::list()->with('topics')->limit(config('rexxar.index.post_num'))->get()->makeHidden('content');
         (new PostRepository($posts))->handleList();
 
         $topics = Topic::query()->get(['id', 'name']);
@@ -22,9 +22,8 @@ class IndexController extends Controller
             ->latest()
             ->limit(config('rexxar.index.founder_post_num'))
             ->get(['id', 'title', 'created_at']);
-        $postResp = new PostRepository($founderPosts);
-        $postResp->topicName();
-        $postResp->handlePublishedAt();
+        $founderPostResp = new PostRepository($founderPosts);
+        $founderPostResp->topicName();
 
         $aphorism = [
             'Stay hungry, stay foolish.',

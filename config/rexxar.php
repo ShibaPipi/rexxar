@@ -62,7 +62,7 @@ return [
     'founder_id' => 4,
 
     'index' => [
-        'post_num' => 5,
+        'post_num' => 4,
         'topic_num' => 8,
         'founder_post_num' => 4
     ],
