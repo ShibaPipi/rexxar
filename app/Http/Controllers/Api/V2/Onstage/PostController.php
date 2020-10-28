@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::list()
+        $posts = Post::list()->with('user')
             ->paginate(request('perPage') ?? config('rexxar.post.page_size'));
 
         (new PostRepository($posts))->handleList();
@@ -28,7 +28,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return api_response()->success($post->loadCount('likes', 'comments')
+        return api_response()->success($post->load('user')->loadCount('likes', 'comments')
             ->makeHidden('content_limit'));
     }
 }

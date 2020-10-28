@@ -155,7 +155,8 @@ class Post extends Model
      */
     public function scopeList(Builder $query)
     {
-        return $query->select('id', 'title', 'content', 'created_at')
+        return $query->select('id', 'user_id', 'title', 'content', 'created_at')
+            ->with('user')
             ->withCount('comments', 'likes')
             ->latest();
     }
