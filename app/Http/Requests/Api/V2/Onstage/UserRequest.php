@@ -30,6 +30,11 @@ class UserRequest extends FormRequest
                     'email' => 'required|unique:users,email|email',
                     'password' => 'required|min:6|confirmed'
                 ];
+            case 'PUT':
+                return [
+                    'name' => 'required|min:3|unique:users,name',
+                    'introduction' => 'required'
+                ];
             default:
                 return [];
         }

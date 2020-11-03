@@ -13,19 +13,19 @@
                 <div class="carousel-inner">
                     <div class="item active">
                         <a href="{{ route('posts.show', ['post' => 41]) }}">
-                            <img src="images/44287191gw1excbq6tb3rj21400migrz.jpg" alt="..." />
+                            <img src="static/images/44287191gw1excbq6tb3rj21400migrz.jpg" alt="..." />
                             <div class="carousel-caption">男人永远不会长大，只会变老</div>
                         </a>
                     </div>
                     <div class="item">
                         <a href="{{ route('index') }}">
-                            <img src="images/44287191gw1excbq5iwm6j21400min3o.jpg" alt="..." />
+                            <img src="static/images/44287191gw1excbq5iwm6j21400min3o.jpg" alt="..." />
                             <div class="carousel-caption">欢迎来到我的博客</div>
                         </a>
                     </div>
                     <div class="item">
                         <a href="{{ route('notices.index') }}">
-                            <img src="images/44287191gw1excbq4kx57j21400migs4.jpg" alt="..." />
+                            <img src="static/images/44287191gw1excbq4kx57j21400migs4.jpg" alt="..." />
                             <div class="carousel-caption">早上好！</div>
                         </a>
                     </div>

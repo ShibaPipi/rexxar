@@ -25,18 +25,16 @@ class UserController extends Controller
     public function show(User $user)
     {
         // 这个人的关注／粉丝／文章
-        $user = User::query()->withCount(['stars', 'followers', 'posts'])->find($user->id);
+        $user = $user->info();
 
         // 这个人的文章列表 10条
-        $posts = $user->posts()->latest()->take(10)->get();
+        $posts = $user->posts;
 
         // 这个人粉了的人的关注／粉丝／文章
-        $stars = $user->stars;
-        $starUsers = User::query()->whereIn('id', $stars->pluck('star_id'))->withCount(['stars', 'followers', 'posts'])->get();
+        $starUsers = $user->stars;
 
         // 这个人的粉丝的关注／粉丝／文章
-        $followers = $user->followers;
-        $followedUsers = User::query()->whereIn('id', $followers->pluck('follower_id'))->withCount(['stars', 'followers', 'posts'])->get();
+        $followedUsers = $user->followers;
 
         return view('onstage.user.show', compact('user', 'posts', 'followedUsers', 'starUsers'));
     }

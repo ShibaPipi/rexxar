@@ -86,7 +86,9 @@ class Post extends Model
      */
     public function getContentLimitAttribute()
     {
-        return isset($this->attributes['content']) ? Str::limit($this->attributes['content'], config('rexxar.post.content_limit'), '...') : '';
+        return isset($this->attributes['content'])
+            ? Str::limit(rich_to_text($this->attributes['content']), config('rexxar.post.content_limit'), '...')
+            : '';
     }
 
     /*
@@ -156,7 +158,6 @@ class Post extends Model
     public function scopeList(Builder $query)
     {
         return $query->select('id', 'user_id', 'title', 'content', 'created_at')
-            ->with('user')
             ->withCount('comments', 'likes')
             ->latest();
     }

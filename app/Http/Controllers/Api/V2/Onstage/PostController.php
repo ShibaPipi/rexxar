@@ -16,7 +16,7 @@ class PostController extends Controller
 
         (new PostRepository($posts))->handleList();
 
-        return api_response()->success($posts);
+        return api_response()->ok($posts);
     }
 
     public function store(PostRequest $request)
@@ -28,7 +28,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return api_response()->success($post->load('user')->loadCount('likes', 'comments')
+        return api_response()->ok($post->load('user', 'comments.user')->loadCount('likes', 'comments')
             ->makeHidden('content_limit'));
     }
 }

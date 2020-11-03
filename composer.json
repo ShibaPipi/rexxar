@@ -17,7 +17,6 @@
         "laravel/tinker": "^2.0",
         "medz/cors": "^1.5",
         "rap2hpoutre/laravel-log-viewer": "^1.7",
-        "shibapipi/utils": "^1.1.0",
         "tymon/jwt-auth": "dev-develop"
     },
     "require-dev": {

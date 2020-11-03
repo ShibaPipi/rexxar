@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,8 +31,14 @@ Route::namespace('Api\V2\Onstage')
             Route::get('logout', 'UserController@logout')->name('logout');
 
             Route::prefix('my')->name('my.')->group(function () {
-                Route::get('info', 'UserController@info')->name('info');
                 Route::get('notices', 'UserController@notices')->name('notices');
+                Route::get('info', 'UserController@info')->name('info');
+                Route::post('avatar', 'UserController@uploadAvatar')->name('avatar');
+                Route::put('update', 'UserController@update')->name('update');
+            });
+
+            Route::prefix('users')->name('users')->group(function () {
+                Route::get('{user}', 'UserController@info')->name('show');
             });
 
             Route::post('posts', 'PostController@store')->name('posts.store');

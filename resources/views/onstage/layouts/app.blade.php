@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="{{ asset('images/components/favicon.png') }}" title="Favicon">
+    <link rel="shortcut icon" href="{{ asset('static/images/components/favicon.png') }}" title="Favicon">
 
     <title>laravel for blog</title>
 

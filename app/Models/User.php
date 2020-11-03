@@ -96,7 +96,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array
      */
-    protected $appends = ['status_name'];
+    protected $appends = ['status_name', 'avatar_src'];
 
     /*
      * 将密码进行加密
@@ -104,6 +104,26 @@ class User extends Authenticatable implements JWTSubject
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    /**
+     * 获取用户的头像
+     *
+     * @return string
+     */
+    public function getAvatarSrcAttribute()
+    {
+        return $this->attributes['avatar'] ? asset($this->attributes['avatar']) : '';
+    }
+
+    /**
+     * 获取用户的自我介绍
+     *
+     * @return string
+     */
+    public function getIntroductionAttribute()
+    {
+        return $this->attributes['introduction'] ?: $this->attributes['name'] . '很懒，什么都没有写，所以我给他写了点没用的。。。';
     }
 
     /**
@@ -142,11 +162,11 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /*
-     * 关注我的人
+     * 关注我的人（粉丝）
      */
     public function followers()
     {
-        return $this->hasMany(Follower::class, 'star_id');
+        return $this->belongsToMany(self::class, 'followers', 'star_id', 'follower_id');
     }
 
     /*
@@ -154,7 +174,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function stars()
     {
-        return $this->hasMany(Follower::class, 'follower_id');
+        return $this->belongsToMany(self::class, 'followers', 'follower_id', 'star_id');
     }
 
     /**
@@ -223,6 +243,20 @@ class User extends Authenticatable implements JWTSubject
     public function deleteNotice($notice)
     {
         return $this->notices()->detach($notice);
+    }
+
+    public function info()
+    {
+        return $this->loadCount('posts', 'followers', 'stars')
+            ->load(['posts' => function ($query) {
+                $query->list()->limit(10);
+            }])
+            ->load(['followers' => function ($query) {
+                $query->withCount('posts', 'followers', 'stars');
+            }])
+            ->load(['stars' => function ($query) {
+                $query->withCount('posts', 'followers', 'stars');
+            }]);
     }
 
     public function getJWTIdentifier()

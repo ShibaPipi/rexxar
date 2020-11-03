@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1d4af70f2474bb1997f6a8783031ac0d",
+    "content-hash": "51fa944f4d6b5cf86f72176b4a46d4f8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2737,54 +2737,6 @@
                 "lumen"
             ],
             "time": "2020-09-08T12:21:27+00:00"
-        },
-        {
-            "name": "shibapipi/utils",
-            "version": "v1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ShibaPipi/Utils.git",
-                "reference": "1779fd3375657fb44e0e00284dfc581f05050470"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ShibaPipi/Utils/zipball/1779fd3375657fb44e0e00284dfc581f05050470",
-                "reference": "1779fd3375657fb44e0e00284dfc581f05050470",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "php": ">=7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Shibapipi\\Utils\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Shibapipi",
-                    "email": "patricksun1993@outlook.com"
-                }
-            ],
-            "description": "some amazing utils of laravel",
-            "time": "2020-09-22T05:15:01+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
