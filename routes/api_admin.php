@@ -57,8 +57,8 @@ Route::namespace('Api\V2\Admin')->prefix('v2/admin')->middleware('api_admin.guar
         Route::middleware('can:admin_permissions')->apiResource('admin_permissions', 'AdminPermissionController')
             ->only(['index', 'store']);
 
-        Route::middleware('can:admin_history')->apiResource('admin_history', 'AdminHistoryController')
-            ->only('index');
+//        Route::middleware('can:admin_history')->apiResource('admin_history', 'AdminHistoryController')
+//            ->only('index');
 
         Route::middleware('can:users')->apiResource('users', 'UserController')
             ->only('index');

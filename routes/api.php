@@ -17,6 +17,9 @@ Route::namespace('Api\V2\Onstage')
     ->prefix('v2')
     ->middleware('api.guard')
     ->group(function () {
+        Route::get('pdd', 'PddController@index');
+        Route::get('goods', 'GoodsController@index')->name('goods.index');
+
         Route::get('index', 'IndexController@index')->name('index');
         Route::prefix('posts')->name('posts')->group(function () {
             Route::get('', 'PostController@index')->name('index');

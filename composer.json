@@ -42,14 +42,14 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Shibapipi\\Utils\\": "packages/Shibapipi/Utils/src/"
+            "Shibapipi\\Utils\\": "packages/Shibapipi/laravel-utils/src/"
         },
         "classmap": [
             "database/seeds",
             "database/factories"
         ],
         "files": [
-            "packages/Shibapipi/Utils/src/helpers.php"
+            "packages/Shibapipi/laravel-utils/src/helpers.php"
         ]
     },
     "autoload-dev": {
